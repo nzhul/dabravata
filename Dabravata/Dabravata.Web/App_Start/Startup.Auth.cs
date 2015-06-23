@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Dabravata.Web.Models;
+using Dabravata.Data;
+using Dabravata.Models;
 
 namespace Dabravata.Web
 {
