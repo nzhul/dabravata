@@ -42,6 +42,10 @@ namespace Dabravata.Web
                         "~/Content/luxen/css/2035.responsive.css"
                 ));
 
+            bundles.Add(new StyleBundle("~/bundles/administration").Include(
+                        "~/Content/administration.css"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/mainScripts").Include(
                         "~/Content/luxen/js/vendor/jquery-1.11.1.min.js",
                         "~/Content/luxen/js/vendor/bootstrap.min.js",
