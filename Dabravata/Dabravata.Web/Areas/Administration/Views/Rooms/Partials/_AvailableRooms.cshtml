@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Dabravata.Models.ViewModels.RoomViewModel>
+
+@foreach (var Room in Model)
+{
+    <tr>
+        <td><img src="~/Areas/Administration/Content/img/picture-icon.png" /></td>
+        <td>@Room.RoomNumber</td>
+        <td><a href="#" class="btn btn-primary btn-xs">Настани</a></td>
+        <td>
+            <img src="~/Areas/Administration/Content/img/preview-icon.png" />
+            <img src="~/Areas/Administration/Content/img/edit-icon.png" />
+            <img src="~/Areas/Administration/Content/img/delete-icon.png" />
+        </td>
+    </tr>
+}

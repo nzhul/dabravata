@@ -1,4 +1,35 @@
 ﻿/* Administration styling*/
-.d-navigation {
-    margin: 0 auto;
+/*Table CSS*/
+
+table
+{
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid gray;
+    box-shadow: 2px 2px 0px gray;
 }
+table th
+{
+	padding: 8px;
+	font-weight: bold;
+	font-size: 14px;
+	color: gray;
+	border-bottom: 1px dashed gray;
+    background: #e5e5e5;
+    
+}
+table td
+{
+	padding: 5px 5px 5px 5px;
+	color: gray;
+}
+table tbody tr:hover td
+{
+    color: #6a6a6a;
+	background: #e5e5e5;
+}
+
+table th, table td {text-align:center;}
+
+/*Table CSS END*/

@@ -63,6 +63,7 @@
     <Compile Include="Repositories\EFRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Service\IRoomsService.cs" />
+    <Compile Include="Service\RoomsService.cs" />
     <Compile Include="UoWData.cs" />
   </ItemGroup>
   <ItemGroup>
