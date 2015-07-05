@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Dabravata.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Dabravata.Models.ViewModels.Administration
+namespace Dabravata.Web.Areas.Administration.Models.ViewModels
 {
     public class HomeViewModel
     {

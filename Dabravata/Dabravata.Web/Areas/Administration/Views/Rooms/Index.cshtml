@@ -1,4 +1,4 @@
-﻿@model Dabravata.Models.ViewModels.Administration.HomeViewModel
+﻿@model Dabravata.Web.Areas.Administration.Models.ViewModels.HomeViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -52,5 +52,10 @@
 
             </tbody>
         </table> 
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <a class="btn btn-primary" href="@Url.Action("Create")">Създай нова стая</a>
     </div>
 </div>

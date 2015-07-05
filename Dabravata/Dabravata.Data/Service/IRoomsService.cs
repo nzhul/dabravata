@@ -1,4 +1,5 @@
-﻿using Dabravata.Models.ViewModels;
+﻿using Dabravata.Models.InputModels;
+using Dabravata.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,6 @@ namespace Dabravata.Data.Service
         /// Creates new Room in the database
         /// </summary>
         /// <returns>Returns the Id of the new Room</returns>
-        int CreateRoom();
+        int CreateRoom(CreateRoomInputModel room);
     }
 }

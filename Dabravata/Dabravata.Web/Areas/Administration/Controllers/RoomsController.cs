@@ -1,7 +1,8 @@
 ﻿using Dabravata.Data;
 using Dabravata.Data.Service;
+using Dabravata.Models.InputModels;
 using Dabravata.Models.ViewModels;
-using Dabravata.Models.ViewModels.Administration;
+using Dabravata.Web.Areas.Administration.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             this.roomsService = new RoomsService(this.uoWData);
         }
 
-        // GET: Administration/Home
+        [HttpGet]
         public ActionResult Index()
         {
             IEnumerable<RoomViewModel> roomsCollection = this.roomsService.GetRooms(true, true);
@@ -30,6 +31,33 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             homeModel.OccupiedRooms = roomsCollection;
 
             return View(homeModel);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            CreateRoomInputModel model = new CreateRoomInputModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CreateRoomInputModel room)
+        {
+            if (ModelState.IsValid)
+            {
+                int result = this.roomsService.CreateRoom(room);
+            }
+
+            room.Categories = GetCategories();
+            TempData["message"] = "Невалидни данни за продукта!<br/> Моля попълнете <strong>всички</strong> полета в червено!";
+            TempData["messageType"] = "danger";
+            return View(room);
+        }
+
+        private IEnumerable<SelectListItem> GetCategories()
+        {
+            throw new NotImplementedException();
         }
     }
 }

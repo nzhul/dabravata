@@ -33,3 +33,8 @@ table tbody tr:hover td
 table th, table td {text-align:center;}
 
 /*Table CSS END*/
+
+.dab-input-label {
+    color: black;
+    font-size:14px;
+}

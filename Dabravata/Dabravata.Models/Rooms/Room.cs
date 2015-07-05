@@ -26,6 +26,8 @@ namespace Dabravata.Models
         public string Description { get; set; }
         
         public int Price { get; set; }
+
+        public bool IsPriceVisible { get; set; }
         
         public bool IsAvailable { get; set; }
 
@@ -34,6 +36,8 @@ namespace Dabravata.Models
         public bool IsFeatured { get; set; }
 
         public DateTime DateAdded { get; set; }
+
+        public int DisplayOrder { get; set; }
 
         public int RoomCategoryId { get; set; }
 

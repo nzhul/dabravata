@@ -1,10 +1,12 @@
 ﻿using Dabravata.Models;
+using Dabravata.Models.InputModels;
 using Dabravata.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace Dabravata.Data.Service
 {
@@ -40,9 +42,24 @@ namespace Dabravata.Data.Service
             return rooms;
         }
 
-        public int CreateRoom()
+        public int CreateRoom(CreateRoomInputModel room)
         {
-            throw new NotImplementedException();
+            //var selectedCategory = this.Data.RoomCategories.Find(room.SelectedCategoryId);
+            Room newRoom = new Room();
+            newRoom.Name = room.Name;
+            newRoom.IsFeatured = room.IsFeatured;
+            newRoom.RoomNumber = room.RoomNumber;
+            newRoom.Price = room.Price;
+            newRoom.DateAdded = DateTime.Now;
+            newRoom.Description = room.Description;
+            newRoom.DisplayOrder = room.DisplayOrder;
+            newRoom.IsAvailable = true;
+            newRoom.IsPriceVisible = room.IsPriceVisible;
+
+            this.Data.Rooms.Add(newRoom);
+            this.Data.SaveChanges();
+
+            return newRoom.Id;
         }
     }
 }
