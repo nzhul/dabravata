@@ -378,6 +378,7 @@
     <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontba72.ttf" />
     <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontba72.woff" />
     <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Areas\Administration\Views\Shared\_MessagePartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

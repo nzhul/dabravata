@@ -36,6 +36,9 @@
                 <a href="@Url.Action("Index", "Pages")" class="btn btn-default">Страници</a>
             </div>
             <hr />
+            <div class="container">
+                @Html.Partial("_MessagePartial")
+            </div>
             @RenderBody()
         </div>
         <hr />
@@ -44,6 +47,9 @@
         </footer>
     </div>
 
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
     @*@Scripts.Render("~/bundles/mainScripts")*@

@@ -18,6 +18,7 @@ namespace Dabravata.Models.InputModels
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Номера на стаята е задължителен!")]
+        [Range(1, int.MaxValue, ErrorMessage = "Моля въведете валидно число!")]
         [Display(Name = "Номер:")]
         public int RoomNumber { get; set; }
 

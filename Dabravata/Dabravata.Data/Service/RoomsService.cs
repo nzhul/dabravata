@@ -55,6 +55,7 @@ namespace Dabravata.Data.Service
             newRoom.DisplayOrder = room.DisplayOrder;
             newRoom.IsAvailable = true;
             newRoom.IsPriceVisible = room.IsPriceVisible;
+            newRoom.RoomCategoryId = 1;
 
             this.Data.Rooms.Add(newRoom);
             this.Data.SaveChanges();

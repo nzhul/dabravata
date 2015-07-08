@@ -47,9 +47,15 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             if (ModelState.IsValid)
             {
                 int result = this.roomsService.CreateRoom(room);
+                if (result > 0)
+                {
+                    TempData["message"] = "Стаята беше добавена успешно!";
+                    TempData["messageType"] = "success";
+                    RedirectToAction("Index");
+                }
             }
 
-            room.Categories = GetCategories();
+            //room.Categories = GetCategories();
             TempData["message"] = "Невалидни данни за продукта!<br/> Моля попълнете <strong>всички</strong> полета в червено!";
             TempData["messageType"] = "danger";
             return View(room);
