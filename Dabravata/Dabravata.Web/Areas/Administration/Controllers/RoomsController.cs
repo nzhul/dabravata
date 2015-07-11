@@ -51,12 +51,12 @@ namespace Dabravata.Web.Areas.Administration.Controllers
                 {
                     TempData["message"] = "Стаята беше добавена успешно!";
                     TempData["messageType"] = "success";
-                    RedirectToAction("Index");
+                    return RedirectToAction("Index");
                 }
             }
 
             //room.Categories = GetCategories();
-            TempData["message"] = "Невалидни данни за продукта!<br/> Моля попълнете <strong>всички</strong> полета в червено!";
+            TempData["message"] = "Невалидни данни за стаята!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
             return View(room);
         }

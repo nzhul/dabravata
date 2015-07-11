@@ -7,9 +7,9 @@
         <td>@Room.RoomNumber</td>
         <td><a href="#" class="btn btn-primary btn-xs">Настани</a></td>
         <td>
-            <img src="~/Areas/Administration/Content/img/preview-icon.png" />
-            <img src="~/Areas/Administration/Content/img/edit-icon.png" />
-            <img src="~/Areas/Administration/Content/img/delete-icon.png" />
+            <a href="#"><img src="~/Areas/Administration/Content/img/preview-icon.png" /></a>
+            <a href="@Url.Action("Edit", new { @id = Room.Id })"><img src="~/Areas/Administration/Content/img/edit-icon.png" /></a>
+            <a href="@Url.Action("Delete", new { @id = Room.Id })"><img src="~/Areas/Administration/Content/img/delete-icon.png" /></a>
         </td>
     </tr>
 }

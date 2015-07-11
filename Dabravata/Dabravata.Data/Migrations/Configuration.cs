@@ -48,7 +48,8 @@ namespace Dabravata.Data.Migrations
                     {
                         Name = "Room " + i,
                         Price = rand.Next(30,80),
-                        Description = "Description of the room " + i,
+                        ShortDescription = "Short Description of the room " + i,
+                        LongDescription = "Long Description of the room " + i,
                         IsAvailable = true,
                         RoomNumber = 100 + i,
                         DateAdded = DateTime.Now,

@@ -43,9 +43,9 @@
                     <td>@DateTime.Now.AddDays(2).ToString("dd-MM-yyyy hh:mm")</td>
                     <td><a href="#" class="btn btn-danger btn-xs">Освободи</a></td>
                     <td>
-                        <img src="~/Areas/Administration/Content/img/preview-icon.png" />
-                        <img src="~/Areas/Administration/Content/img/edit-icon.png" />
-                        <img src="~/Areas/Administration/Content/img/delete-icon.png" />
+                        <a href="#"><img src="~/Areas/Administration/Content/img/preview-icon.png" /></a>
+                        <a href="@Url.Action("Edit")"><img src="~/Areas/Administration/Content/img/edit-icon.png" /></a>
+                        <a href="@Url.Action("Delete")"><img src="~/Areas/Administration/Content/img/delete-icon.png" /></a>
                     </td>
                 </tr>
 

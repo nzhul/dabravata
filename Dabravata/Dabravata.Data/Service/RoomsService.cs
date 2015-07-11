@@ -51,7 +51,8 @@ namespace Dabravata.Data.Service
             newRoom.RoomNumber = room.RoomNumber;
             newRoom.Price = room.Price;
             newRoom.DateAdded = DateTime.Now;
-            newRoom.Description = room.Description;
+            newRoom.ShortDescription = room.ShortDescription;
+            newRoom.LongDescription = room.LongDescription;
             newRoom.DisplayOrder = room.DisplayOrder;
             newRoom.IsAvailable = true;
             newRoom.IsPriceVisible = room.IsPriceVisible;
