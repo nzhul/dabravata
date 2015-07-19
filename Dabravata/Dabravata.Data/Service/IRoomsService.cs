@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Dabravata.Data.Service
 {
     public interface IRoomsService
     {
         RoomViewModel GetRoomById(int id);
+
+        CreateRoomInputModel GetRoomInputModelById(int id);
 
         /// <summary>
         /// Get all rooms from the database
@@ -23,5 +26,11 @@ namespace Dabravata.Data.Service
         /// </summary>
         /// <returns>Returns the Id of the new Room</returns>
         int CreateRoom(CreateRoomInputModel room);
+
+        bool RoomExists(int id);
+
+        IEnumerable<SelectListItem> GetCategories();
+
+        IEnumerable<RoomCategoryViewModel> GetRoomCategories(bool getAll);
     }
 }

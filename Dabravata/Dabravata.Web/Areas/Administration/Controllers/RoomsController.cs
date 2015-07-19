@@ -1,5 +1,6 @@
 ﻿using Dabravata.Data;
 using Dabravata.Data.Service;
+using Dabravata.Models;
 using Dabravata.Models.InputModels;
 using Dabravata.Models.ViewModels;
 using Dabravata.Web.Areas.Administration.Models.ViewModels;
@@ -37,6 +38,8 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         public ActionResult Create()
         {
             CreateRoomInputModel model = new CreateRoomInputModel();
+            model.IsAvailable = true;
+            model.Categories = this.roomsService.GetCategories();
             return View(model);
         }
 
@@ -59,6 +62,20 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             TempData["message"] = "Невалидни данни за стаята!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
             return View(room);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            CreateRoomInputModel model = new CreateRoomInputModel();
+
+            if (this.roomsService.RoomExists(id))
+            {
+                model = this.roomsService.GetRoomInputModelById(id);
+                model.Categories = this.roomsService.GetCategories();
+            }
+
+            return View(model);
         }
 
         private IEnumerable<SelectListItem> GetCategories()
