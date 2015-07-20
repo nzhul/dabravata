@@ -45,11 +45,11 @@ namespace Dabravata.Web.Areas.Administration.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateRoomInputModel room)
+        public ActionResult Create(CreateRoomInputModel model)
         {
             if (ModelState.IsValid)
             {
-                int result = this.roomsService.CreateRoom(room);
+                int result = this.roomsService.CreateRoom(model);
                 if (result > 0)
                 {
                     TempData["message"] = "Стаята беше добавена успешно!";
@@ -58,10 +58,10 @@ namespace Dabravata.Web.Areas.Administration.Controllers
                 }
             }
 
-            //room.Categories = GetCategories();
+            model.Categories = this.roomsService.GetCategories();
             TempData["message"] = "Невалидни данни за стаята!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
-            return View(room);
+            return View(model);
         }
 
         [HttpGet]

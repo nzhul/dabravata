@@ -5,12 +5,13 @@ using Dabravata.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Dabravata.Web.Areas.Administration.Controllers
 {
-    public class RoomCategoriesController : Controller
+    public class RoomCategoriesController : BaseController
     {
         private readonly IRoomsService roomsService;
         private readonly IUoWData uoWData;
@@ -20,26 +21,19 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             this.roomsService = new RoomsService(this.uoWData);
         }
 
-        // GET: Administration/RoomCategories
+        [HttpGet]
         public ActionResult Index()
         {
             IEnumerable<RoomCategoryViewModel> model = this.roomsService.GetRoomCategories(true);
             return View(model);
         }
 
-        // GET: Administration/RoomCategories/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Administration/RoomCategories/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Administration/RoomCategories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateRoomCategoryInputModel categoryInput)
@@ -60,35 +54,42 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             return View(categoryInput);
         }
 
-        // GET: Administration/RoomCategories/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            CreateRoomCategoryInputModel model = this.roomsService.GetRoomCategoryInputModelById(id);
+            return View(model);
         }
 
-        // POST: Administration/RoomCategories/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, CreateRoomCategoryInputModel roomCategory)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                bool result = this.roomsService.UpdateRoomCategory(id, roomCategory);
 
-                return RedirectToAction("Index");
+                if (result == true)
+                {
+                    TempData["message"] = "Редактирахте успешно категорията!";
+                    TempData["messageType"] = "success";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            TempData["message"] = "Невалидни данни за категорията!<br/> Моля попълнете <strong>всички</strong> полета в червено!";
+            TempData["messageType"] = "danger";
+            return View(roomCategory);
         }
 
-        // GET: Administration/RoomCategories/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Administration/RoomCategories/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

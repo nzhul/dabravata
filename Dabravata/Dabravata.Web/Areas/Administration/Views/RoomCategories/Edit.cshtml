@@ -1,0 +1,10 @@
+﻿@model Dabravata.Models.InputModels.CreateRoomCategoryInputModel
+@{
+    ViewBag.Title = "Редактиране на Категория";
+    ViewBag.FormModeText = "Зарази";
+    ViewBag.FormMode = "Edit";
+}
+
+<div class="container">
+    @{Html.RenderPartial("Partials/_CreateEditRoomCategoryPartial", Model);}
+</div>

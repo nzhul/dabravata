@@ -34,5 +34,9 @@ namespace Dabravata.Data.Service
         IEnumerable<RoomCategoryViewModel> GetRoomCategories(bool getAll);
 
         int CreateRoomCategory(CreateRoomCategoryInputModel roomCategory);
+
+        CreateRoomCategoryInputModel GetRoomCategoryInputModelById(int id);
+
+        bool UpdateRoomCategory(int id, CreateRoomCategoryInputModel roomCategory);
     }
 }

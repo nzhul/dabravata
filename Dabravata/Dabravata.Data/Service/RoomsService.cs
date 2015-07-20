@@ -149,5 +149,42 @@ namespace Dabravata.Data.Service
 
             return newRoomCategory.Id;
         }
+
+
+        public CreateRoomCategoryInputModel GetRoomCategoryInputModelById(int id)
+        {
+            RoomCategory roomCategory = this.Data.RoomCategories.Find(id);
+            return MapRoomCategoryInputModel(roomCategory);
+        }
+
+        private CreateRoomCategoryInputModel MapRoomCategoryInputModel(RoomCategory roomCategory)
+        {
+            CreateRoomCategoryInputModel model = new CreateRoomCategoryInputModel();
+            model.Description = roomCategory.Description;
+            model.DisplayOrder = roomCategory.DisplayOrder;
+            model.Name = roomCategory.Name;
+
+            return model;
+        }
+
+
+        public bool UpdateRoomCategory(int id, CreateRoomCategoryInputModel roomCategory)
+        {
+            RoomCategory dbRoomCategory = this.Data.RoomCategories.Find(id);
+            if (dbRoomCategory != null)
+            {
+                dbRoomCategory.Description = roomCategory.Description;
+                dbRoomCategory.DisplayOrder = roomCategory.DisplayOrder;
+                dbRoomCategory.Name = roomCategory.Name;
+
+                this.Data.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
