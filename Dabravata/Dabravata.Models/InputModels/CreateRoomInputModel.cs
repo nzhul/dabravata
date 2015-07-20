@@ -26,6 +26,7 @@ namespace Dabravata.Models.InputModels
         [StringLength(250, MinimumLength = 3, ErrorMessage = "Невалидно име - Максимална дължина 250 символа, минимална 3")]
         [Display(Name = "Име:")]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "Краткото описание е задължително!")]
         [AllowHtml]
         [Display(Name = "Кратко описание:")]
@@ -47,6 +48,9 @@ namespace Dabravata.Models.InputModels
         [Display(Name = "На Заглавна страница: ")]
         public bool IsFeatured { get; set; }
 
+        [Display(Name = "Публична: ")]
+        public bool IsAvailable { get; set; }
+
         [Display(Name = "Покажи цената: ")]
         public bool IsPriceVisible { get; set; }
 
@@ -56,7 +60,6 @@ namespace Dabravata.Models.InputModels
         [Required(ErrorMessage = "Задължително!")]
         [Display(Name = "Категория")]
         public int SelectedCategoryId { get; set; }
-
         public IEnumerable<SelectListItem> Categories { get; set; }
 
         public IEnumerable<Image> Images { get; set; }

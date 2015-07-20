@@ -82,6 +82,7 @@
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Attractions\Attraction.cs" />
     <Compile Include="Image.cs" />
+    <Compile Include="InputModels\CreateRoomCategoryInputModel.cs" />
     <Compile Include="InputModels\CreateRoomInputModel.cs" />
     <Compile Include="Pages\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\RoomCategory.cs" />
     <Compile Include="Rooms\RoomFeature.cs" />
+    <Compile Include="ViewModels\RoomCategoryViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

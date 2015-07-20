@@ -166,6 +166,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Administration\Controllers\RoomCategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoomsController.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\HomeViewModel.cs" />
     <Compile Include="Areas\Testing\Controllers\HomeController.cs" />
@@ -380,6 +381,10 @@
     <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Areas\Administration\Views\Shared\_MessagePartial.cshtml" />
     <Content Include="Areas\Administration\Views\Rooms\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomCategories\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomCategories\Partials\_RoomCategories.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomCategories\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomCategories\Partials\_CreateEditRoomCategoryPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
