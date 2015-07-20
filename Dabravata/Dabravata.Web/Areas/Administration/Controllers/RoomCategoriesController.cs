@@ -46,10 +46,15 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                int result = this.roomsService.CreateRoomCategory(categoryInput);
+                if (result > 0)
+                {
+                    TempData["message"] = "Успешно добавихте нова категория!";
+                    TempData["messageType"] = "success";
+                    return RedirectToAction("Index");
+                }
             }
 
-            //room.Categories = GetCategories();
             TempData["message"] = "Невалидни данни за категорията!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
             return View(categoryInput);

@@ -32,5 +32,7 @@ namespace Dabravata.Data.Service
         IEnumerable<SelectListItem> GetCategories();
 
         IEnumerable<RoomCategoryViewModel> GetRoomCategories(bool getAll);
+
+        int CreateRoomCategory(CreateRoomCategoryInputModel roomCategory);
     }
 }

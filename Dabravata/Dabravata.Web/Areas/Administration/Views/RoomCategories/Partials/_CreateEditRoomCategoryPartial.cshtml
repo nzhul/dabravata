@@ -8,6 +8,7 @@
 </div>
 @using (Html.BeginForm((string)ViewBag.FormMode, "RoomCategories", FormMethod.Post, new { @class = "form-horizontal " }))
 {
+    @Html.AntiForgeryToken()
     <div class="row">
         <div class="col-md-7">
             <div class="form-group">

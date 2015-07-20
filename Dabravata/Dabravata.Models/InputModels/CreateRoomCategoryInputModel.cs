@@ -23,5 +23,8 @@ namespace Dabravata.Models.InputModels
         [DataType("tinymce_full")]
         [UIHint("tinymce_full")]
         public string Description { get; set; }
+
+        [Display(Name = "Позиция:")]
+        public int DisplayOrder { get; set; }
     }
 }
