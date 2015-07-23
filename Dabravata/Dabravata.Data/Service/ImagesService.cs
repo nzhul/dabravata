@@ -1,0 +1,78 @@
+﻿using Dabravata.Models;
+using Dabravata.Models.InputModels;
+using ImageResizer;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dabravata.Data.Service
+{
+    public class ImagesService : IImagesService
+    {
+        private readonly IUoWData Data;
+
+        public ImagesService(IUoWData data)
+        {
+            this.Data = data;
+        }
+
+        public bool UploadImages(UploadPhotoModel uploadData)
+        {
+            Dictionary<string, string> versions = new Dictionary<string, string>();
+            //Define the versions to generate
+            versions.Add("_indexThumb", "width=230&height=234&crop=auto&format=jpg"); //Crop to square thumbnail
+            versions.Add("_detailsBigThumb", "maxwidth=336&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
+            versions.Add("_detailsSmallThumb", "width=77&height=61&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
+            versions.Add("_large", "maxwidth=1500&maxheight=1500&format=jpg"); //Fit inside 1900x1200 area
+
+            int categoryId = uploadData.CategoryId;
+            int roomId = uploadData.RoomId;
+            var theProduct = this.Data.Rooms.Find(roomId);
+
+            bool firstLoop = true;
+            foreach (var file in uploadData.Files)
+            {
+                if (file != null)
+                {
+                    var originalFileName = file.FileName.Split('.')[0].Replace(' ', '_');
+                    var originalFileExtension = file.FileName.Split('.')[1];
+
+                    string uploadFolder = System.Web.HttpContext.Current.Server.MapPath("~/Uploads/" + categoryId + "/" + roomId);
+                    if (!Directory.Exists(uploadFolder)) Directory.CreateDirectory(uploadFolder);
+
+                    foreach (string suffix in versions.Keys)
+                    {
+                        //Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                        string fileName = Path.Combine(uploadFolder, originalFileName + suffix);
+
+                        fileName = ImageBuilder.Current.Build(file, fileName, new ResizeSettings(versions[suffix]), false, true);
+                    }
+
+                    var newImage = new Image
+                    {
+                        ImagePath = "Uploads\\" + categoryId + "\\" + roomId + "\\" + originalFileName,
+                        ImageExtension = originalFileExtension,
+                        IsPrimary = false,
+                        DateAdded = DateTime.Now
+                    };
+
+                    if (firstLoop)
+                    {
+                        theProduct.Images.First(image => image.IsPrimary == true).IsPrimary = false;
+                        newImage.IsPrimary = true;
+                    }
+
+                    theProduct.Images.Add(newImage);
+                    this.Data.SaveChanges();
+                }
+
+                firstLoop = false;
+            }
+
+            return true;
+        }
+    }
+}

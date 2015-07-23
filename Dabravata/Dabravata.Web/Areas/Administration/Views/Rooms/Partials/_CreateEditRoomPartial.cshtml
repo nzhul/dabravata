@@ -6,22 +6,23 @@
         <hr />
     </div>
 </div>
-@using (Html.BeginForm((string)ViewBag.FormMode, "Rooms", FormMethod.Post, new { @class = "form-horizontal " }))
-{
-    
-    var slugDisabled = "disabled";
-    var columnWidth = 7;
-    if (ViewBag.FormMode == "Edit")
+<div class="row">
+    @using (Html.BeginForm((string)ViewBag.FormMode, "Rooms", FormMethod.Post, new { @class = "form-horizontal " }))
     {
-        columnWidth = 7;
-    }
-    else
-    {
-        columnWidth = 7;
-    }
-    
-    @Html.AntiForgeryToken()
-    <div class="row">
+
+        var slugDisabled = "disabled";
+        var columnWidth = 7;
+        if (ViewBag.FormMode == "Edit")
+        {
+            columnWidth = 7;
+        }
+        else
+        {
+            columnWidth = 7;
+        }
+
+        @Html.AntiForgeryToken()
+
         <div class="col-md-@columnWidth">
             <div class="form-group">
                 @Html.LabelFor(model => model.SelectedCategoryId, new { @class = "dab-input-label" })
@@ -79,90 +80,92 @@
                 </button>
             </div>
         </div>
-        @if (ViewBag.FormMode == "Edit")
-        {
-            <div class="col-sm-5">
-                <!-- Guest Checkout Panel Starts -->
-                <div class="panel panel-smart">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Добави Снимки
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        @if (Model.Images != null && Model.Images.Count() > 0)
-                        {
-                            foreach (var image in Model.Images.OrderByDescending(x => x.DateAdded))
-                            {
-                                var imageSrc = "../../../" + @image.ImagePath + "_detailsSmallThumb.jpg";
-                                var isPrimary = @image.IsPrimary ? "is-primary" : " ";
-                                var imageThumbnailBoxId = "thumb-box-" + image.Id;
+    }
 
-                                <div id="@imageThumbnailBoxId">
-                                    <img src="@imageSrc" class="product-image-thumbnail-admin" />
-                                    <div class="thumbnail-hover @isPrimary">
-                                        @if (!image.IsPrimary)
-                                        {
-                                            <a href="@Url.Action("MakePrimary", "Products", new { imageId = image.Id, productId = Model.Id })" class="glyphicon glyphicon-arrow-up"
-                                               data-toggle="tooltip"
-                                               data-placement="top"
-                                               title="Направи картинката ГЛАВНА!"></a>
-                                            @*<a href="#" class="fa fa-times"
-                                                data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="Изтрии картинката!"></a>*@
-                                            @Ajax.ActionLink(" ", "DeleteImage", new { imageId = image.Id },
+    @if (ViewBag.FormMode == "Edit")
+    {
+        <div class="col-sm-5">
+            <!-- Guest Checkout Panel Starts -->
+            <div class="panel panel-smart">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Добави Снимки
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @if (Model.Images != null && Model.Images.Count() > 0)
+                    {
+                        foreach (var image in Model.Images.OrderByDescending(x => x.DateAdded))
+                        {
+                            var imageSrc = "../../../" + @image.ImagePath + "_detailsSmallThumb.jpg";
+                            var isPrimary = @image.IsPrimary ? "is-primary" : " ";
+                            var imageThumbnailBoxId = "thumb-box-" + image.Id;
+
+                            <div id="@imageThumbnailBoxId">
+                                <img src="@imageSrc" class="product-image-thumbnail-admin" />
+                                <div class="thumbnail-hover @isPrimary">
+                                    @if (!image.IsPrimary)
+                                    {
+                                        <a href="@Url.Action("MakePrimary", "Products", new { imageId = image.Id, productId = Model.Id })" class="glyphicon glyphicon-arrow-up"
+                                           data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="Направи картинката ГЛАВНА!"></a>
+                                        @*<a href="#" class="fa fa-times"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Изтрии картинката!"></a>*@
+                                        @Ajax.ActionLink(" ", "DeleteImage", new { imageId = image.Id },
                                                 new AjaxOptions
                                                 {
                                                     InsertionMode = InsertionMode.Replace,
                                                     UpdateTargetId = imageThumbnailBoxId,
                                                     HttpMethod = "Post",
                                                 }, new { @class = "fa fa-times", @data_toggle = "tooltip", @data_placement = "top", @title = "Изтрии картинката!" })
-                                        }
-                                        else
-                                        {
-                                            <strong>Главна</strong>
-                                        }
-                                    </div>
-                                </div>
-                            }
-                            <div class="clearfix"></div>
-                            <hr />
-                        }
-                        else
-                        {
-                            <div class="alert alert-dismissable alert-info">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                <p>
-                                    Продукта все още няма добавени никакви снимки!<br />
-                                    Използвай <strong>формата</strong> отдолу за да добавиш
-                                </p>
-                            </div>
-                        }
-                        @using (Html.BeginForm("Upload", "Rooms", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                        {
-                            @Html.ValidationSummary()
-
-                            <div class="form-field">
-                                <p>Избери снимки:</p>
-                                <div class="upload-container">
-                                    <div class="upload">
-                                        <input type="file" name="files" id="file1" />
-                                        <img src="@Url.Content("~/Content/images/delete.png")" class="upload-img-remove-icon" alt="Remove picture." />
-                                        <input type="hidden" name="RoomId" value="@Model.Id" />
-                                        <input type="hidden" name="RoomCategoryId" value="@Model.SelectedCategoryId" />
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <strong>Главна</strong>
+                                    }
                                 </div>
                             </div>
-
-                            <div class="form-field">
-                                <input type="submit" value="Качи снимките" />
-                            </div>
                         }
-                    </div>
+                        <div class="clearfix"></div>
+                        <hr />
+                    }
+                    else
+                    {
+                        <div class="alert alert-dismissable alert-info">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p>
+                                Продукта все още няма добавени никакви снимки!<br />
+                                Използвай <strong>формата</strong> отдолу за да добавиш
+                            </p>
+                        </div>
+                    }
+
+                    @using (Html.BeginForm("UploadPhotos", "Rooms", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.ValidationSummary()
+
+                        <div class="form-field">
+                            <p>Избери снимки:</p>
+                            <div class="upload-container">
+                                <div class="upload">
+                                    <input type="file" name="files" id="file1" />
+                                    <img src="@Url.Content("~/Content/images/delete.png")" class="upload-img-remove-icon" alt="Remove picture." />
+                                    <input type="hidden" name="RoomId" value="@Model.Id" />
+                                    <input type="hidden" name="RoomCategoryId" value="@Model.SelectedCategoryId" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <input type="submit" value="Качи снимките" />
+                        </div>
+                    }
                 </div>
-                <!-- Guest Checkout Panel Ends -->
             </div>
-        }
-    </div>
-}
+            <!-- Guest Checkout Panel Ends -->
+        </div>
+    }
+</div>

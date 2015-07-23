@@ -15,11 +15,13 @@ namespace Dabravata.Web.Areas.Administration.Controllers
     public class RoomsController : BaseController
     {
         private readonly IRoomsService roomsService;
+        private readonly IImagesService imagesService;
         private readonly IUoWData uoWData;
         public RoomsController()
         {
             this.uoWData = new UoWData();
             this.roomsService = new RoomsService(this.uoWData);
+            this.imagesService = new ImagesService(this.uoWData);
         }
 
         [HttpGet]
@@ -45,12 +47,12 @@ namespace Dabravata.Web.Areas.Administration.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateRoomInputModel model)
+        public ActionResult Create(CreateRoomInputModel inputModel)
         {
             if (ModelState.IsValid)
             {
-                int result = this.roomsService.CreateRoom(model);
-                if (result > 0)
+                bool IsCreateRoomSuccessfull = this.roomsService.CreateRoom(inputModel);
+                if (IsCreateRoomSuccessfull)
                 {
                     TempData["message"] = "Стаята беше добавена успешно!";
                     TempData["messageType"] = "success";
@@ -58,10 +60,10 @@ namespace Dabravata.Web.Areas.Administration.Controllers
                 }
             }
 
-            model.Categories = this.roomsService.GetCategories();
+            inputModel.Categories = this.roomsService.GetCategories();
             TempData["message"] = "Невалидни данни за стаята!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
-            return View(model);
+            return View(inputModel);
         }
 
         [HttpGet]
@@ -76,6 +78,48 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, CreateRoomInputModel inputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                bool IsUpdateSuccessfull = this.roomsService.UpdateRoom(id, inputModel);
+                if (IsUpdateSuccessfull)
+                {
+                    TempData["message"] = "Стаята беше редактирана успешно!";
+                    TempData["messageType"] = "success";
+                    return RedirectToAction("Index");
+                }
+            }
+
+            inputModel.Categories = this.roomsService.GetCategories();
+            TempData["message"] = "Невалидни данни за стаята!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
+            TempData["messageType"] = "danger";
+            return View(inputModel);
+        }
+
+        [HttpPost]
+        public ActionResult UploadPhotos(UploadPhotoModel uploadData)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    this.imagesService.UploadImages(uploadData);
+                }
+
+                TempData["message"] = "Снимката беше <strong>добавена</strong> успешно!";
+                TempData["messageType"] = "success";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["message"] = "Неуспешно качване на снимка!<br/> Моля свържете се с администратор!";
+                TempData["messageType"] = "danger";
+                return RedirectToAction("Index");
+            }
         }
 
         private IEnumerable<SelectListItem> GetCategories()

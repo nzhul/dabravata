@@ -51,7 +51,7 @@ namespace Dabravata.Models
             set { this.images = value; }
         }
 
-        public virtual ICollection<RoomFeature> RoomFeature
+        public virtual ICollection<RoomFeature> RoomFeatures
         {
             get { return this.roomFeatures; }
             set { this.roomFeatures = value; }

@@ -46,6 +46,7 @@ namespace Dabravata.Data.Service
         private CreateRoomInputModel MapRoomInputModel(Room room)
         {
             CreateRoomInputModel model = new CreateRoomInputModel();
+            model.Id = room.Id;
             model.Name = room.Name;
             model.IsFeatured = room.IsFeatured;
             model.RoomNumber = room.RoomNumber;
@@ -66,7 +67,7 @@ namespace Dabravata.Data.Service
             return rooms;
         }
 
-        public int CreateRoom(CreateRoomInputModel room)
+        public bool CreateRoom(CreateRoomInputModel room)
         {
             Room newRoom = new Room();
             newRoom.Name = room.Name;
@@ -84,7 +85,7 @@ namespace Dabravata.Data.Service
             this.Data.Rooms.Add(newRoom);
             this.Data.SaveChanges();
 
-            return newRoom.Id;
+            return true;
         }
 
         public bool RoomExists(int id)
@@ -176,6 +177,32 @@ namespace Dabravata.Data.Service
                 dbRoomCategory.Description = roomCategory.Description;
                 dbRoomCategory.DisplayOrder = roomCategory.DisplayOrder;
                 dbRoomCategory.Name = roomCategory.Name;
+
+                this.Data.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        public bool UpdateRoom(int id, CreateRoomInputModel inputModel)
+        {
+            Room dbRoom = this.Data.Rooms.Find(id);
+            if (dbRoom != null)
+            {
+                dbRoom.DisplayOrder = inputModel.DisplayOrder;
+                dbRoom.IsAvailable = inputModel.IsAvailable;
+                dbRoom.IsFeatured = inputModel.IsFeatured;
+                dbRoom.IsPriceVisible = inputModel.IsPriceVisible;
+                dbRoom.LongDescription = inputModel.LongDescription;
+                dbRoom.Name = inputModel.Name;
+                dbRoom.Price = inputModel.Price;
+                dbRoom.RoomCategoryId = inputModel.SelectedCategoryId;
+                dbRoom.RoomNumber = inputModel.RoomNumber;
+                dbRoom.ShortDescription = inputModel.ShortDescription;
 
                 this.Data.SaveChanges();
 

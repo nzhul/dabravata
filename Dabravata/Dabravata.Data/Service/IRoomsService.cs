@@ -25,7 +25,7 @@ namespace Dabravata.Data.Service
         /// Creates new Room in the database
         /// </summary>
         /// <returns>Returns the Id of the new Room</returns>
-        int CreateRoom(CreateRoomInputModel room);
+        bool CreateRoom(CreateRoomInputModel room);
 
         bool RoomExists(int id);
 
@@ -37,6 +37,8 @@ namespace Dabravata.Data.Service
 
         CreateRoomCategoryInputModel GetRoomCategoryInputModelById(int id);
 
-        bool UpdateRoomCategory(int id, CreateRoomCategoryInputModel roomCategory);
+        bool UpdateRoomCategory(int id, CreateRoomCategoryInputModel inputModel);
+
+        bool UpdateRoom(int id, CreateRoomInputModel inputModel);
     }
 }
