@@ -30,7 +30,7 @@ namespace Dabravata.Data.Service
 
             int categoryId = uploadData.CategoryId;
             int roomId = uploadData.RoomId;
-            var theProduct = this.Data.Rooms.Find(roomId);
+            var theRoom = this.Data.Rooms.Find(roomId);
 
             bool firstLoop = true;
             foreach (var file in uploadData.Files)
@@ -61,11 +61,11 @@ namespace Dabravata.Data.Service
 
                     if (firstLoop)
                     {
-                        theProduct.Images.First(image => image.IsPrimary == true).IsPrimary = false;
+                        theRoom.Images.First(image => image.IsPrimary == true).IsPrimary = false;
                         newImage.IsPrimary = true;
                     }
 
-                    theProduct.Images.Add(newImage);
+                    theRoom.Images.Add(newImage);
                     this.Data.SaveChanges();
                 }
 

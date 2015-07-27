@@ -17,8 +17,8 @@ namespace Dabravata.Data.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            this.AddInitialRoomCategories(context);
-            this.AddInitialRooms(context);
+            //this.AddInitialRoomCategories(context);
+            //this.AddInitialRooms(context);
         }
 
         private void AddInitialRoomCategories(ApplicationDbContext context)

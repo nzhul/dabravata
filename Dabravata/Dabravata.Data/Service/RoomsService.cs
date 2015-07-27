@@ -57,6 +57,7 @@ namespace Dabravata.Data.Service
             model.IsAvailable = room.IsAvailable;
             model.IsPriceVisible = room.IsPriceVisible;
             model.SelectedCategoryId = room.RoomCategoryId;
+            model.Images = room.Images;
 
             return model;
         }
@@ -82,7 +83,18 @@ namespace Dabravata.Data.Service
             newRoom.IsPriceVisible = room.IsPriceVisible;
             newRoom.RoomCategoryId = room.SelectedCategoryId;
 
+            Image defaultImage = new Image
+            {
+                ImageExtension = "jpg",
+                ImagePath = "Content\\images\\noimage\\no-image",
+                IsPrimary = true,
+                DateAdded = DateTime.Now
+            };
+
             this.Data.Rooms.Add(newRoom);
+            this.Data.SaveChanges();
+
+            newRoom.Images.Add(defaultImage);
             this.Data.SaveChanges();
 
             return true;
