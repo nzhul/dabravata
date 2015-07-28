@@ -74,5 +74,25 @@ namespace Dabravata.Data.Service
 
             return true;
         }
+
+
+        public bool MakePrimary(int imageId, int roomId)
+        {
+            var theRoom = this.Data.Rooms.Find(roomId);
+            if (theRoom == null)
+            {
+                return false;
+            }
+
+            var oldPrimary = theRoom.Images.FirstOrDefault(image => image.IsPrimary);
+            oldPrimary.IsPrimary = false;
+
+            var newPrimary = theRoom.Images.FirstOrDefault(image => image.Id == imageId);
+            newPrimary.IsPrimary = true;
+
+            this.Data.SaveChanges();
+
+            return true;
+        }
     }
 }

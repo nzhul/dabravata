@@ -122,6 +122,22 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult MakePrimary(int imageId, int productId)
+        {
+            bool IsSuccessfull = this.imagesService.MakePrimary(imageId, productId);
+
+            if (IsSuccessfull)
+            {
+                return RedirectToAction("Edit", new { id = productId });
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
+        }
+
         private IEnumerable<SelectListItem> GetCategories()
         {
             throw new NotImplementedException();

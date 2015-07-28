@@ -10,5 +10,7 @@ namespace Dabravata.Data.Service
     public interface IImagesService
     {
         bool UploadImages(UploadPhotoModel uploadData);
+
+        bool MakePrimary(int imageId, int productId);
     }
 }
