@@ -1,5 +1,6 @@
 ﻿using Dabravata.Data.Repositories;
 using Dabravata.Models;
+using Dabravata.Models.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Dabravata.Data
         IRepository<Image> Images { get; }
         IRepository<Attraction> Attractions { get; }
         IRepository<Reservation> Reservations { get; }
+        IRepository<Page> Pages { get; }
 
         int SaveChanges();
     }

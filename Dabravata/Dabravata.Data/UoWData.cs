@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dabravata.Data.Repositories;
 using Dabravata.Models;
 using System.Data.Entity;
+using Dabravata.Models.Pages;
 
 namespace Dabravata.Data
 {
@@ -58,6 +59,11 @@ namespace Dabravata.Data
         public IRepository<Reservation> Reservations
         {
             get { return this.GetRepository<Reservation>(); }
+        }
+
+        public IRepository<Page> Pages
+        {
+            get { return this.GetRepository<Page>(); }
         }
 
         public int SaveChanges()

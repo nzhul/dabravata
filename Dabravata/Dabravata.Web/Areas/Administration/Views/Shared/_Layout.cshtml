@@ -31,12 +31,12 @@
         <div class="row" style="margin-top:80px;">
             <div class="col-md-12">
                 <div class="d-navigation">
-                    <a href="@Url.Action("Index", "Rooms")" class="btn btn-default">Стаи</a>
-                    <a href="@Url.Action("Index", "RoomCategories")" class="btn btn-default">Видове стаи</a>
-                    <a href="@Url.Action("Index", "Features")" class="btn btn-default">Удобства</a>
-                    <a href="@Url.Action("Index", "Reservations")" class="btn btn-default">Резервации</a>
-                    <a href="@Url.Action("Index", "Attractions")" class="btn btn-default">Атракции</a>
-                    <a href="@Url.Action("Index", "Pages")" class="btn btn-default">Страници</a>
+                    <a href="@Url.Action("Index", "Rooms")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "Rooms" ? "active" : "")">Стаи</a>
+                    <a href="@Url.Action("Index", "RoomCategories")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "RoomCategories" ? "active" : "")">Видове стаи</a>
+                    <a href="@Url.Action("Index", "RoomFeatures")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "RoomFeatures" ? "active" : "")">Удобства</a>
+                    <a href="@Url.Action("Index", "Reservations")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "Reservations" ? "active" : "")">Резервации</a>
+                    <a href="@Url.Action("Index", "Attractions")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "Attractions" ? "active" : "")">Атракции</a>
+                    <a href="@Url.Action("Index", "Pages")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "Pages" ? "active" : "")">Страници</a>
                 </div>
                 <hr />
                 <div class="container">

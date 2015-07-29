@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dabravata.Models.Pages
+namespace Dabravata.Models.ViewModels
 {
-    public class Page
+    public class PageViewModel
     {
         public int Id { get; set; }
 
@@ -15,7 +15,5 @@ namespace Dabravata.Models.Pages
         public string Description { get; set; }
 
         public string Content { get; set; }
-
-        public DateTime DateCreated { get; set; }
     }
 }

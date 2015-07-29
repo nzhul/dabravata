@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dabravata.Models
+namespace Dabravata.Models.ViewModels
 {
-    public class RoomFeature
+    public class RoomFeatureViewModel
     {
         public int Id { get; set; }
 

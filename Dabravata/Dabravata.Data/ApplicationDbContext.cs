@@ -1,5 +1,6 @@
 ﻿using Dabravata.Data.Migrations;
 using Dabravata.Models;
+using Dabravata.Models.Pages;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
@@ -24,5 +25,6 @@ namespace Dabravata.Data
         public IDbSet<Image> Images { get; set; }
         public IDbSet<Attraction> Attractions { get; set; }
         public IDbSet<Reservation> Reservations { get; set; }
+        public IDbSet<Page> Pages { get; set; }
     }
 }

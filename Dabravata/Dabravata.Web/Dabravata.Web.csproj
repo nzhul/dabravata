@@ -166,11 +166,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Administration\Controllers\PagesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\RoomFeaturesController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoomCategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoomsController.cs" />
     <Compile Include="Areas\Administration\Models\ViewModels\HomeViewModel.cs" />
-    <Compile Include="Areas\Testing\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Testing\TestingAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -188,8 +188,6 @@
     <Content Include="Areas\Administration\Content\img\preview-icon.png" />
     <Content Include="Areas\Administration\Content\img\delete-icon.png" />
     <Content Include="Areas\Administration\Content\img\picture-icon.png" />
-    <Content Include="Areas\Testing\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontba72.svg" />
     <Content Include="Content\administration.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -371,14 +369,6 @@
     <Content Include="Areas\Administration\Views\Rooms\Partials\_AvailableRooms.cshtml" />
     <Content Include="Areas\Administration\Views\Rooms\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Rooms\Partials\_CreateEditRoomPartial.cshtml" />
-    <Content Include="Areas\Testing\Views\web.config" />
-    <Content Include="Areas\Testing\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Testing\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Testing\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontba72.eot" />
-    <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontba72.ttf" />
-    <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontba72.woff" />
-    <Content Include="Areas\Testing\font-awesome\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Areas\Administration\Views\Shared\_MessagePartial.cshtml" />
     <Content Include="Areas\Administration\Views\Rooms\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\RoomCategories\Index.cshtml" />
@@ -386,6 +376,16 @@
     <Content Include="Areas\Administration\Views\RoomCategories\Create.cshtml" />
     <Content Include="Areas\Administration\Views\RoomCategories\Partials\_CreateEditRoomCategoryPartial.cshtml" />
     <Content Include="Areas\Administration\Views\RoomCategories\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomFeatures\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomFeatures\Partials\_RoomFeatures.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomFeatures\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomFeatures\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\RoomFeatures\Partials\_CreateEditRoomFeaturePartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Pages\Partials\_CreateEditPagePartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Pages\Partials\_Pages.cshtml" />
+    <Content Include="Areas\Administration\Views\Pages\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Pages\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Pages\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -600,7 +600,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Testing\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

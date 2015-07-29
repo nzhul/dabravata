@@ -225,5 +225,64 @@ namespace Dabravata.Data.Service
                 return false;
             }
         }
+
+
+        public IEnumerable<RoomFeatureViewModel> GetRoomFeatures(bool getAll)
+        {
+            IEnumerable<RoomFeatureViewModel> roomFeatures = this.Data.RoomFeatures.All().Select(MapRoomCategoriesViewModel);
+            return roomFeatures;
+        }
+
+        private RoomFeatureViewModel MapRoomCategoriesViewModel(RoomFeature roomFeature)
+        {
+            RoomFeatureViewModel model = new RoomFeatureViewModel();
+            model.Id = roomFeature.Id;
+            model.Name = roomFeature.Name;
+
+            return model;
+        }
+
+
+        public int CreateRoomFeature(CreateRoomFeatureInputModel featureInput)
+        {
+            RoomFeature newFeature = new RoomFeature();
+            newFeature.Name = featureInput.Name;
+
+            this.Data.RoomFeatures.Add(newFeature);
+            this.Data.SaveChanges();
+
+            return newFeature.Id;
+        }
+
+        public CreateRoomFeatureInputModel GetRoomFeatureInputModelById(int id)
+        {
+            RoomFeature roomFeature = this.Data.RoomFeatures.Find(id);
+            return MapRoomFeatureInputModel(roomFeature);
+        }
+
+        private CreateRoomFeatureInputModel MapRoomFeatureInputModel(RoomFeature roomFeature)
+        {
+            CreateRoomFeatureInputModel model = new CreateRoomFeatureInputModel();
+            model.Id = roomFeature.Id;
+            model.Name = roomFeature.Name;
+            return model;
+        }
+
+        public bool UpdateRoomFeature(int id, CreateRoomFeatureInputModel roomFeature)
+        {
+            RoomFeature dbRoomFeature = this.Data.RoomFeatures.Find(id);
+            if (dbRoomFeature != null)
+            {
+                dbRoomFeature.Name = roomFeature.Name;
+
+                this.Data.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
