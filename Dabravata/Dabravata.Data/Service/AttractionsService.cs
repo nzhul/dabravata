@@ -1,0 +1,118 @@
+﻿using Dabravata.Models;
+using Dabravata.Models.InputModels;
+using Dabravata.Models.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Dabravata.Data.Service
+{
+    public class AttractionsService : IAttractionsService
+    {
+        private readonly IUoWData Data;
+
+        public AttractionsService(IUoWData data)
+        {
+            this.Data = data;
+        }
+
+        public IEnumerable<AttractionViewModel> GetAttractions()
+        {
+            return this.Data.Attractions.All().Select(this.MapAttractionViewModel);
+        }
+
+        private AttractionViewModel MapAttractionViewModel(Attraction dbAttraction)
+        {
+            AttractionViewModel model = new AttractionViewModel();
+            model.Id = dbAttraction.Id;
+            model.Title = dbAttraction.Title;
+            model.Image = dbAttraction.Image;
+            model.DateAdded = dbAttraction.DateAdded;
+            model.Content = dbAttraction.Content;
+
+            return model;
+        }
+
+
+        public int CreateAttraction(CreateAttractionInputModel inputModel)
+        {
+            Attraction newAttraction = new Attraction();
+            newAttraction.Title = inputModel.Title;
+            newAttraction.Content = inputModel.Content;
+            newAttraction.DateAdded = DateTime.Now;
+            newAttraction.DisplayOrder = inputModel.DisplayOrder;
+
+            this.Data.Attractions.Add(newAttraction);
+            this.Data.SaveChanges();
+
+            return newAttraction.Id;
+        }
+
+        public bool AttractionExists(int id)
+        {
+            if (id <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                bool result = this.Data.Attractions.All().Any(r => r.Id == id);
+                return result;
+            }
+        }
+
+        public CreateAttractionInputModel GetAttractionInputModelById(int id)
+        {
+            Attraction dbAttraction = this.Data.Attractions.Find(id);
+            return MapPageInputModel(dbAttraction);
+        }
+
+        private CreateAttractionInputModel MapPageInputModel(Attraction dbAttraction)
+        {
+            CreateAttractionInputModel model = new CreateAttractionInputModel();
+            model.Id = dbAttraction.Id;
+            model.Title = dbAttraction.Title;
+            model.Content = dbAttraction.Content;
+            model.DisplayOrder = dbAttraction.DisplayOrder;
+
+            return model;
+        }
+
+        public bool UpdateAttraction(int id, CreateAttractionInputModel inputModel)
+        {
+            Attraction dbAttraction = this.Data.Attractions.Find(id);
+            if (dbAttraction != null)
+            {
+                dbAttraction.Title = inputModel.Title;
+                dbAttraction.Content = inputModel.Content;
+                dbAttraction.DisplayOrder = inputModel.DisplayOrder;
+
+                this.Data.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteAttraction(int id)
+        {
+            // TODO - Also delete the images for that attraction
+
+            var theAttraction = this.Data.Attractions.Find(id);
+            if (theAttraction == null)
+            {
+                return false;
+            }
+
+            this.Data.Attractions.Delete(id);
+            this.Data.SaveChanges();
+
+            return true;
+        }
+    }
+}

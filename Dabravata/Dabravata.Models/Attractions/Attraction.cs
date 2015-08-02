@@ -17,5 +17,7 @@ namespace Dabravata.Models
         public Image Image { get; set; }
 
         public DateTime DateAdded { get; set; }
+
+        public int DisplayOrder { get; set; }
     }
 }

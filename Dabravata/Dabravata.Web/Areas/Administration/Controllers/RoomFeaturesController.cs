@@ -84,5 +84,21 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             TempData["messageType"] = "danger";
             return View(roomFeature);
         }
+
+        public ActionResult Delete(int id)
+        {
+
+            bool isSuccessfull = this.roomsService.DeleteRoomFeature(id);
+            if (isSuccessfull)
+            {
+                TempData["message"] = "Успешно изтрихте удобството!";
+                TempData["messageType"] = "success";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }

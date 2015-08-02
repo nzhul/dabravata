@@ -42,6 +42,7 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             CreateRoomInputModel model = new CreateRoomInputModel();
             model.IsAvailable = true;
             model.Categories = this.roomsService.GetCategories();
+            model.AvailableRoomFeatures = this.roomsService.GetAvailableRoomFeatures();
             return View(model);
         }
 
@@ -75,6 +76,12 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             {
                 model = this.roomsService.GetRoomInputModelById(id);
                 model.Categories = this.roomsService.GetCategories();
+                model.AvailableRoomFeatures = this.roomsService.GetAvailableRoomFeatures();
+                model.SelectedRoomFeatureIds = this.roomsService.GetSelectedRoomFeatureIds(id);
+            }
+            else
+            {
+                return HttpNotFound();
             }
 
             return View(model);
@@ -95,6 +102,7 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             }
 
             inputModel.Categories = this.roomsService.GetCategories();
+            inputModel.AvailableRoomFeatures = this.roomsService.GetAvailableRoomFeatures();
             TempData["message"] = "Невалидни данни за стаята!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
             return View(inputModel);

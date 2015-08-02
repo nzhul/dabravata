@@ -165,6 +165,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AttractionsController.cs" />
     <Compile Include="Areas\Administration\Controllers\BaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\PagesController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoomFeaturesController.cs" />
@@ -386,6 +387,11 @@
     <Content Include="Areas\Administration\Views\Pages\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Pages\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Pages\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Attractions\Partials\_CreateEditAttractionPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Attractions\Partials\_Attractions.cshtml" />
+    <Content Include="Areas\Administration\Views\Attractions\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Attractions\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Attractions\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

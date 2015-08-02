@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dabravata.Models.DataAnnotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Dabravata.Models.InputModels
     {
         public CreateRoomInputModel()
         {
-            this.RoomFeatures = new List<string>();
+            this.AvailableRoomFeatures = new List<RoomFeature>();
         }
 
         public int Id { get; set; }
@@ -65,6 +66,10 @@ namespace Dabravata.Models.InputModels
         public IEnumerable<Image> Images { get; set; }
 
         [Display(Name = "Екстри: ")]
-        public List<string> RoomFeatures { get; set; }
+        public IEnumerable<RoomFeature> AvailableRoomFeatures { get; set; }
+
+        //[CheckList(1, false, ErrorMessage = "Моля изберете поне едно удобство!")]
+        [Display(Name = "Удобства:")]
+        public List<int> SelectedRoomFeatureIds { get; set; }
     }
 }

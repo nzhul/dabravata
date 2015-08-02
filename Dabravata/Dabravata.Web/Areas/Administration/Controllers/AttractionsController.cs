@@ -10,20 +10,20 @@ using System.Web.Mvc;
 
 namespace Dabravata.Web.Areas.Administration.Controllers
 {
-    public class PagesController : BaseController
+    public class AttractionsController : Controller
     {
-        private readonly IPagesService pagesService;
+        private readonly IAttractionsService attractionsService;
         private readonly IUoWData data;
 
-        public PagesController()
+        public AttractionsController()
         {
             this.data = new UoWData();
-            this.pagesService = new PagesService(data);
+            this.attractionsService = new AttractionsService(data);
         }
 
         public ActionResult Index()
         {
-            IEnumerable<PageViewModel> model = this.pagesService.GetPages();
+            IEnumerable<AttractionViewModel> model = this.attractionsService.GetAttractions();
             return View(model);
         }
 
@@ -34,20 +34,20 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreatePageInputModel inputModel)
+        public ActionResult Create(CreateAttractionInputModel inputModel)
         {
             if (ModelState.IsValid)
             {
-                int newPageId = this.pagesService.CreatePage(inputModel);
+                int newPageId = this.attractionsService.CreateAttraction(inputModel);
                 if (newPageId > 0)
                 {
-                    TempData["message"] = "Страницата беше добавена успешно!";
+                    TempData["message"] = "Атракцията беше добавена успешно!";
                     TempData["messageType"] = "success";
                     return RedirectToAction("Index");
                 }
             }
 
-            TempData["message"] = "Невалидни данни за страницата!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
+            TempData["message"] = "Невалидни данни за атракцията!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
             return View(inputModel);
         }
@@ -55,30 +55,30 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            CreatePageInputModel model = new CreatePageInputModel();
+            CreateAttractionInputModel model = new CreateAttractionInputModel();
 
-            if (this.pagesService.PageExists(id))
+            if (this.attractionsService.AttractionExists(id))
             {
-                model = this.pagesService.GetPageInputModelById(id);
+                model = this.attractionsService.GetAttractionInputModelById(id);
             }
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, CreatePageInputModel inputModel)
+        public ActionResult Edit(int id, CreateAttractionInputModel inputModel)
         {
             if (ModelState.IsValid)
             {
-                bool IsUpdateSuccessfull = this.pagesService.UpdatePage(id, inputModel);
+                bool IsUpdateSuccessfull = this.attractionsService.UpdateAttraction(id, inputModel);
                 if (IsUpdateSuccessfull)
                 {
-                    TempData["message"] = "Страницата беше редактирана успешно!";
+                    TempData["message"] = "Атракцията беше редактирана успешно!";
                     TempData["messageType"] = "success";
                     return RedirectToAction("Index");
                 }
             }
-            TempData["message"] = "Невалидни данни за страницата!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
+            TempData["message"] = "Невалидни данни за атракцията!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
             return View(inputModel);
         }
@@ -86,10 +86,10 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         public ActionResult Delete(int id)
         {
 
-            bool isSuccessfull = this.pagesService.DeletePage(id);
+            bool isSuccessfull = this.attractionsService.DeleteAttraction(id);
             if (isSuccessfull)
             {
-                TempData["message"] = "Успешно изтрихте страницата!";
+                TempData["message"] = "Успешно изтрихте атракцията!";
                 TempData["messageType"] = "success";
                 return RedirectToAction("Index");
             }

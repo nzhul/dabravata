@@ -58,6 +58,7 @@ namespace Dabravata.Data.Service
             model.IsPriceVisible = room.IsPriceVisible;
             model.SelectedCategoryId = room.RoomCategoryId;
             model.Images = room.Images;
+            model.AvailableRoomFeatures = room.RoomFeatures;
 
             return model;
         }
@@ -82,6 +83,15 @@ namespace Dabravata.Data.Service
             newRoom.IsAvailable = room.IsAvailable;
             newRoom.IsPriceVisible = room.IsPriceVisible;
             newRoom.RoomCategoryId = room.SelectedCategoryId;
+
+            if (room.SelectedRoomFeatureIds != null && room.SelectedRoomFeatureIds.Count > 0)
+            {
+                for (int i = 0; i < room.SelectedRoomFeatureIds.Count; i++)
+                {
+                    var theRoomFeature = this.Data.RoomFeatures.Find(room.SelectedRoomFeatureIds[i]);
+                    newRoom.RoomFeatures.Add(theRoomFeature);
+                }
+            }
 
             Image defaultImage = new Image
             {
@@ -108,7 +118,7 @@ namespace Dabravata.Data.Service
             }
             else
             {
-                bool result = this.Data.Rooms.All().Any();
+                bool result = this.Data.Rooms.All().Any(r => r.Id == id);
                 return result;
             }
         }
@@ -216,6 +226,23 @@ namespace Dabravata.Data.Service
                 dbRoom.RoomNumber = inputModel.RoomNumber;
                 dbRoom.ShortDescription = inputModel.ShortDescription;
 
+                // Delete all RoomFeatures
+                foreach (var subCategory in dbRoom.RoomFeatures.ToList())
+                {
+                    dbRoom.RoomFeatures.Remove(subCategory);
+                }
+                this.Data.SaveChanges();
+
+                // Insert The New RoomFeatures
+                if (inputModel.SelectedRoomFeatureIds != null && inputModel.SelectedRoomFeatureIds.Count > 0)
+                {
+                    for (int i = 0; i < inputModel.SelectedRoomFeatureIds.Count; i++)
+                    {
+                        var theRoomFeature = this.Data.RoomFeatures.Find(inputModel.SelectedRoomFeatureIds[i]);
+                        dbRoom.RoomFeatures.Add(theRoomFeature);
+                    }
+                }
+
                 this.Data.SaveChanges();
 
                 return true;
@@ -283,6 +310,42 @@ namespace Dabravata.Data.Service
             {
                 return false;
             }
+        }
+
+
+        public bool DeleteRoomFeature(int id)
+        {
+            var theRoomFeature = this.Data.RoomFeatures.Find(id);
+            if (theRoomFeature == null)
+            {
+                return false;
+            }
+
+            this.Data.RoomFeatures.Delete(id);
+            this.Data.SaveChanges();
+
+            return true;
+        }
+
+
+        public IEnumerable<RoomFeature> GetAvailableRoomFeatures()
+        {
+            return this.Data.RoomFeatures.All();
+        }
+
+
+        public List<int> GetSelectedRoomFeatureIds(int id)
+        {
+            Room dbRoom = this.Data.Rooms.Find(id);
+
+            List<int> selectedRoomFeatureIds = new List<int>();
+
+            foreach (var subCategory in dbRoom.RoomFeatures)
+            {
+                selectedRoomFeatureIds.Add(subCategory.Id);
+            }
+
+            return selectedRoomFeatureIds;
         }
     }
 }

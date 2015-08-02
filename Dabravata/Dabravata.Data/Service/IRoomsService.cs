@@ -1,4 +1,5 @@
-﻿using Dabravata.Models.InputModels;
+﻿using Dabravata.Models;
+using Dabravata.Models.InputModels;
 using Dabravata.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -48,5 +49,11 @@ namespace Dabravata.Data.Service
         CreateRoomFeatureInputModel GetRoomFeatureInputModelById(int id);
 
         bool UpdateRoomFeature(int id, CreateRoomFeatureInputModel roomFeature);
+
+        bool DeleteRoomFeature(int id);
+
+        IEnumerable<RoomFeature> GetAvailableRoomFeatures();
+
+        List<int> GetSelectedRoomFeatureIds(int id);
     }
 }
