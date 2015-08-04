@@ -13,12 +13,14 @@ namespace Dabravata.Web.Areas.Administration.Controllers
     public class AttractionsController : Controller
     {
         private readonly IAttractionsService attractionsService;
-        private readonly IUoWData data;
+        private readonly IImagesService imagesService;
+        private readonly IUoWData uoWData;
 
         public AttractionsController()
         {
-            this.data = new UoWData();
-            this.attractionsService = new AttractionsService(data);
+            this.uoWData = new UoWData();
+            this.attractionsService = new AttractionsService(this.uoWData);
+            this.imagesService = new ImagesService(this.uoWData);
         }
 
         public ActionResult Index()
@@ -96,6 +98,28 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             else
             {
                 return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UploadPhotos(UploadAttractionPhotoModel uploadData)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    this.imagesService.UploadImages(uploadData);
+                }
+
+                TempData["message"] = "Снимката беше <strong>добавена</strong> успешно!";
+                TempData["messageType"] = "success";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["message"] = "Неуспешно качване на снимка!<br/> Моля свържете се с администратор!";
+                TempData["messageType"] = "danger";
+                return RedirectToAction("Index");
             }
         }
     }

@@ -85,9 +85,11 @@
     <Compile Include="Image.cs" />
     <Compile Include="InputModels\CreateAttractionInputModel.cs" />
     <Compile Include="InputModels\CreatePageInputModel.cs" />
+    <Compile Include="InputModels\CreateReservationInputModel.cs" />
     <Compile Include="InputModels\CreateRoomCategoryInputModel.cs" />
     <Compile Include="InputModels\CreateRoomFeatureInputModel.cs" />
     <Compile Include="InputModels\CreateRoomInputModel.cs" />
+    <Compile Include="InputModels\UploadAttractionPhotoModel.cs" />
     <Compile Include="InputModels\UploadPhotoModel.cs" />
     <Compile Include="Pages\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,8 +97,10 @@
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\RoomCategory.cs" />
     <Compile Include="Rooms\RoomFeature.cs" />
+    <Compile Include="ViewModels\AllReservationsViewModel.cs" />
     <Compile Include="ViewModels\AttractionViewModel.cs" />
     <Compile Include="ViewModels\PageViewModel.cs" />
+    <Compile Include="ViewModels\ReservationViewModel.cs" />
     <Compile Include="ViewModels\RoomFeatureViewModel.cs" />
     <Compile Include="ViewModels\RoomCategoryViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />

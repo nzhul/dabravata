@@ -11,6 +11,8 @@ namespace Dabravata.Data.Service
     {
         bool UploadImages(UploadPhotoModel uploadData);
 
+        bool UploadImages(UploadAttractionPhotoModel uploadData);
+
         bool MakePrimary(int imageId, int productId);
     }
 }

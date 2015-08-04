@@ -1,8 +1,10 @@
 ﻿using Dabravata.Models;
 using Dabravata.Models.InputModels;
 using Dabravata.Models.ViewModels;
+using ImageResizer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +49,17 @@ namespace Dabravata.Data.Service
             this.Data.Attractions.Add(newAttraction);
             this.Data.SaveChanges();
 
+            Image defaultImage = new Image
+            {
+                ImageExtension = "jpg",
+                ImagePath = "Content\\images\\noimage\\no-image",
+                IsPrimary = true,
+                DateAdded = DateTime.Now
+            };
+
+            newAttraction.Image = defaultImage;
+            this.Data.SaveChanges();
+
             return newAttraction.Id;
         }
 
@@ -76,6 +89,7 @@ namespace Dabravata.Data.Service
             model.Title = dbAttraction.Title;
             model.Content = dbAttraction.Content;
             model.DisplayOrder = dbAttraction.DisplayOrder;
+            model.Image = dbAttraction.Image;
 
             return model;
         }

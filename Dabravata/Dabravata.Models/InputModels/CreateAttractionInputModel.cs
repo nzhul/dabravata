@@ -26,5 +26,7 @@ namespace Dabravata.Models.InputModels
 
         [Display(Name = "Позиция:")]
         public int DisplayOrder { get; set; }
+
+        public Image Image { get; set; }
     }
 }

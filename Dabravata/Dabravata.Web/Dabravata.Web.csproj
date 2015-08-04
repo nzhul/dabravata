@@ -168,6 +168,7 @@
     <Compile Include="Areas\Administration\Controllers\AttractionsController.cs" />
     <Compile Include="Areas\Administration\Controllers\BaseController.cs" />
     <Compile Include="Areas\Administration\Controllers\PagesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ReservationsController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoomFeaturesController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoomCategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoomsController.cs" />
@@ -392,6 +393,11 @@
     <Content Include="Areas\Administration\Views\Attractions\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Attractions\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Attractions\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Reservations\Partials\_CreateEditReservationPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Reservations\Partials\_Reservations.cshtml" />
+    <Content Include="Areas\Administration\Views\Reservations\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Reservations\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Reservations\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

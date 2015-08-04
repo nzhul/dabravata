@@ -94,5 +94,50 @@ namespace Dabravata.Data.Service
 
             return true;
         }
+
+        public bool UploadImages(UploadAttractionPhotoModel uploadData)
+        {
+            Dictionary<string, string> versions = new Dictionary<string, string>();
+            //Define the versions to generate
+            versions.Add("_indexThumb", "width=230&height=234&crop=auto&format=jpg"); //Crop to square thumbnail
+            versions.Add("_detailsBigThumb", "maxwidth=336&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
+            versions.Add("_detailsSmallThumb", "width=77&height=61&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
+            versions.Add("_large", "maxwidth=1500&maxheight=1500&format=jpg"); //Fit inside 1900x1200 area
+
+            int attractionId = uploadData.AttractionId;
+            var theAttraction = this.Data.Attractions.Find(attractionId);
+
+            foreach (var file in uploadData.Files)
+            {
+                if (file != null)
+                {
+                    var originalFileName = file.FileName.Split('.')[0].Replace(' ', '_');
+                    var originalFileExtension = file.FileName.Split('.')[1];
+
+                    string uploadFolder = System.Web.HttpContext.Current.Server.MapPath("~/Uploads/Attractions/" + attractionId);
+                    if (!Directory.Exists(uploadFolder)) Directory.CreateDirectory(uploadFolder);
+
+                    foreach (string suffix in versions.Keys)
+                    {
+                        string fileName = Path.Combine(uploadFolder, originalFileName + suffix);
+
+                        fileName = ImageBuilder.Current.Build(file, fileName, new ResizeSettings(versions[suffix]), false, true);
+                    }
+
+                    var newImage = new Image
+                    {
+                        ImagePath = "Uploads\\Attractions\\" + attractionId + "\\" + originalFileName,
+                        ImageExtension = originalFileExtension,
+                        IsPrimary = true,
+                        DateAdded = DateTime.Now,
+                    };
+
+                    theAttraction.Image = newImage;
+                    this.Data.SaveChanges();
+                }
+            }
+
+            return true;
+        }
     }
 }
