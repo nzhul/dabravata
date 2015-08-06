@@ -8,33 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
+using Dabravata.Data.Service.Mappers;
 
 namespace Dabravata.Data.Service
 {
     public class RoomsService : IRoomsService
     {
         private readonly IUoWData Data;
+        private readonly Mapper Mapper;
 
         public RoomsService(IUoWData data)
         {
             this.Data = data;
+            this.Mapper = new Mapper();
         }
 
         public RoomViewModel GetRoomById(int id)
         {
             Room room = this.Data.Rooms.Find(id);
-            return MapRoomViewModel(room);
-        }
-
-        private RoomViewModel MapRoomViewModel(Room room)
-        {
-            RoomViewModel model = new RoomViewModel();
-            model.Id = room.Id;
-            model.Name = room.Name;
-            model.Price = room.Price;
-            model.RoomNumber = room.RoomNumber;
-
-            return model;
+            return this.Mapper.MapRoomViewModel(room);
         }
 
         public CreateRoomInputModel GetRoomInputModelById(int id)
@@ -54,7 +46,7 @@ namespace Dabravata.Data.Service
             model.ShortDescription = room.ShortDescription;
             model.LongDescription = room.LongDescription;
             model.DisplayOrder = room.DisplayOrder;
-            model.IsAvailable = room.IsAvailable;
+            model.IsAvailableForReservation = room.IsAvailableForReservation;
             model.IsPriceVisible = room.IsPriceVisible;
             model.SelectedCategoryId = room.RoomCategoryId;
             model.Images = room.Images;
@@ -65,7 +57,7 @@ namespace Dabravata.Data.Service
 
         public IEnumerable<RoomViewModel> GetRooms(bool getAll, bool isAvailable)
         {
-            IEnumerable<RoomViewModel> rooms = this.Data.Rooms.All().Select(MapRoomViewModel);
+            IEnumerable<RoomViewModel> rooms = this.Data.Rooms.All().Select(this.Mapper.MapRoomViewModel);
             return rooms;
         }
 
@@ -80,7 +72,7 @@ namespace Dabravata.Data.Service
             newRoom.ShortDescription = room.ShortDescription;
             newRoom.LongDescription = room.LongDescription;
             newRoom.DisplayOrder = room.DisplayOrder;
-            newRoom.IsAvailable = room.IsAvailable;
+            newRoom.IsAvailableForReservation = room.IsAvailableForReservation;
             newRoom.IsPriceVisible = room.IsPriceVisible;
             newRoom.RoomCategoryId = room.SelectedCategoryId;
 
@@ -216,7 +208,7 @@ namespace Dabravata.Data.Service
             if (dbRoom != null)
             {
                 dbRoom.DisplayOrder = inputModel.DisplayOrder;
-                dbRoom.IsAvailable = inputModel.IsAvailable;
+                dbRoom.IsAvailableForReservation = inputModel.IsAvailableForReservation;
                 dbRoom.IsFeatured = inputModel.IsFeatured;
                 dbRoom.IsPriceVisible = inputModel.IsPriceVisible;
                 dbRoom.LongDescription = inputModel.LongDescription;

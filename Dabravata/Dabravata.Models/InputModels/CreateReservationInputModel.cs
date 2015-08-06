@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dabravata.Models.DataAnnotations;
+using Dabravata.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -41,7 +43,11 @@ namespace Dabravata.Models.InputModels
         [Display(Name = "Телефон на наемателя:")]
         public string CustomerPhone { get; set; }
 
-        // TODO: Add Rooms CheckboxList!
+        public IEnumerable<RoomViewModel> AvailableRooms { get; set; }
+
+        [CheckList(1, false, ErrorMessage = "Моля изберете поне една стая!")]
+        [Display(Name = "Резервирани стаи:")]
+        public List<int> SelectedRoomIds { get; set; }
 
     }
 }

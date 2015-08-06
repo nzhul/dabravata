@@ -6,7 +6,7 @@
         <hr />
     </div>
 </div>
-@using (Html.BeginForm((string)ViewBag.FormMode, "Pages", FormMethod.Post, new { @class = "form-horizontal " }))
+@using (Html.BeginForm((string)ViewBag.FormMode, "Reservations", FormMethod.Post, new { @class = "form-horizontal " }))
 {
     @Html.AntiForgeryToken()
     <div class="row">
@@ -16,6 +16,59 @@
                 @Html.ValidationMessageFor(model => model.CustomerName)
                 @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: Иван иванов" } })
             </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerPhone, new { @class = "dab-input-label" })
+                @Html.ValidationMessageFor(model => model.CustomerPhone)
+                @Html.EditorFor(model => model.CustomerPhone, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: 0889123456" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ArrivalDate, new { @class = "dab-input-label" })
+                @Html.ValidationMessageFor(model => model.ArrivalDate)
+                @Html.EditorFor(model => model.ArrivalDate, new { htmlAttributes = new { @class = "form-control", placeholder ="Пр: 21/03/2015" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DepartureDate, new { @class = "dab-input-label" })
+                @Html.ValidationMessageFor(model => model.DepartureDate)
+                @Html.EditorFor(model => model.DepartureDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: 23/03/2015" } })
+            </div>
+            <div class="form-group">
+                <div class="col-md-4" style="padding: 0 5px 0 0px;">
+                    @Html.LabelFor(model => model.RoomsCount, new { @class = "dab-input-label" })
+                    @Html.ValidationMessageFor(model => model.RoomsCount)
+                    @Html.EditorFor(model => model.RoomsCount, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-4" style="padding: 0 5px 0 5px;">
+                    @Html.LabelFor(model => model.Adults, new { @class = "dab-input-label" })
+                    @Html.ValidationMessageFor(model => model.Adults)
+                    @Html.EditorFor(model => model.Adults, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-4" style="padding: 0 0 0 5px;">
+                    @Html.LabelFor(model => model.Childs, new { @class = "dab-input-label" })
+                    @Html.ValidationMessageFor(model => model.Childs)
+                    @Html.EditorFor(model => model.Childs, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <hr style="height:2px;background:gray;" />
+            <h3>Свободни стаи:</h3>
+            <div class="form-group">
+                @{
+    int count = 0;
+    string isChecked = "";
+    foreach (var availableRoom in Model.AvailableRooms)
+    {
+        if (Model.SelectedRoomIds != null && Model.SelectedRoomIds.Contains(availableRoom.Id))
+        {
+            isChecked = "checked=checked";
+        }
+
+        <input name="SelectedRoomIds" style="position:relative;top:20px;" id="Dynamic @count" @isChecked type="checkbox" value="@availableRoom.Id" />
+                    <label for="Dynamic @count" style="position:relative;left:20px; margin: 0px;" class="dab-input-label"> @availableRoom.Name</label>
+        count++;
+        isChecked = "";
+    }
+                }
+            </div>
+            <div style="clear:both;">&nbsp;</div>
             <div class="form-group">
                 <button type="submit" class="btn btn-warning">
                     @ViewBag.FormModeText
