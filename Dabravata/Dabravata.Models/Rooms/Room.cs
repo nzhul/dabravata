@@ -30,8 +30,6 @@ namespace Dabravata.Models
         public int Price { get; set; }
 
         public bool IsPriceVisible { get; set; }
-        
-        public bool IsAvailableForReservation { get; set; }
 
         public virtual Reservation ActiveReservation { get; set; }
 

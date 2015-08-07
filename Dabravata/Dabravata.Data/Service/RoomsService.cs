@@ -46,7 +46,6 @@ namespace Dabravata.Data.Service
             model.ShortDescription = room.ShortDescription;
             model.LongDescription = room.LongDescription;
             model.DisplayOrder = room.DisplayOrder;
-            model.IsAvailableForReservation = room.IsAvailableForReservation;
             model.IsPriceVisible = room.IsPriceVisible;
             model.SelectedCategoryId = room.RoomCategoryId;
             model.Images = room.Images;
@@ -72,7 +71,6 @@ namespace Dabravata.Data.Service
             newRoom.ShortDescription = room.ShortDescription;
             newRoom.LongDescription = room.LongDescription;
             newRoom.DisplayOrder = room.DisplayOrder;
-            newRoom.IsAvailableForReservation = room.IsAvailableForReservation;
             newRoom.IsPriceVisible = room.IsPriceVisible;
             newRoom.RoomCategoryId = room.SelectedCategoryId;
 
@@ -208,7 +206,6 @@ namespace Dabravata.Data.Service
             if (dbRoom != null)
             {
                 dbRoom.DisplayOrder = inputModel.DisplayOrder;
-                dbRoom.IsAvailableForReservation = inputModel.IsAvailableForReservation;
                 dbRoom.IsFeatured = inputModel.IsFeatured;
                 dbRoom.IsPriceVisible = inputModel.IsPriceVisible;
                 dbRoom.LongDescription = inputModel.LongDescription;

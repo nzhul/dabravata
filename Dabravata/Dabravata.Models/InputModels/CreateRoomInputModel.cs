@@ -49,9 +49,6 @@ namespace Dabravata.Models.InputModels
         [Display(Name = "На Заглавна страница: ")]
         public bool IsFeatured { get; set; }
 
-        [Display(Name = "Свободна за резервация: ")]
-        public bool IsAvailableForReservation { get; set; }
-
         [Display(Name = "Покажи цената: ")]
         public bool IsPriceVisible { get; set; }
 

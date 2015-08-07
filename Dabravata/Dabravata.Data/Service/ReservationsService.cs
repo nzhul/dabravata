@@ -2,6 +2,7 @@
 using Dabravata.Models;
 using Dabravata.Models.InputModels;
 using Dabravata.Models.ViewModels;
+using Itenso.TimePeriod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Dabravata.Data.Service
 
         public IEnumerable<RoomViewModel> GetAvailableRooms()
         {
-            return this.Data.Rooms.All().Where(r => r.IsAvailableForReservation == true).Select(this.Mapper.MapRoomViewModel);
+            return this.Data.Rooms.All().Select(this.Mapper.MapRoomViewModel);
         }
 
 
@@ -46,7 +47,6 @@ namespace Dabravata.Data.Service
                 for (int i = 0; i < inputModel.SelectedRoomIds.Count; i++)
                 {
                     Room theRoom = this.Data.Rooms.Find(inputModel.SelectedRoomIds[i]);
-                    theRoom.IsAvailableForReservation = false;
                     newReservation.OccupiedRooms.Add(theRoom);
                 }
             }
@@ -84,6 +84,32 @@ namespace Dabravata.Data.Service
             return this.Data.Reservations.All()
                 .Where(r => r.IsConfirmed == true && DateTime.Now > r.DepartureDate)
                 .Select(this.Mapper.MapReservationViewModel);
+        }
+
+
+        public bool IsRoomAvailable(CreateReservationInputModel inputModel)
+        {
+            foreach (var roomId in inputModel.SelectedRoomIds)
+            {
+                Room currentSelectedRoom = this.Data.Rooms.Find(roomId);
+                IEnumerable<Reservation> reservationsWithThatRoom = this.Data.Reservations.All().Where(r => r.OccupiedRooms.Select(or => or.Id).Contains(currentSelectedRoom.Id));
+
+                if (reservationsWithThatRoom.Count() > 0)
+                {
+                    foreach (var reservation in reservationsWithThatRoom)
+                    {
+                        TimeRange inputTimeRange = new TimeRange(inputModel.ArrivalDate, inputModel.DepartureDate);
+                        TimeRange dbTimeRange = new TimeRange(reservation.ArrivalDate, reservation.DepartureDate);
+
+                        if (inputTimeRange.OverlapsWith(dbTimeRange))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

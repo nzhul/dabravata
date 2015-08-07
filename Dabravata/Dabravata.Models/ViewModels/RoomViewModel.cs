@@ -24,8 +24,6 @@ namespace Dabravata.Models.ViewModels
         public string Description { get; set; }
         
         public int Price { get; set; }
-        
-        public bool IsAvailable { get; set; }
 
         public string RoomCategoryName { get; set; }
 

@@ -40,7 +40,6 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         public ActionResult Create()
         {
             CreateRoomInputModel model = new CreateRoomInputModel();
-            model.IsAvailableForReservation = true;
             model.Categories = this.roomsService.GetCategories();
             model.AvailableRoomFeatures = this.roomsService.GetAvailableRoomFeatures();
             return View(model);

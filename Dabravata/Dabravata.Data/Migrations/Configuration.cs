@@ -50,7 +50,6 @@ namespace Dabravata.Data.Migrations
                         Price = rand.Next(30,80),
                         ShortDescription = "Short Description of the room " + i,
                         LongDescription = "Long Description of the room " + i,
-                        IsAvailableForReservation = true,
                         RoomNumber = 100 + i,
                         DateAdded = DateTime.Now,
                         RoomCategoryId = rand.Next(1, 5)

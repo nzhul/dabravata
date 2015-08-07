@@ -52,13 +52,27 @@ namespace Dabravata.Web.Areas.Administration.Controllers
                     return View(inputModel);
                 }
 
-                bool IsCreateRoomSuccessfull = this.reservationsService.CreateReservation(inputModel);
-                if (IsCreateRoomSuccessfull)
+                bool isRoomAvailable = this.reservationsService.IsRoomAvailable(inputModel);
+
+                if (isRoomAvailable)
                 {
-                    TempData["message"] = "Резервацията беше направена успешно!";
-                    TempData["messageType"] = "success";
-                    return RedirectToAction("Index");
+                    bool IsCreateRoomSuccessfull = this.reservationsService.CreateReservation(inputModel);
+                    if (IsCreateRoomSuccessfull)
+                    {
+                        TempData["message"] = "Резервацията беше направена успешно!";
+                        TempData["messageType"] = "success";
+                        return RedirectToAction("Index");
+                    }
                 }
+                else
+                {
+                    inputModel.AvailableRooms = this.reservationsService.GetAvailableRooms();
+                    TempData["message"] = "Стаята е заета за посочения период!<br/> Моля изберете друг период!";
+                    TempData["messageType"] = "danger";
+                    return View(inputModel);
+                }
+
+
             }
 
             inputModel.AvailableRooms = this.reservationsService.GetAvailableRooms();
