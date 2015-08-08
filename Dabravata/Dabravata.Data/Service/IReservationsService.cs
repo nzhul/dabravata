@@ -24,5 +24,15 @@ namespace Dabravata.Data.Service
         IEnumerable<ReservationViewModel> GetPassedReservations();
 
         bool IsRoomAvailable(CreateReservationInputModel inputModel);
+
+        void ToggleReservationConfirmation(int reservationId, bool isReservationConfirmed);
+
+        bool ReservationExists(int id);
+
+        CreateReservationInputModel GetReservationInputModelById(int id);
+
+        List<int> GetSelectedRoomIds(int id);
+
+        bool UpdateReservation(int id, CreateReservationInputModel inputModel);
     }
 }

@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Dabravata.Web.Areas.Administration.Controllers
 {
-    public class ReservationsController : Controller
+    public class ReservationsController : BaseController
     {
         private readonly IReservationsService reservationsService;
         private readonly IUoWData data;
@@ -36,6 +36,9 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         {
             CreateReservationInputModel model = new CreateReservationInputModel();
             model.AvailableRooms = this.reservationsService.GetAvailableRooms();
+            DateTime date = DateTime.Now;
+            model.ArrivalDate = date;
+            model.DepartureDate = date.AddDays(1);
             return View(model);
         }
 
@@ -79,6 +82,58 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             TempData["message"] = "Невалидни данни за резервацията!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
             TempData["messageType"] = "danger";
             return View(inputModel);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            CreateReservationInputModel model = new CreateReservationInputModel();
+
+            if (this.reservationsService.ReservationExists(id))
+            {
+                model = this.reservationsService.GetReservationInputModelById(id);
+                model.AvailableRooms = this.reservationsService.GetAvailableRooms();
+                model.SelectedRoomIds = this.reservationsService.GetSelectedRoomIds(id);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, CreateReservationInputModel inputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                 if (inputModel.ArrivalDate > inputModel.DepartureDate)
+                {
+                    inputModel.AvailableRooms = this.reservationsService.GetAvailableRooms();
+                    TempData["message"] = "Невалидни данни за резервацията!<br/> Датата на пристигане трябва да е преди датата на заминаване!";
+                    TempData["messageType"] = "danger";
+                    return View(inputModel);
+                }
+
+                bool IsUpdateSuccessfull = this.reservationsService.UpdateReservation(id, inputModel);
+                if (IsUpdateSuccessfull)
+                {
+                    TempData["message"] = "Резервацията беше редактирана успешно!";
+                    TempData["messageType"] = "success";
+                    return RedirectToAction("Index");
+                }
+            }
+
+            inputModel.AvailableRooms = this.reservationsService.GetAvailableRooms();
+            inputModel.SelectedRoomIds = this.reservationsService.GetSelectedRoomIds(id);
+            TempData["message"] = "Невалидни данни за резервацията!<br/> Моля попълнете <strong>всички</strong> задължителни полета!";
+            TempData["messageType"] = "danger";
+            return View(inputModel);
+        }
+
+        [HttpGet]
+        public ActionResult ToggleConfirmation(int reservationId, bool isConfirmed)
+        {
+            this.reservationsService.ToggleReservationConfirmation(reservationId, isConfirmed);
+
+            return RedirectToAction("Index");
         }
     }
 }

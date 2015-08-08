@@ -25,6 +25,8 @@ namespace Dabravata.Web
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/administration").Include(
+                        "~/Content/luxen/css/bootstrap.min.css",
+                        "~/Content/font-awesome.css",
                         "~/Content/administration.css"
                 ));
 

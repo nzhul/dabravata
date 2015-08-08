@@ -83,8 +83,8 @@
                 isChecked = "checked=checked";
             }
 
-                <input name="SelectedRoomFeatureIds" style="position:relative;top:20px;" id="Dynamic @count" @isChecked type="checkbox" value="@availableRoomFeature.Id" />
-                <label for="Dynamic @count" style="position:relative;left:20px; margin: 0px;" class="dab-input-label"> @availableRoomFeature.Name</label>
+                <input name="SelectedRoomFeatureIds" id="Dynamic @count" @isChecked type="checkbox" value="@availableRoomFeature.Id" />
+                <label for="Dynamic @count" class="dab-input-label"> @availableRoomFeature.Name</label>
             count++;
             isChecked = "";
         }

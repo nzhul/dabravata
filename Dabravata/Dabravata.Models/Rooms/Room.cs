@@ -10,11 +10,13 @@ namespace Dabravata.Models
     {
         private ICollection<Image> images;
         private ICollection<RoomFeature> roomFeatures;
+        private ICollection<Reservation> reservations;
 
         public Room()
         {
             this.images = new HashSet<Image>();
             this.roomFeatures = new HashSet<RoomFeature>();
+            this.reservations = new HashSet<Reservation>();
         }
 
         public int Id { get; set; }
@@ -31,8 +33,6 @@ namespace Dabravata.Models
 
         public bool IsPriceVisible { get; set; }
 
-        public virtual Reservation ActiveReservation { get; set; }
-
         public bool IsFeatured { get; set; }
 
         public DateTime DateAdded { get; set; }
@@ -47,6 +47,12 @@ namespace Dabravata.Models
         {
             get { return this.images; }
             set { this.images = value; }
+        }
+
+        public virtual ICollection<Reservation> Reservations
+        {
+            get { return this.reservations; }
+            set { this.reservations = value; }
         }
 
         public virtual ICollection<RoomFeature> RoomFeatures

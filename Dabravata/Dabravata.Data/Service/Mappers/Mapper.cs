@@ -1,4 +1,5 @@
 ﻿using Dabravata.Models;
+using Dabravata.Models.InputModels;
 using Dabravata.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,24 @@ namespace Dabravata.Data.Service.Mappers
             model.DepartureDate = reservation.DepartureDate;
             model.IsConfirmed = reservation.IsConfirmed;
             model.OccupiedRooms = reservation.OccupiedRooms;
+            model.CustomerName = reservation.CustomerName;
+            model.CustomerPhone = reservation.CustomerPhone;
+
+            return model;
+        }
+
+        public CreateReservationInputModel MapReservationInputModel(Reservation dbReservation)
+        {
+            CreateReservationInputModel model = new CreateReservationInputModel();
+            model.Id = dbReservation.Id;
+            model.ArrivalDate = dbReservation.ArrivalDate;
+            model.DepartureDate = dbReservation.DepartureDate;
+            model.IsConfirmed = dbReservation.IsConfirmed;
+            model.CustomerName = dbReservation.CustomerName;
+            model.CustomerPhone = dbReservation.CustomerPhone;
+            model.RoomsCount = dbReservation.RoomsCount;
+            model.Adults = dbReservation.Adults;
+            model.Childs = dbReservation.Childs;
 
             return model;
         }

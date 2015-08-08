@@ -17,7 +17,7 @@ namespace Dabravata.Web.Areas.Administration
             context.MapRoute(
                 "Administration_default",
                 "Administration/{controller}/{action}/{id}",
-                defaults: new { controller = "Rooms", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Reservations", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

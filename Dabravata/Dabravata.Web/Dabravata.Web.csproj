@@ -185,6 +185,56 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-addon-i18n.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-addon-i18n.min.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-af.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-am.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-bg.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-ca.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-cs.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-da.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-de.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-el.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-es.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-et.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-eu.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-fa.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-fi.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-fr.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-gl.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-he.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-hr.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-hu.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-id.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-it.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-ja.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-ko.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-lt.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-lv.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-nl.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-no.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-pl.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-pt-BR.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-pt.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-ro.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-ru.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-sk.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-sl.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-sr-RS.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-sr-YU.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-sv.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-th.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-tr.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-uk.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-vi.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-zh-CN.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\i18n\jquery-ui-timepicker-zh-TW.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\index.html" />
+    <Content Include="Areas\Administration\Content\datetimepicker\jquery-ui-sliderAccess.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\jquery-ui-timepicker-addon.css" />
+    <Content Include="Areas\Administration\Content\datetimepicker\jquery-ui-timepicker-addon.js" />
+    <Content Include="Areas\Administration\Content\datetimepicker\jquery-ui-timepicker-addon.min.css" />
+    <Content Include="Areas\Administration\Content\datetimepicker\jquery-ui-timepicker-addon.min.js" />
     <Content Include="Areas\Administration\Content\img\cog-icon.png" />
     <Content Include="Areas\Administration\Content\img\edit-icon.png" />
     <Content Include="Areas\Administration\Content\img\preview-icon.png" />
@@ -263,6 +313,7 @@
     <Content Include="Content\luxen\js\bootstrap-datepicker.js" />
     <Content Include="Content\luxen\js\fitvids.js" />
     <Content Include="Content\luxen\js\gmaps.js" />
+    <Content Include="Content\luxen\js\jquery-ui-timepicker-addon.js" />
     <Content Include="Content\luxen\js\jquery.countdown.min.js" />
     <Content Include="Content\luxen\js\jquery.flexslider-min.js" />
     <Content Include="Content\luxen\js\jquery.parallax-1.1.3.js" />
@@ -628,6 +679,10 @@
     <ProjectReference Include="..\Dabravata.Models\Dabravata.Models.csproj">
       <Project>{f21d474e-b746-4e71-ba7d-2be597596fcd}</Project>
       <Name>Dabravata.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{58e3f0b6-dc58-4f0b-b8a6-4e4df18d0ec8}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

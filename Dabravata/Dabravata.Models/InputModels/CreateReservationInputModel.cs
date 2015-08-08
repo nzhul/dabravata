@@ -16,10 +16,12 @@ namespace Dabravata.Models.InputModels
 
         [Required(ErrorMessage = "Задължително посочете датата на настаняване!")]
         [Display(Name = "Дата на настаняване:")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime ArrivalDate { get; set; }
 
         [Required(ErrorMessage = "Задължително посочете датата на напускане!")]
         [Display(Name = "Дата на напускане:")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DepartureDate { get; set; }
 
         [Required(ErrorMessage = "Посочете брой стаи!")]
@@ -35,6 +37,7 @@ namespace Dabravata.Models.InputModels
         [Display(Name = "Брой деца:")]
         public int Childs { get; set; }
 
+        [Display(Name = "Потвърдена резервация:")]
         public bool IsConfirmed { get; set; }
 
         [Display(Name = "Име на наемателя:")]

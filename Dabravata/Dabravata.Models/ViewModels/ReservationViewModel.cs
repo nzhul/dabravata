@@ -21,6 +21,10 @@ namespace Dabravata.Models.ViewModels
 
         public bool IsConfirmed { get; set; }
 
+        public string CustomerName { get; set; }
+
+        public string CustomerPhone { get; set; }
+
         public virtual ICollection<Room> OccupiedRooms
         {
             get { return this.occupiedRooms; }

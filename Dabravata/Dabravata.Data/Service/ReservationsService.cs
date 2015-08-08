@@ -48,6 +48,7 @@ namespace Dabravata.Data.Service
                 {
                     Room theRoom = this.Data.Rooms.Find(inputModel.SelectedRoomIds[i]);
                     newReservation.OccupiedRooms.Add(theRoom);
+                    this.Data.SaveChanges();
                 }
             }
 
@@ -62,6 +63,7 @@ namespace Dabravata.Data.Service
         {
             return this.Data.Reservations.All()
                 .Where(r => r.IsConfirmed == true && (DateTime.Now > r.ArrivalDate && DateTime.Now < r.DepartureDate))
+                .OrderBy(r => r.DepartureDate)
                 .Select(this.Mapper.MapReservationViewModel);
         }
 
@@ -69,6 +71,7 @@ namespace Dabravata.Data.Service
         {
             return this.Data.Reservations.All()
                 .Where(r => r.IsConfirmed == true && DateTime.Now < r.ArrivalDate)
+                .OrderBy(r => r.ArrivalDate)
                 .Select(this.Mapper.MapReservationViewModel);
         }
 
@@ -76,6 +79,7 @@ namespace Dabravata.Data.Service
         {
             return this.Data.Reservations.All()
                 .Where(r => r.IsConfirmed == false)
+                .OrderBy(r => r.ArrivalDate)
                 .Select(this.Mapper.MapReservationViewModel);
         }
 
@@ -83,6 +87,7 @@ namespace Dabravata.Data.Service
         {
             return this.Data.Reservations.All()
                 .Where(r => r.IsConfirmed == true && DateTime.Now > r.DepartureDate)
+                .OrderByDescending(r => r.DepartureDate)
                 .Select(this.Mapper.MapReservationViewModel);
         }
 
@@ -110,6 +115,98 @@ namespace Dabravata.Data.Service
             }
 
             return true;
+        }
+
+
+        public void ToggleReservationConfirmation(int reservationId, bool isReservationConfirmed)
+        {
+            Reservation dbReservation = this.Data.Reservations.Find(reservationId);
+
+            if (isReservationConfirmed)
+            {
+                dbReservation.IsConfirmed = false;
+            }
+            else
+            {
+                dbReservation.IsConfirmed = true;
+            }
+
+            this.Data.SaveChanges();
+        }
+
+
+        public bool ReservationExists(int id)
+        {
+            if (id <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                bool result = this.Data.Reservations.All().Any(r => r.Id == id);
+                return result;
+            }
+        }
+
+        public CreateReservationInputModel GetReservationInputModelById(int id)
+        {
+            Reservation dbReservation = this.Data.Reservations.Find(id);
+            return this.Mapper.MapReservationInputModel(dbReservation);
+        }
+
+
+        public List<int> GetSelectedRoomIds(int id)
+        {
+            Reservation dbReservation = this.Data.Reservations.Find(id);
+
+            List<int> selectedRoomIds = new List<int>();
+
+            foreach (var room in dbReservation.OccupiedRooms)
+            {
+                selectedRoomIds.Add(room.Id);
+            }
+
+            return selectedRoomIds;
+        }
+
+
+        public bool UpdateReservation(int id, CreateReservationInputModel inputModel)
+        {
+            Reservation dbReservation = this.Data.Reservations.Find(id);
+            if (dbReservation != null)
+            {
+                dbReservation.Adults = inputModel.Adults;
+                dbReservation.ArrivalDate = inputModel.ArrivalDate;
+                dbReservation.Childs = inputModel.Childs;
+                dbReservation.CustomerName= inputModel.CustomerName;
+                dbReservation.CustomerPhone= inputModel.CustomerPhone;
+                dbReservation.DepartureDate = inputModel.DepartureDate;
+                dbReservation.IsConfirmed = inputModel.IsConfirmed;
+                dbReservation.RoomsCount = inputModel.RoomsCount;
+
+                foreach (var room in dbReservation.OccupiedRooms.ToList())
+                {
+                    dbReservation.OccupiedRooms.Remove(room);
+                }
+                this.Data.SaveChanges();
+
+                if (inputModel.SelectedRoomIds != null && inputModel.SelectedRoomIds.Count > 0)
+                {
+                    for (int i = 0; i < inputModel.SelectedRoomIds.Count; i++)
+                    {
+                        var theRoom = this.Data.Rooms.Find(inputModel.SelectedRoomIds[i]);
+                        dbReservation.OccupiedRooms.Add(theRoom);
+                    }
+                }
+
+                this.Data.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
