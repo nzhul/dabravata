@@ -255,7 +255,46 @@
                         <h3>РАЗГЛЕДАЙТЕ НАШИТЕ СТАИ</h3>
                         <hr>
                     </div>
+                    @Html.Partial("Partials/_HomeFeaturedRooms", Model.FeaturedRooms)
                     <div class="col-lg-4 col-sm-6">
+                        <div class="home-room-box">
+                            <div class="room-image">
+                                <img alt="Room Images" class="img-responsive" src="~/Content/luxen/temp/room-image-1.jpg">
+                                <div class="home-room-details">
+                                    <h5><a href="#">The luxury room in Istanbul</a></h5>
+                                    <div class="pull-left">
+                                        <ul>
+                                            <li><i class="fa fa-calendar"></i></li>
+                                            <li><i class="fa fa-flask"></i></li>
+                                            <li><i class="fa fa-umbrella"></i></li>
+                                            <li><i class="fa fa-laptop"></i></li>
+                                        </ul>
+                                    </div>
+                                    <div class="pull-right room-rating">
+                                        <ul>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star inactive"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="room-details">
+                                <p>Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tibulum at ero[...]</p>
+                            </div>
+                            <div class="room-bottom">
+                                <div class="pull-left"><h4>89$<span class="room-bottom-time">/ Day</span></h4></div>
+                                <div class="pull-right">
+                                    <div class="button-style-1">
+                                        <a href="#">РЕЗЕРВИРАЙ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-lg-4 col-sm-6">
                         <div class="home-room-box">
                             <div class="room-image">
                                 <img alt="Room Images" class="img-responsive" src="~/Content/luxen/temp/room-image-1.jpg">
@@ -369,7 +408,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -383,12 +422,12 @@
                                 <div class="flipper">
                                     <div class="support-box pos-center front">
                                         <div class="support-box-title"><i class="fa fa-phone"></i></div>
-                                        <h4>CALL US</h4>
+                                        <h4>ОБАДЕТЕ НИ СЕ</h4>
                                         <p class="margint20">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut ferme fentum</p>
                                     </div>
                                     <div class="support-box pos-center back">
                                         <div class="support-box-title"><i class="fa fa-phone"></i></div>
-                                        <h4>PHONE NUMBER</h4>
+                                        <h4>ТЕЛЕФОНИ:</h4>
                                         <p class="margint20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, et.<br />+61 3 8376 6284</p>
                                     </div>
                                 </div>
@@ -399,12 +438,12 @@
                                 <div class="flipper">
                                     <div class="support-box pos-center front">
                                         <div class="support-box-title"><i class="fa fa-envelope"></i></div>
-                                        <h4>SEND US E-MAIL</h4>
+                                        <h4>ИЗПРАТЕТЕ НИ EMAIL</h4>
                                         <p class="margint20">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut ferme fentum</p>
                                     </div>
                                     <div class="support-box pos-center back">
                                         <div class="support-box-title"><i class="fa fa-envelope"></i></div>
-                                        <h4>E-MAIL ADDRESS</h4>
+                                        <h4>E-MAIL АДРЕС:</h4>
                                         <p class="margint20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, et.<br />luxen@2035themes.com</p>
                                     </div>
                                 </div>
@@ -415,12 +454,12 @@
                                 <div class="flipper">
                                     <div class="support-box pos-center front">
                                         <div class="support-box-title"><i class="fa fa-home"></i></div>
-                                        <h4>VISIT US</h4>
+                                        <h4>ПОСЕТЕТЕ НИ</h4>
                                         <p class="margint20">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut ferme fentum</p>
                                     </div>
                                     <div class="support-box pos-center back">
                                         <div class="support-box-title"><i class="fa fa-home"></i></div>
-                                        <h4>COMPANY ADDRESS</h4>
+                                        <h4>НАШИЯ АДРЕС</h4>
                                         <p class="margint20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, et.<br />Manhattan square. 124 avenue. Bodrum</p>
                                     </div>
                                 </div>

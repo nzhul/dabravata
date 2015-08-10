@@ -43,8 +43,8 @@ namespace Dabravata.Data.Service
             model.IsFeatured = room.IsFeatured;
             model.RoomNumber = room.RoomNumber;
             model.Price = room.Price;
-            model.ShortDescription = room.ShortDescription;
-            model.LongDescription = room.LongDescription;
+            model.Summary = room.Summary;
+            model.Description = room.Description;
             model.DisplayOrder = room.DisplayOrder;
             model.IsPriceVisible = room.IsPriceVisible;
             model.SelectedCategoryId = room.RoomCategoryId;
@@ -54,9 +54,9 @@ namespace Dabravata.Data.Service
             return model;
         }
 
-        public IEnumerable<RoomViewModel> GetRooms(bool getAll, bool isAvailable)
+        public IEnumerable<RoomViewModel> GetRooms()
         {
-            IEnumerable<RoomViewModel> rooms = this.Data.Rooms.All().Select(this.Mapper.MapRoomViewModel);
+            IEnumerable<RoomViewModel> rooms = this.Data.Rooms.All().OrderBy(r => r.IsFeatured).Select(this.Mapper.MapRoomViewModel);
             return rooms;
         }
 
@@ -68,8 +68,8 @@ namespace Dabravata.Data.Service
             newRoom.RoomNumber = room.RoomNumber;
             newRoom.Price = room.Price;
             newRoom.DateAdded = DateTime.Now;
-            newRoom.ShortDescription = room.ShortDescription;
-            newRoom.LongDescription = room.LongDescription;
+            newRoom.Summary = room.Summary;
+            newRoom.Description = room.Description;
             newRoom.DisplayOrder = room.DisplayOrder;
             newRoom.IsPriceVisible = room.IsPriceVisible;
             newRoom.RoomCategoryId = room.SelectedCategoryId;
@@ -208,12 +208,12 @@ namespace Dabravata.Data.Service
                 dbRoom.DisplayOrder = inputModel.DisplayOrder;
                 dbRoom.IsFeatured = inputModel.IsFeatured;
                 dbRoom.IsPriceVisible = inputModel.IsPriceVisible;
-                dbRoom.LongDescription = inputModel.LongDescription;
+                dbRoom.Description = inputModel.Description;
                 dbRoom.Name = inputModel.Name;
                 dbRoom.Price = inputModel.Price;
                 dbRoom.RoomCategoryId = inputModel.SelectedCategoryId;
                 dbRoom.RoomNumber = inputModel.RoomNumber;
-                dbRoom.ShortDescription = inputModel.ShortDescription;
+                dbRoom.Summary = inputModel.Summary;
 
                 // Delete all RoomFeatures
                 foreach (var subCategory in dbRoom.RoomFeatures.ToList())

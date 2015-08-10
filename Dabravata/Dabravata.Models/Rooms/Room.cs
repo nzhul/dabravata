@@ -25,9 +25,9 @@ namespace Dabravata.Models
 
         public string Name { get; set; }
 
-        public string ShortDescription { get; set; }
+        public string Summary { get; set; }
 
-        public string LongDescription { get; set; }
+        public string Description { get; set; }
         
         public int Price { get; set; }
 

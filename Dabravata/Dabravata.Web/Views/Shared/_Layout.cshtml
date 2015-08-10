@@ -28,5 +28,10 @@
     @RenderBody()
     @Scripts.Render("~/bundles/mainScripts")
     @RenderSection("scripts", required: false)
+    <script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip().css('cursor', 'pointer');
+    });
+    </script>
 </body>
 </html>

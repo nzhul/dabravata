@@ -18,6 +18,9 @@ namespace Dabravata.Data.Service.Mappers
             model.Name = room.Name;
             model.Price = room.Price;
             model.RoomNumber = room.RoomNumber;
+            model.Summary = room.Summary;
+            model.RoomFeature = room.RoomFeatures;
+            model.PrimaryImage = room.Images.FirstOrDefault(i => i.IsPrimary);
 
             return model;
         }

@@ -29,18 +29,16 @@ namespace Dabravata.Models.InputModels
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Краткото описание е задължително!")]
-        [AllowHtml]
         [Display(Name = "Кратко описание:")]
-        [DataType("tinymce_full")]
-        [UIHint("tinymce_full")]
-        public string ShortDescription { get; set; }
+        [StringLength(160, MinimumLength = 3, ErrorMessage = "Невалидно име - Максимална дължина 160 символа, минимална 3")]
+        public string Summary { get; set; }
 
         [Required(ErrorMessage = "Дългото описание е задължително!")]
         [AllowHtml]
         [Display(Name = "Дълго описание:")]
         [DataType("tinymce_full")]
         [UIHint("tinymce_full")]
-        public string LongDescription { get; set; }
+        public string Description { get; set; }
 
         [Display(Name = "Цена")]
         public int Price { get; set; }

@@ -27,6 +27,7 @@ namespace Dabravata.Web.Controllers
             HomeViewModel model = new HomeViewModel();
             model.Attractions = this.attractionsService.GetAttractions().Take(2);
             model.RoomFeatures = this.roomsService.GetRoomFeatures().Take(4);
+            model.FeaturedRooms = this.roomsService.GetRooms().Take(3);
 
             return View(model);
         }

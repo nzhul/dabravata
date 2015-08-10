@@ -670,6 +670,7 @@
     <Content Include="Views\Shared\EditorTemplates\tinymce_full_compressed.cshtml" />
     <Content Include="Views\Home\Partials\_TopFeatures.cshtml" />
     <Content Include="Views\Home\Partials\_HomeAttractions.cshtml" />
+    <Content Include="Views\Home\Partials\_HomeFeaturedRooms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

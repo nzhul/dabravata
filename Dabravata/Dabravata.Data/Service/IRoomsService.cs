@@ -20,7 +20,7 @@ namespace Dabravata.Data.Service
         /// Get all rooms from the database
         /// </summary>
         /// <returns>Collection of RoomViewModel</returns>
-        IEnumerable<RoomViewModel> GetRooms(bool getAll, bool isAvailable);
+        IEnumerable<RoomViewModel> GetRooms();
 
         /// <summary>
         /// Creates new Room in the database

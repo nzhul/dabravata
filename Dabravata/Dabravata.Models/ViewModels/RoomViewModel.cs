@@ -20,6 +20,8 @@ namespace Dabravata.Models.ViewModels
         public int RoomNumber { get; set; }
 
         public string Name { get; set; }
+
+        public string Summary { get; set; }
         
         public string Description { get; set; }
         

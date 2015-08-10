@@ -10,11 +10,13 @@ namespace Dabravata.Web.Models
     {
         private IEnumerable<RoomFeatureViewModel> roomFeatures;
         private IEnumerable<AttractionViewModel> attractions;
+        private IEnumerable<RoomViewModel> featuredRooms;
 
         public HomeViewModel()
         {
             this.roomFeatures = new List<RoomFeatureViewModel>();
             this.attractions = new List<AttractionViewModel>();
+            this.featuredRooms = new List<RoomViewModel>();
         }
 
         public IEnumerable<AttractionViewModel> Attractions
@@ -27,6 +29,12 @@ namespace Dabravata.Web.Models
         {
             get { return this.roomFeatures; }
             set { this.roomFeatures = value; }
+        }
+
+        public IEnumerable<RoomViewModel> FeaturedRooms
+        {
+            get { return this.featuredRooms; }
+            set { this.featuredRooms = value; }
         }
     }
 }
