@@ -12,6 +12,8 @@ namespace Dabravata.Models
 
         public string Title { get; set; }
 
+        public string Summary { get; set; }
+
         public string Content { get; set; }
 
         public virtual Image Image { get; set; }

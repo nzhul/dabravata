@@ -17,6 +17,11 @@ namespace Dabravata.Models.InputModels
         [Display(Name = "Име:")]
         public string Title { get; set; }
 
+        [Required(ErrorMessage = "Краткото описание е задължително!")]
+        [Display(Name = "Кратно описание:")]
+        [StringLength(160, MinimumLength = 3, ErrorMessage = "Невалидно име - Максимална дължина 160 символа, минимална 3")]
+        public string Summary { get; set; }
+
         [Required(ErrorMessage = "Съдържанието е задължително!")]
         [AllowHtml]
         [Display(Name = "Съдържание:")]

@@ -243,17 +243,18 @@ namespace Dabravata.Data.Service
         }
 
 
-        public IEnumerable<RoomFeatureViewModel> GetRoomFeatures(bool getAll)
+        public IEnumerable<RoomFeatureViewModel> GetRoomFeatures()
         {
-            IEnumerable<RoomFeatureViewModel> roomFeatures = this.Data.RoomFeatures.All().Select(MapRoomCategoriesViewModel);
+            IEnumerable<RoomFeatureViewModel> roomFeatures = this.Data.RoomFeatures.All().Select(MapRoomFeaturesViewModel);
             return roomFeatures;
         }
 
-        private RoomFeatureViewModel MapRoomCategoriesViewModel(RoomFeature roomFeature)
+        private RoomFeatureViewModel MapRoomFeaturesViewModel(RoomFeature roomFeature)
         {
             RoomFeatureViewModel model = new RoomFeatureViewModel();
             model.Id = roomFeature.Id;
             model.Name = roomFeature.Name;
+            model.IconName = roomFeature.IconName;
 
             return model;
         }
@@ -263,6 +264,7 @@ namespace Dabravata.Data.Service
         {
             RoomFeature newFeature = new RoomFeature();
             newFeature.Name = featureInput.Name;
+            newFeature.IconName = featureInput.IconName;
 
             this.Data.RoomFeatures.Add(newFeature);
             this.Data.SaveChanges();
@@ -281,6 +283,7 @@ namespace Dabravata.Data.Service
             CreateRoomFeatureInputModel model = new CreateRoomFeatureInputModel();
             model.Id = roomFeature.Id;
             model.Name = roomFeature.Name;
+            model.IconName = roomFeature.IconName;
             return model;
         }
 
@@ -290,6 +293,7 @@ namespace Dabravata.Data.Service
             if (dbRoomFeature != null)
             {
                 dbRoomFeature.Name = roomFeature.Name;
+                dbRoomFeature.IconName = roomFeature.IconName;
 
                 this.Data.SaveChanges();
 

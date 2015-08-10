@@ -15,5 +15,9 @@ namespace Dabravata.Models.InputModels
         [StringLength(250, MinimumLength = 3, ErrorMessage = "Невалидно име - Максимална дължина 250 символа, минимална 3")]
         [Display(Name = "Име:")]
         public string Name { get; set; }
+
+
+        [Display(Name = "Font awesome class:")]
+        public string IconName { get; set; }
     }
 }

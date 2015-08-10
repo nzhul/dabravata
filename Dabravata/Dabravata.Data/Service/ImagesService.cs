@@ -99,10 +99,10 @@ namespace Dabravata.Data.Service
         {
             Dictionary<string, string> versions = new Dictionary<string, string>();
             //Define the versions to generate
-            versions.Add("_indexThumb", "width=230&height=234&crop=auto&format=jpg"); //Crop to square thumbnail
-            versions.Add("_detailsBigThumb", "maxwidth=336&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
+            versions.Add("_indexThumb", "width=361&height=78&crop=auto&format=jpg");
+            versions.Add("_BigThumb", "maxwidth=361&height=223&crop=auto&format=jpg");
             versions.Add("_detailsSmallThumb", "width=77&height=61&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
-            versions.Add("_large", "maxwidth=1500&maxheight=1500&format=jpg"); //Fit inside 1900x1200 area
+            versions.Add("_large", "width=827&crop=auto&format=jpg");
 
             int attractionId = uploadData.AttractionId;
             var theAttraction = this.Data.Attractions.Find(attractionId);

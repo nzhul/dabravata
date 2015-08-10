@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Dabravata.Web.Models.HomeViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -54,7 +56,7 @@
                                         </ul>
                                     </li>
                                     <li class="parent-menu">
-                                        <a href="#">FEATURES</a>
+                                        <a href="#">СТАИ</a>
                                         <ul>
                                             <li><a href="#">2 Homepages</a></li>
                                             <li><a href="#">Ajax/PHP Booking Form</a></li>
@@ -65,13 +67,13 @@
                                         </ul>
                                     </li>
                                     <li class="parent-menu">
-                                        <a href="#">PAGES</a>
+                                        <a href="#">АТРАКЦИИ</a>
                                         <ul>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="category-grid.html">Category Grid</a></li>
                                             <li><a href="category-list.html">Category List</a></li>
                                             <li><a href="room-single.html">Room Details</a></li>
-                                            <li><a href="gallery.html">Gallery</a></li>
+                                            <li><a href="gallery.html">Галерия</a></li>
                                             <li><a href="blog.html">Blog</a></li>
                                             <li><a href="blog-details.html">Blog Single</a></li>
                                             <li><a href="left-sidebar-page.html">Left Sidebar Page</a></li>
@@ -80,14 +82,14 @@
                                             <li><a href="404.html">404 Page</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">NEWS</a></li>
-                                    <li><a href="contact.html">CONTACT</a></li>
+                                    <li><a href="blog.html">ЗА НАС</a></li>
+                                    <li><a href="contact.html">КОНТАКТИ</a></li>
                                 </ul>
                             </nav>
                         </div>
                         <div class="pull-right">
                             <div class="button-style-1 margint45">
-                                <a href="#"><i class="fa fa-calendar"></i>BOOK NOW</a>
+                                <a href="#"><i class="fa fa-calendar"></i>РЕЗЕРВАЦИИ</a>
                             </div>
                         </div>
                     </div>
@@ -103,13 +105,13 @@
                     <div class="slider-textbox clearfix">
                         <div class="container">
                             <div class="row">
-                                <div class="slider-bar pull-left">WELCOME TO LUXEN PREMIUM HOTEL TEMPLATE...</div>
+                                <div class="slider-bar pull-left">ДОБРЕ ДОШЛИ В ХОДЕЛ "ДАБРАВАТА"</div>
                                 <div class="slider-triangle pull-left"></div>
                             </div>
                         </div>
                         <div class="container">
                             <div class="row">
-                                <div class="slider-bar-under pull-left">5 STAR SUPPORT</div>
+                                <div class="slider-bar-under pull-left">5 ЗВЕЗДИ</div>
                                 <div class="slider-triangle-under pull-left"></div>
                             </div>
                         </div>
@@ -142,15 +144,15 @@
                         <form action="#" method="post" id="ajax-reservation-form">
                             <ul class="clearfix">
                                 <li class="li-input">
-                                    <label>ARRIVAL</label>
+                                    <label>ПРИСТИГАНЕ</label>
                                     <input type="text" id="dpd1" name="dpd1" class="date-selector" placeholder="&#xf073;" />
                                 </li>
                                 <li class="li-input">
-                                    <label>DEPARTURE</label>
+                                    <label>ОСВОБОЖДАВАНЕ</label>
                                     <input type="text" id="dpd2" name="dpd2" class="date-selector" placeholder="&#xf073;" />
                                 </li>
                                 <li class="li-select">
-                                    <label>ROOMS</label>
+                                    <label>СТАИ</label>
                                     <select name="rooms" class="pretty-select">
                                         <option selected="selected" value="1">1</option>
                                         <option value="2">2</option>
@@ -160,7 +162,7 @@
                                     </select>
                                 </li>
                                 <li class="li-select">
-                                    <label>ADULT</label>
+                                    <label>ВЪЗРАСТНИ</label>
                                     <select name="adult" class="pretty-select">
                                         <option selected="selected" value="1">1</option>
                                         <option value="2">2</option>
@@ -170,7 +172,7 @@
                                     </select>
                                 </li>
                                 <li class="li-select">
-                                    <label>CHILDREN</label>
+                                    <label>ДЕЦА</label>
                                     <select name="children" class="pretty-select">
                                         <option selected="selected" value="0">0</option>
                                         <option value="1">1</option>
@@ -182,7 +184,7 @@
                                 </li>
                                 <li>
                                     <div class="button-style-1 margint40">
-                                        <a id="res-submit" href="#"><i class="fa fa-search"></i>SEARCH</a>
+                                        <a id="res-submit" href="#"><i class="fa fa-search"></i>ТЪРСИ</a>
                                     </div>
                                 </li>
                             </ul>
@@ -195,10 +197,7 @@
             <div class="container">
                 <div class="row pos-center">
                     <ul>
-                        <li><i class="fa fa-shopping-cart"></i> WOOCOMMERCE COMPATIBLE</li>
-                        <li><i class="fa fa-globe"></i> LANGUAGE COMPATIBLE</li>
-                        <li><i class="fa fa-coffee"></i> COFFEE & BREAKFAST FREE</li>
-                        <li><i class="fa fa-windows"></i> FREE WI-FI ALL ROOM</li>
+                        @Html.Partial("Partials/_TopFeatures", Model.RoomFeatures)
                     </ul>
                 </div>
             </div>
@@ -211,14 +210,14 @@
             <div class="container">
                 <div class="row">
                     <div class="about-title pos-center">
-                        <h2>WELCOME TO PARADISE</h2>
+                        <h2>ДОБРЕ ДОШЛИ В КЪЩА ЗА ГОСТИ "ДЪБРАВАТА"</h2>
                         <div class="title-shape"><img alt="Shape" src="~/Content/luxen/img/shape.png"></div>
-                        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. Praesent <span class="active-color">commodo</span> cursus magna, vel scelerisque nisl .Nulleget urna mattis consectetur purus sit amet fermentum</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi quam, volutpat ut sapien eu, pellentesque rutrum erat. Proin convallis orci sed tellus ullamcorper, ac sollicitudin ligula aliquet. Proin vulputate, leo id pretium vulputate, arcu elit tristique ligula, id dapibus libero ante vel lectus. Proin fermentum vehicula velit, ac molestie elit bibendum in. Aliquam eu purus arcu.</p>
                     </div>
                     <div class="otel-info margint60">
                         <div class="col-lg-4 col-sm-12">
                             <div class="title-style-1 marginb40">
-                                <h5>GALLERY</h5>
+                                <h5>ГАЛЕРИЯ</h5>
                                 <hr>
                             </div>
                             <div class="flexslider">
@@ -230,7 +229,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="title-style-1 marginb40">
-                                <h5>ABOUT US</h5>
+                                <h5>ЗА НАС</h5>
                                 <hr>
                             </div>
                             <p>Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget laci. Maecenas faucibus mollis interdum.</p>
@@ -239,29 +238,10 @@
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="title-style-1 marginb40">
-                                <h5>OUR NEWS</h5>
+                                <h5>АТРАКЦИИ</h5>
                                 <hr>
                             </div>
-                            <div class="home-news">
-                                <div class="news-box clearfix">
-                                    <div class="news-time pull-left">
-                                        <div class="news-date pos-center"><div class="date-day">20<hr /></div>MAY</div>
-                                    </div>
-                                    <div class="news-content pull-left">
-                                        <h6><a href="#">News from us from now</a></h6>
-                                        <p class="margint10">Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui <a class="active-color" href="#">[...]</a></p>
-                                    </div>
-                                </div>
-                                <div class="news-box clearfix">
-                                    <div class="news-time pull-left">
-                                        <div class="news-date pos-center"><div class="date-day">20<hr /></div>MAY</div>
-                                    </div>
-                                    <div class="news-content pull-left">
-                                        <h6><a href="#">News from us from now</a></h6>
-                                        <p class="margint10">Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue <a class="active-color" href="#">[...]</a></p>
-                                    </div>
-                                </div>
-                            </div>
+                            @Html.Partial("Partials/_HomeAttractions", Model.Attractions)
                         </div>
                     </div>
                 </div>
@@ -272,7 +252,7 @@
             <div class="container">
                 <div class="row">
                     <div class="title-style-2 marginb40 pos-center">
-                        <h3>EXPLORE ROOMS</h3>
+                        <h3>РАЗГЛЕДАЙТЕ НАШИТЕ СТАИ</h3>
                         <hr>
                     </div>
                     <div class="col-lg-4 col-sm-6">
@@ -307,7 +287,7 @@
                                 <div class="pull-left"><h4>89$<span class="room-bottom-time">/ Day</span></h4></div>
                                 <div class="pull-right">
                                     <div class="button-style-1">
-                                        <a href="#">BOOK NOW</a>
+                                        <a href="#">РЕЗЕРВИРАЙ</a>
                                     </div>
                                 </div>
                             </div>
@@ -450,29 +430,6 @@
                 </div>
             </div>
         </div>
-        <div class="newsletter-section">
-            <!-- Newsletter Section -->
-            <div class="container">
-                <div class="row">
-                    <div class="newsletter-top pos-center margint30">
-                        <img alt="Shape Image" src="~/Content/luxen/img/shape.png">
-                    </div>
-                    <div class="newsletter-form margint40 pos-center">
-                        <div class="newsletter-wrapper">
-                            <div class="pull-left">
-                                <h2>Sign up newsletter</h2>
-                            </div>
-                            <div class="pull-left">
-                                <form action="#" method="post" id="ajax-contact-form">
-                                    <input type="text" placeholder="Enter a e-mail address">
-                                    <input type="submit" value="SUBSCRIBE">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="footer margint40">
             <!-- Footer Section -->
             <div class="main-footer">
@@ -507,7 +464,7 @@
                                 <h6>PAGES SITE</h6>
                                 <ul class="footer-links">
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li><a href="gallery.html">Галерия</a></li>
                                     <li><a href="index-full-screen.html">Home Full Screen</a></li>
                                     <li><a href="left-sidebar-page.html">Left Sidebar Page</a></li>
                                     <li><a href="right-sidebar-page.html">Right Sidebar Page</a></li>

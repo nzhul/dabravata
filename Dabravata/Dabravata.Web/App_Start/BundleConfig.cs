@@ -21,7 +21,8 @@ namespace Dabravata.Web
                         "~/Content/luxen/css/slicknav.css",
                         "~/Content/luxen/css/mainDabravata.css",
                         "~/Content/luxen/css/2035.responsive.css",
-                        "~/Content/font-awesome.css"
+                        "~/Content/font-awesome.css",
+                        "~/Content/main-extensions.css"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/administration").Include(

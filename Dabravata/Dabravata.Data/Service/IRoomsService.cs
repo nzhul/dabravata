@@ -42,7 +42,7 @@ namespace Dabravata.Data.Service
 
         bool UpdateRoom(int id, CreateRoomInputModel inputModel);
 
-        IEnumerable<RoomFeatureViewModel> GetRoomFeatures(bool getAll);
+        IEnumerable<RoomFeatureViewModel> GetRoomFeatures();
 
         int CreateRoomFeature(CreateRoomFeatureInputModel featureInput);
 

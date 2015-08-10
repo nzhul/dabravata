@@ -32,6 +32,7 @@ namespace Dabravata.Data.Service
             model.Title = dbAttraction.Title;
             model.Image = dbAttraction.Image;
             model.DateAdded = dbAttraction.DateAdded;
+            model.Summary = dbAttraction.Summary;
             model.Content = dbAttraction.Content;
 
             return model;
@@ -42,6 +43,7 @@ namespace Dabravata.Data.Service
         {
             Attraction newAttraction = new Attraction();
             newAttraction.Title = inputModel.Title;
+            newAttraction.Summary = inputModel.Summary;
             newAttraction.Content = inputModel.Content;
             newAttraction.DateAdded = DateTime.Now;
             newAttraction.DisplayOrder = inputModel.DisplayOrder;
@@ -87,6 +89,7 @@ namespace Dabravata.Data.Service
             CreateAttractionInputModel model = new CreateAttractionInputModel();
             model.Id = dbAttraction.Id;
             model.Title = dbAttraction.Title;
+            model.Summary = dbAttraction.Summary;
             model.Content = dbAttraction.Content;
             model.DisplayOrder = dbAttraction.DisplayOrder;
             model.Image = dbAttraction.Image;
@@ -100,6 +103,7 @@ namespace Dabravata.Data.Service
             if (dbAttraction != null)
             {
                 dbAttraction.Title = inputModel.Title;
+                dbAttraction.Summary = inputModel.Summary;
                 dbAttraction.Content = inputModel.Content;
                 dbAttraction.DisplayOrder = inputModel.DisplayOrder;
 

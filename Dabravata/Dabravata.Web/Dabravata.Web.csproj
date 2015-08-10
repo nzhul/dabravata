@@ -180,6 +180,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -245,6 +246,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\attractions\lake-thumbnail.jpg" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\noimage\no-image_detailsBigThumb.jpg" />
+    <Content Include="Content\images\noimage\no-image_detailsSmallThumb.jpg" />
+    <Content Include="Content\images\noimage\no-image_indexThumb.jpg" />
+    <Content Include="Content\images\noimage\no-image_large.jpg" />
     <Content Include="Content\luxen\404.html" />
     <Content Include="Content\luxen\about.html" />
     <Content Include="Content\luxen\blog-details.html" />
@@ -380,6 +387,7 @@
     <Content Include="Content\luxen\temp\tab-image.jpg" />
     <Content Include="Content\luxen\temp\tripadvisor.png" />
     <Content Include="Content\luxen\under-construction.html" />
+    <Content Include="Content\main-extensions.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -660,6 +668,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full_compressed.cshtml" />
+    <Content Include="Views\Home\Partials\_TopFeatures.cshtml" />
+    <Content Include="Views\Home\Partials\_HomeAttractions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
