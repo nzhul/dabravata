@@ -56,7 +56,7 @@
                                         </ul>
                                     </li>
                                     <li class="parent-menu">
-                                        <a href="#">СТАИ</a>
+                                        <a href="@Url.Action("Index", "Rooms")">СТАИ</a>
                                         <ul>
                                             <li><a href="#">2 Homepages</a></li>
                                             <li><a href="#">Ajax/PHP Booking Form</a></li>
@@ -229,12 +229,10 @@
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="title-style-1 marginb40">
-                                <h5>ЗА НАС</h5>
+                                <h5>@Model.FeaturedCustomPage.Title</h5>
                                 <hr>
                             </div>
-                            <p>Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget laci. Maecenas faucibus mollis interdum.</p>
-                            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fer condimentum nibh, ut fermentum massa justo sit amet risus. mentum massa justo sit amet risus.</p>
-                            <p>Fusce dapibus, tellus ac cursus commodo ut fermentum massa. mentum massa justo sit amet risus.</p>
+                            <p>@Model.FeaturedCustomPage.Summary</p>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="title-style-1 marginb40">

@@ -30,7 +30,7 @@ namespace Dabravata.Data.Service
             PageViewModel model = new PageViewModel();
             model.Id = page.Id;
             model.Title = page.Title;
-            model.Description = page.Description;
+            model.Summary = page.Summary;
             model.Content = page.Content;
 
             return model;
@@ -41,7 +41,7 @@ namespace Dabravata.Data.Service
         {
             Page newPage = new Page();
             newPage.Title = inputModel.Title;
-            newPage.Description = inputModel.Description;
+            newPage.Summary = inputModel.Summary;
             newPage.Content = inputModel.Content;
             newPage.DateCreated = DateTime.Now;
             newPage.DisplayOrder = inputModel.DisplayOrder;
@@ -78,7 +78,7 @@ namespace Dabravata.Data.Service
             CreatePageInputModel model = new CreatePageInputModel();
             model.Id = dbPage.Id;
             model.Title = dbPage.Title;
-            model.Description = dbPage.Description;
+            model.Summary = dbPage.Summary;
             model.Content = dbPage.Content;
             model.DisplayOrder = dbPage.DisplayOrder;
 
@@ -92,7 +92,7 @@ namespace Dabravata.Data.Service
             if (dbPage != null)
             {
                 dbPage.Title = inputModel.Title;
-                dbPage.Description = inputModel.Description;
+                dbPage.Summary = inputModel.Summary;
                 dbPage.Content = inputModel.Content;
                 dbPage.DisplayOrder = inputModel.DisplayOrder;
 
@@ -119,6 +119,28 @@ namespace Dabravata.Data.Service
             this.Data.SaveChanges();
 
             return true;
+        }
+
+
+
+        public PageViewModel GetFeaturedCustomPage(int pageId)
+        {
+            PageViewModel model = new PageViewModel();
+            if (this.PageExists(pageId))
+            {
+                Page dbPage = this.Data.Pages.Find(pageId);
+                model.Id = dbPage.Id;
+                model.Title = dbPage.Title;
+                model.Summary = dbPage.Summary;
+            }
+            else
+            {
+                model.Id = 99999;
+                model.Title = "Page Do Not Exists";
+                model.Summary = "There are no pages, please contact the system administrator";
+            }
+
+            return model;
         }
     }
 }

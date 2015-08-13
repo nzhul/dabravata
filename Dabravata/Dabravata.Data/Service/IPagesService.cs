@@ -21,5 +21,7 @@ namespace Dabravata.Data.Service
         bool UpdatePage(int id, CreatePageInputModel inputModel);
 
         bool DeletePage(int id);
+
+        PageViewModel GetFeaturedCustomPage(int pageId);
     }
 }

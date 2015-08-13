@@ -26,3 +26,6 @@
     text-align:right;
 }
 
+.title-style-1 h5 {
+    text-transform: uppercase;
+}

@@ -36,5 +36,8 @@ namespace Dabravata.Web.Models
             get { return this.featuredRooms; }
             set { this.featuredRooms = value; }
         }
+
+
+        public PageViewModel FeaturedCustomPage { get; set; }
     }
 }

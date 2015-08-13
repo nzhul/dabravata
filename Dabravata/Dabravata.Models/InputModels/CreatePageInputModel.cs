@@ -20,7 +20,7 @@ namespace Dabravata.Models.InputModels
         [Required(ErrorMessage = "Описанието е задължително!")]
         [AllowHtml]
         [Display(Name = "Описание:")]
-        public string Description { get; set; }
+        public string Summary { get; set; }
 
         [Required(ErrorMessage = "Съдържанието е задължително!")]
         [AllowHtml]
