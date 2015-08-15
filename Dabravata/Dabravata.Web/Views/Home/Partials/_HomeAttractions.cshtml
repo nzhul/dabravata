@@ -4,7 +4,7 @@
 {
     var imagePath = Attraction.Image.ImagePath + "_indexThumb.jpg";
     <div class="home-attractions">
-        <a href="@Url.Action("Details", "Attractions", new { id = Attraction.Id })"><img class="home-attractions-img" src="@imagePath" alt="@Attraction.Title" /></a>
+        <a href="@Url.Action("Details", "Attractions", new { id = Attraction.Id })"><img class="home-attractions-img" src="/@imagePath" alt="@Attraction.Title" /></a>
         <a href="@Url.Action("Details", "Attractions", new { id = Attraction.Id })" class="home-attractions-title">@Attraction.Title</a>
         <p class="home-attractions-description">@Attraction.Summary</p>
     </div>

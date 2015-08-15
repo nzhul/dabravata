@@ -29,3 +29,34 @@
 .title-style-1 h5 {
     text-transform: uppercase;
 }
+
+.tooltip {
+    position: fixed;
+}
+
+.dab-room-box {
+    margin-bottom: 20px;
+}
+
+.attraction-box {
+    border-bottom: 1px solid gray;
+    padding-bottom: 20px;
+}
+
+.attraction-bigthumb {
+    float:left;
+}
+
+.attraction-title {
+    text-transform: uppercase;
+}
+
+.attraction-rightside {
+    width:470px;
+    float:right;
+}
+
+.title-uppercase
+{
+    text-transform:uppercase;
+}

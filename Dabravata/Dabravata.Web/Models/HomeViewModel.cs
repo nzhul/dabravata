@@ -1,4 +1,5 @@
-﻿using Dabravata.Models.ViewModels;
+﻿using Dabravata.Models;
+using Dabravata.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,14 @@ namespace Dabravata.Web.Models
         private IEnumerable<RoomFeatureViewModel> roomFeatures;
         private IEnumerable<AttractionViewModel> attractions;
         private IEnumerable<RoomViewModel> featuredRooms;
+        private IEnumerable<Image> galleryImages;
 
         public HomeViewModel()
         {
             this.roomFeatures = new List<RoomFeatureViewModel>();
             this.attractions = new List<AttractionViewModel>();
             this.featuredRooms = new List<RoomViewModel>();
+            this.galleryImages = new List<Image>();
         }
 
         public IEnumerable<AttractionViewModel> Attractions
@@ -35,6 +38,12 @@ namespace Dabravata.Web.Models
         {
             get { return this.featuredRooms; }
             set { this.featuredRooms = value; }
+        }
+
+        public IEnumerable<Image> GalleryImages
+        {
+            get { return this.galleryImages; }
+            set { this.galleryImages = value; }
         }
 
 

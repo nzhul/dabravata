@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Dabravata.Models.ViewModels.AttractionViewModel>
+
+
+@foreach (var Attraction in Model)
+{
+    var imgPath = Attraction.Image.ImagePath + "_BigThumb.jpg";
+    <div class="attraction-box clearfix">
+        <a href="@Url.Action("Details", "Attractions", new { id = Attraction.Id })" class="attraction-bigthumb"><img src="/@imgPath" alt="Alternate Text" /></a>
+        <div class="attraction-rightside">
+            <a href="@Url.Action("Details", "Attractions", new { id = Attraction.Id })"><h3 class="attraction-title">@Attraction.Title</h3></a>
+            <p class="attraction-summary">@Attraction.Summary</p>
+            <div class="button-style-1 pull-right">
+                <a href="@Url.Action("Details", "Attractions", new { id = Attraction.Id })">ПРОЧЕТИ ОЩЕ</a>
+            </div>
+        </div>
+    </div>
+}

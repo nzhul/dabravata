@@ -3,10 +3,10 @@
 @foreach (var Room in Model)
 {
     string imageSrc = Room.PrimaryImage.ImagePath + "_indexThumb.jpg";
-    <div class="col-lg-4 col-sm-6">
+    <div class="col-lg-4 col-sm-6 dab-room-box">
         <div class="home-room-box">
             <div class="room-image">
-                <a href="@Url.Action("Details", "Rooms", new { id = @Room.Id })"><img alt="Room Images" class="img-responsive" src="@imageSrc"></a>
+                <a href="@Url.Action("Details", "Rooms", new { id = @Room.Id })"><img alt="Room Images" class="img-responsive" src="/@imageSrc"></a>
                 <div class="home-room-details">
                     <h5><a href="@Url.Action("Details", "Rooms", new { id = @Room.Id })">@Room.Name</a></h5>
                     <div class="pull-left">
@@ -15,6 +15,23 @@
                             {
                                 <li><i class="@Feature.IconName" data-toggle="tooltip" title="@Feature.Name"></i></li>
                             }
+                        </ul>
+                    </div>
+                    <div class="pull-right room-rating">
+                        <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            @if (Room.Id % 2 == 0)
+                            {
+                                <li><i class="fa fa-star inactive"></i></li>
+                            }
+                            else
+                            {
+                                <li><i class="fa fa-star"></i></li>
+                            }
+                            
                         </ul>
                     </div>
                 </div>

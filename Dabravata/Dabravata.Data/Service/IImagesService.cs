@@ -1,4 +1,5 @@
-﻿using Dabravata.Models.InputModels;
+﻿using Dabravata.Models;
+using Dabravata.Models.InputModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace Dabravata.Data.Service
         bool UploadImages(UploadAttractionPhotoModel uploadData);
 
         bool MakePrimary(int imageId, int productId);
+
+        IEnumerable<Image> GetRandomRoomImages();
     }
 }

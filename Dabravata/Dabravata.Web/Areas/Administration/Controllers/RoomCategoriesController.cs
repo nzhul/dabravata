@@ -24,7 +24,7 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            IEnumerable<RoomCategoryViewModel> model = this.roomsService.GetRoomCategories(true);
+            IEnumerable<RoomCategoryViewModel> model = this.roomsService.GetRoomCategories();
             return View(model);
         }
 

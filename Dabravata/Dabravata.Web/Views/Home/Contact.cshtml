@@ -1,17 +1,57 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+﻿<div class="breadcrumb breadcrumb-1 pos-center">
+    <h1>КОНТАКТИ</h1>
+</div>
+<div class="content">
+    <!-- Content Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-4 margint60">
+                <!-- Sidebar -->
+                <div class="luxen-widget news-widget">
+                    <div class="title">
+                        <h5>HOTEL INFORMATION</h5>
+                    </div>
+                    <p>Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Lorem ipsumero, a pharetra augue. Lorem ipsum dolor sit amet, consectedui.</p>
+                </div>
+                <div class="luxen-widget news-widget">
+                    <div class="title">
+                        <h5>CONTACT</h5>
+                    </div>
+                    <ul class="footer-links">
+                        <li><p><i class="fa fa-map-marker"></i> Lorem ipsum dolor sit amet lorem Victoria 8011 Australia </p></li>
+                        <li><p><i class="fa fa-phone"></i> +61 3 8376 6284 </p></li>
+                        <li><p><i class="fa fa-envelope"></i> info@2035themes.com</p></li>
+                    </ul>
+                </div>
+                <div class="luxen-widget news-widget">
+                    <div class="title">
+                        <h5>SOCIAL MEDIA</h5>
+                    </div>
+                    <ul class="social-links">
+                        <li><a href="../../facebook.com/2035themes"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="../../twitter.com/2035themes"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="../../vine.com/2035themes"><i class="fa fa-vine"></i></a></li>
+                        <li><a href="../../foursquare.com/2035themes"><i class="fa fa-foursquare"></i></a></li>
+                        <li><a href="../../instagram.com/2035themes"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-sm-8">
+                <!-- Contact -->
+                <div id="map" class="maps pos-center margint60">
+                    <div id="map-block"><img src="~/Content/images/map-sample.jpg" alt="Alternate Text" /></div>
+                </div>
+                <div class="contact-form margint60">
+                    <!-- Contact Form -->
+                    <form action="#" method="post" id="ajax-contact-form">
+                        <input type="text" placeholder="Name" name="name">
+                        <input type="text" placeholder="Subject" name="subject">
+                        <input type="text" placeholder="E-Mail" name="email">
+                        <textarea placeholder="Write what do you want..." name="message"></textarea>
+                        <input class="pull-right margint10" type="submit" value="SUBMIT">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -54,9 +54,17 @@ namespace Dabravata.Data.Service
             return model;
         }
 
-        public IEnumerable<RoomViewModel> GetRooms()
+        public IEnumerable<RoomViewModel> GetRooms(int? categoryId)
         {
-            IEnumerable<RoomViewModel> rooms = this.Data.Rooms.All().OrderBy(r => r.IsFeatured).Select(this.Mapper.MapRoomViewModel);
+            IQueryable<Room> roomsQueriable = this.Data.Rooms.All().OrderBy(r => r.IsFeatured).AsQueryable();
+
+            if (categoryId != null)
+            {
+                roomsQueriable = roomsQueriable.Where(r => r.RoomCategoryId == categoryId);
+            }
+
+
+            IEnumerable<RoomViewModel> rooms = roomsQueriable.Select(this.Mapper.MapRoomViewModel);
             return rooms;
         }
 
@@ -129,7 +137,7 @@ namespace Dabravata.Data.Service
         }
 
 
-        public IEnumerable<RoomCategoryViewModel> GetRoomCategories(bool getAll)
+        public IEnumerable<RoomCategoryViewModel> GetRoomCategories()
         {
             IEnumerable<RoomCategoryViewModel> roomCategories = this.Data.RoomCategories.All().Select(MapRoomCategoriesViewModel);
             return roomCategories;

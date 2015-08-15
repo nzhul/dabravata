@@ -31,6 +31,8 @@ namespace Dabravata.Models.ViewModels
 
         public Image PrimaryImage { get; set; }
 
+        public IEnumerable<Image> Images { get; set; }
+
         public virtual ICollection<RoomFeature> RoomFeature
         {
             get { return this.roomFeatures; }

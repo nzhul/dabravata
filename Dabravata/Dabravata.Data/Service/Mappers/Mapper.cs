@@ -21,6 +21,7 @@ namespace Dabravata.Data.Service.Mappers
             model.Summary = room.Summary;
             model.RoomFeature = room.RoomFeatures;
             model.PrimaryImage = room.Images.FirstOrDefault(i => i.IsPrimary);
+            model.Images = room.Images;
 
             return model;
         }

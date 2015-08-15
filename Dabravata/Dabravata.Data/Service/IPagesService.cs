@@ -12,6 +12,8 @@ namespace Dabravata.Data.Service
     {
         IEnumerable<PageViewModel> GetPages();
 
+        PageViewModel GetPageById(int id);
+
         int CreatePage(CreatePageInputModel inputModel);
 
         bool PageExists(int id);

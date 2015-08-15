@@ -142,5 +142,28 @@ namespace Dabravata.Data.Service
 
             return model;
         }
+
+
+        public PageViewModel GetPageById(int id)
+        {
+            PageViewModel model = new PageViewModel();
+            if (this.PageExists(id))
+            {
+                Page dbPage = this.Data.Pages.Find(id);
+                model.Id = dbPage.Id;
+                model.Title = dbPage.Title;
+                model.Summary = dbPage.Summary;
+                model.Content = dbPage.Content;
+            }
+            else
+            {
+                model.Id = 1;
+                model.Title = "НЕСЪЩЕСТВУВАЩА СТРАНИЦА!";
+                model.Content = "НЕСЪЩЕСТВУВАЩА СТРАНИЦА!";
+                model.Summary = "НЕСЪЩЕСТВУВАЩА СТРАНИЦА!";
+            }
+
+            return model;
+        }
     }
 }

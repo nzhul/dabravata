@@ -10,12 +10,13 @@ using System.Web.Mvc;
 
 namespace Dabravata.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IUoWData data;
         private readonly IRoomsService roomsService;
         private readonly IPagesService pagesService;
         private readonly IAttractionsService attractionsService;
+        private readonly IImagesService imagesService;
 
         public HomeController()
         {
@@ -23,6 +24,7 @@ namespace Dabravata.Web.Controllers
             this.roomsService = new RoomsService(this.data);
             this.attractionsService = new AttractionsService(this.data);
             this.pagesService = new PagesService(this.data);
+            this.imagesService = new ImagesService(this.data);
         }
 
         public ActionResult Index()
@@ -30,25 +32,19 @@ namespace Dabravata.Web.Controllers
             HomeViewModel model = new HomeViewModel();
             model.Attractions = this.attractionsService.GetAttractions().Take(2);
             model.RoomFeatures = this.roomsService.GetRoomFeatures().Take(4);
-            model.FeaturedRooms = this.roomsService.GetRooms().Take(3);
+            model.FeaturedRooms = this.roomsService.GetRooms(null).Take(3);
             int featuredCustomPageId = int.Parse(ConfigurationManager.AppSettings["FeaturedCustomPageId"]);
             model.FeaturedCustomPage = this.pagesService.GetFeaturedCustomPage(featuredCustomPageId);
+            model.GalleryImages = this.imagesService.GetRandomRoomImages();
 
             return View(model);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var model = new ContactFormInputModel();
+            return View(model);
         }
     }
 }

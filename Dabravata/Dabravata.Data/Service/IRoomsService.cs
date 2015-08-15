@@ -20,7 +20,7 @@ namespace Dabravata.Data.Service
         /// Get all rooms from the database
         /// </summary>
         /// <returns>Collection of RoomViewModel</returns>
-        IEnumerable<RoomViewModel> GetRooms();
+        IEnumerable<RoomViewModel> GetRooms(int? categoryId);
 
         /// <summary>
         /// Creates new Room in the database
@@ -32,7 +32,7 @@ namespace Dabravata.Data.Service
 
         IEnumerable<SelectListItem> GetCategories();
 
-        IEnumerable<RoomCategoryViewModel> GetRoomCategories(bool getAll);
+        IEnumerable<RoomCategoryViewModel> GetRoomCategories();
 
         int CreateRoomCategory(CreateRoomCategoryInputModel roomCategory);
 
