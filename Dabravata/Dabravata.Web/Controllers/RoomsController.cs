@@ -1,6 +1,8 @@
 ﻿using Dabravata.Data;
 using Dabravata.Data.Service;
+using Dabravata.Models;
 using Dabravata.Models.ViewModels;
+using Dabravata.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +36,16 @@ namespace Dabravata.Web.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            RoomViewModel model = this.roomsService.GetRoomById(id);
+            RoomDetailsViewModel model = new RoomDetailsViewModel();
+
+            model.TheRoom = this.roomsService.GetRoomById(id);
+            model.SimilarRooms = this.roomsService.GetRooms(model.TheRoom.RoomCategoryId).Where(r => r.Id != id);
+
+            List<Image> images = model.TheRoom.Images.ToList();
+            Image defaultImage = images.Where(i => i.ImagePath.Contains("no-image")).FirstOrDefault();
+            images.Remove(defaultImage);
+            model.TheRoom.Images = images;
+
             return View(model);
         }
     }

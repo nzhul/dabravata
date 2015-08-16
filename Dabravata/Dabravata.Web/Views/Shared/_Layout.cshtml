@@ -36,7 +36,7 @@
                         <div class="pull-right">
                             <div class="pull-left">
                                 <ul class="pre-link-box">
-                                    <li><a href="Administration"><i class="fa fa-cogs"></i>Администрация</a></li>
+                                    <li><a href="@Url.Action("Index", "Rooms", new { area = "Administration" })"><i class="fa fa-cogs"></i>Администрация</a></li>
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="#">Add Your Link</a></li>
@@ -120,7 +120,7 @@
                             </div>
                             <div class="pull-right">
                                 <div class="button-style-1 margint45">
-                                    <a href="#"><i class="fa fa-calendar"></i>РЕЗЕРВАЦИИ</a>
+                                    <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-calendar"></i>РЕЗЕРВИРАЙ</a>
                                 </div>
                             </div>
                         </div>
@@ -211,5 +211,26 @@
         $('[data-toggle="tooltip"]').tooltip().css('cursor', 'pointer');
     });
     </script>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>

@@ -132,5 +132,23 @@ namespace Dabravata.Data.Service
 
             return true;
         }
+
+
+        public AttractionViewModel GetAttractionById(int id)
+        {
+            AttractionViewModel model = new AttractionViewModel();
+            if (this.AttractionExists(id))
+            {
+                Attraction dbAttraction = this.Data.Attractions.Find(id);
+                model = this.MapAttractionViewModel(dbAttraction);
+            }
+            else
+            {
+                model.Content = "Не съществува такава атракция!";
+                model.Title = "НЕСЪЩЕСТВУВАЩА АТКРАКЦИЯ!";
+            }
+
+            return model;
+        }
     }
 }

@@ -22,5 +22,7 @@ namespace Dabravata.Data.Service
         bool UpdateAttraction(int id, CreateAttractionInputModel inputModel);
 
         bool DeleteAttraction(int id);
+
+        AttractionViewModel GetAttractionById(int id);
     }
 }

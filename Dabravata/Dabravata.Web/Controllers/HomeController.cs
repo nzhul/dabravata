@@ -35,7 +35,12 @@ namespace Dabravata.Web.Controllers
             model.FeaturedRooms = this.roomsService.GetRooms(null).Take(3);
             int featuredCustomPageId = int.Parse(ConfigurationManager.AppSettings["FeaturedCustomPageId"]);
             model.FeaturedCustomPage = this.pagesService.GetFeaturedCustomPage(featuredCustomPageId);
-            model.GalleryImages = this.imagesService.GetRandomRoomImages();
+
+            if (this.data.Images.All().Any())
+            {
+                model.GalleryImages = this.imagesService.GetRandomRoomImages();
+            }
+            
 
             return View(model);
         }

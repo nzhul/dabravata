@@ -27,6 +27,8 @@ namespace Dabravata.Models.ViewModels
         
         public int Price { get; set; }
 
+        public int RoomCategoryId { get; set; }
+
         public string RoomCategoryName { get; set; }
 
         public Image PrimaryImage { get; set; }

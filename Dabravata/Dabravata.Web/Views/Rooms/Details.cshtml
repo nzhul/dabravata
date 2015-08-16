@@ -1,7 +1,7 @@
-﻿@model Dabravata.Models.ViewModels.RoomViewModel
+﻿@model Dabravata.Web.Models.RoomDetailsViewModel
 
 <div class="breadcrumb breadcrumb-1 pos-center">
-    <h1>@Model.Name</h1>
+    <h1 class="title-uppercase">@Model.TheRoom.Name</h1>
 </div>
 <div class="content">
     <!-- Content Section -->
@@ -10,14 +10,17 @@
             <div class="col-lg-12">
                 <!-- Room Gallery Slider -->
                 <div class="room-gallery">
-                    <div class="margint40 marginb20"><h4>PHOTO GALLERY</h4></div>
+                    <div class="margint40 marginb20"><h4>СНИМКИ НА СТАЯТА</h4></div>
                     <div class="flexslider-thumb falsenav">
                         <ul class="slides">
-                            @foreach (var Image in Model.Images)
+                            @if (Model.TheRoom.Images != null)
                             {
-                                string thumbUrl = Image.ImagePath + "_detailsSmallThumb.jpg";
-                                string bigImgUrl = Image.ImagePath + "_large.jpg";
-                                <li data-thumb="/@thumbUrl"><img alt="@Model.Name" class="img-responsive" src="/@bigImgUrl" /></li>
+                                foreach (var Image in Model.TheRoom.Images)
+                                {
+                                    string thumbUrl = Image.ImagePath + "_detailsSmallThumb.jpg";
+                                    string bigImgUrl = Image.ImagePath + "_large.jpg";
+                                    <li data-thumb="/@thumbUrl"><img alt="@Model.TheRoom.Name" class="img-responsive" src="/@bigImgUrl" /></li>
+                                }
                             }
                         </ul>
                     </div>
@@ -26,70 +29,30 @@
             <div class="col-lg-9 clearfix">
                 <!-- Room Information -->
                 <div class="col-lg-8 clearfix col-sm-8">
-                    <h4>ROOM DESCRIPTION</h4>
-                    <p class="margint30">Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus nibh Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac blandit Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac blandit tempus.</p>
-
-                    <p>Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus nibh Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amr. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac blandit tempus.</p>
+                    <h4>ОПИСАНИЕ НА СТАЯТА</h4>
+                    <p>@Html.Raw(Model.TheRoom.Description) </p>
                 </div>
                 <div class="col-lg-4 clearfix col-sm-4">
                     <div class="room-services">
                         <!-- Room Services -->
-                        <h4>SERVICES</h4>
+                        <h4>УДОБСТВА</h4>
                         <ul class="room-services">
-                            <li><i class="fa fa-calendar"></i> CALENDAR </li>
-                            <li><i class="fa fa-laptop"></i> 16 MBIT WI-FI </li>
-                            <li><i class="fa fa-umbrella"></i> 2 BALCONIES </li>
-                            <li><i class="fa fa-phone"></i> 2 BEDS </li>
-                            <li><i class="fa fa-clock-o"></i> 7/24 SERVICE </li>
+                            @if (Model.TheRoom.RoomFeature != null)
+                            {
+                                foreach (var RoomFeature in Model.TheRoom.RoomFeature)
+                                {
+                                    <li><i class="@RoomFeature.IconName"></i> @RoomFeature.Name </li>
+                                }
+                            }
                         </ul>
-                    </div>
-                    <div class="location-weather margint40">
-                        <!-- Room Weather -->
-                        <h4>WEATHER</h4>
-                        <div id="weather"></div>
                     </div>
                 </div>
-                <div class="col-lg-12 clearfix margint40 room-single-tab">
-                    <!-- Room Tab -->
-                    <div class="tab-style-2 ">
-                        <ul class="tabbed-area tab-style-nav clearfix">
-                            <li class="active"><h6><a href="#tab1s">EXAMPLE TAB</a></h6></li>
-                            <li class=""><h6><a href="#tab2s">OTHER TABS EXAMPLE</a></h6></li>
-                            <li class=""><h6><a href="#tab3s">SUIT IT NOW</a></h6></li>
-                        </ul>
-                        <div class="tab-content tab-style-content">
-                            <div class="tab-pane fade active in" id="tab1s">
-                                <div class="col-lg-3 margint30">
-                                    <img alt="Tab Image" class="img-responsive" src="temp/tab-image.jpg">
-                                </div>
-                                <div class="col-lg-9 margint30">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nesciunt ad architecto enim dignissimos incidunt recusandae officia odit sapiente laudantium obcaecati maiores aspernatur fuga neque eum? Reiciendis sit est cum magnam quos tempore tempora esse quibusdam culpa quisquam debitis eveniet necessitatibus excepturi sed ab cumque laudantium. Fugit culpa expedita odio id temporibus laudantium sunt non nemo sapiente dolorum? Soluta incidunt debitis molestiae consectetur accusantium nulla aperiam ad repellendus quas assumenda eum fugiat commodi iusto corporis adipisci autem dolor rerum! Nulla blanditiis aut vel aperiam soluta placeat quia quae libero architecto officiis eius dolorem asperiores est illo praesentium. Sunt reprehenderit alias!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab2s">
-                                <div class="col-lg-3 margint30">
-                                    <img alt="Tab Image" class="img-responsive" src="temp/tab-image.jpg">
-                                </div>
-                                <div class="col-lg-9 margint30">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nesciunt ad architecto enim dignissimos incidunt recusandae officia odit sapiente laudantium obcaecati maiores aspernatur fuga neque eum? Reiciendis sit est cum magnam quos tempore tempora esse quibusdam culpa quisquam debitis eveniet necessitatibus excepturi sed ab cumque laudantium. Fugit culpa expedita odio id temporibus laudantium sunt non nemo sapiente dolorum? Soluta incidunt debitis molestiae consectetur accusantium nulla aperiam ad repellendus quas assumenda eum fugiat commodi iusto corporis adipisci autem dolor rerum! Nulla blanditiis aut vel aperiam soluta placeat quia quae libero architecto officiis eius dolorem asperiores est illo praesentium. Sunt reprehenderit alias!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab3s">
-                                <div class="col-lg-3 margint30">
-                                    <img alt="Tab Image" class="img-responsive" src="temp/tab-image.jpg">
-                                </div>
-                                <div class="col-lg-9 margint30">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nesciunt ad architecto enim dignissimos incidunt recusandae officia odit sapiente laudantium obcaecati maiores aspernatur fuga neque eum? Reiciendis sit est cum magnam quos tempore tempora esse quibusdam culpa quisquam debitis eveniet necessitatibus excepturi sed ab cumque laudantium. Fugit culpa expedita odio id temporibus laudantium sunt non nemo sapiente dolorum? Soluta incidunt debitis molestiae consectetur accusantium nulla aperiam ad repellendus quas assumenda eum fugiat commodi iusto corporis adipisci autem dolor rerum! Nulla blanditiis aut vel aperiam soluta placeat quia quae libero architecto officiis eius dolorem asperiores est illo praesentium. Sunt reprehenderit alias!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-12 clearfix">
+                    <h4>ДРУГИ ПОДОБНИ СТАЙ</h4>
+                    @if (Model.SimilarRooms != null)
+                    {
+                        @Html.Partial("~/Views/Home/Partials/_HomeFeaturedRooms.cshtml", Model.SimilarRooms)
+                    }
                 </div>
             </div>
             <div class="col-lg-3 clearfix">

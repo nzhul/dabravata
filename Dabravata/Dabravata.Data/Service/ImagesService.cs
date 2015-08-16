@@ -28,7 +28,7 @@ namespace Dabravata.Data.Service
             versions.Add("_indexThumb", "width=361&height=223&crop=auto&format=jpg"); //Crop to square thumbnail
             versions.Add("_detailsBigThumb", "maxwidth=336&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
             versions.Add("_detailsSmallThumb", "width=77&height=61&crop=auto&format=jpg"); //Fit inside 400x400 area, jpeg
-            versions.Add("_large", "width=1139&height=578&crop=auto&format=jpg"); //Fit inside 1900x1200 area
+            versions.Add("_large", "width=1139&height=578&crop=auto&scale=both&format=jpg"); //Fit inside 1900x1200 area
 
             int categoryId = uploadData.CategoryId;
             int roomId = uploadData.RoomId;

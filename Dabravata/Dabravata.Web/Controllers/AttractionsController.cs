@@ -27,5 +27,12 @@ namespace Dabravata.Web.Controllers
             model = this.attractionsService.GetAttractions();
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            AttractionViewModel model = this.attractionsService.GetAttractionById(id);
+            return View(model);
+        }
     }
 }
