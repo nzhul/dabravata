@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Utilities
+namespace Dabravata.Utilities
 {
     public class BulgarianTimeModelBinder : DefaultModelBinder
     {
