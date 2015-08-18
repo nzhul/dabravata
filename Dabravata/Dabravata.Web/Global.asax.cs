@@ -20,4 +20,4 @@ namespace Dabravata.Web
             ModelBinders.Binders.Add(typeof(DateTime), new BulgarianTimeModelBinder());
         }
     }
-}
+} 
