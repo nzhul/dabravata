@@ -41,6 +41,7 @@ namespace Dabravata.Data.Service
             newReservation.IsConfirmed = inputModel.IsConfirmed;
             newReservation.CustomerName = inputModel.CustomerName;
             newReservation.CustomerPhone = inputModel.CustomerPhone;
+            newReservation.CustomerEmail = inputModel.CustomerEmail;
 
             if (inputModel.SelectedRoomIds != null && inputModel.SelectedRoomIds.Count > 0)
             {
@@ -183,6 +184,7 @@ namespace Dabravata.Data.Service
                 dbReservation.DepartureDate = inputModel.DepartureDate;
                 dbReservation.IsConfirmed = inputModel.IsConfirmed;
                 dbReservation.RoomsCount = inputModel.RoomsCount;
+                dbReservation.CustomerEmail = inputModel.CustomerEmail;
 
                 foreach (var room in dbReservation.OccupiedRooms.ToList())
                 {

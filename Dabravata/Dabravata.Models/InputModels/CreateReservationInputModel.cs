@@ -46,6 +46,9 @@ namespace Dabravata.Models.InputModels
         [Display(Name = "Телефон на наемателя:")]
         public string CustomerPhone { get; set; }
 
+        [Display(Name = "Email на наемателя:")]
+        public string CustomerEmail { get; set; }
+
         public IEnumerable<RoomViewModel> AvailableRooms { get; set; }
 
         [CheckList(1, false, ErrorMessage = "Моля изберете поне една стая!")]

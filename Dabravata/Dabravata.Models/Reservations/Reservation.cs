@@ -34,6 +34,8 @@ namespace Dabravata.Models
 
         public string CustomerPhone { get; set; }
 
+        public string CustomerEmail { get; set; }
+
         public virtual ICollection<Room> OccupiedRooms
         {
             get { return this.occupiedRooms; }
