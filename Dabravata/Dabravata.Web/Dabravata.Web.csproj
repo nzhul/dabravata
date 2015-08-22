@@ -179,6 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
+    <Compile Include="Controllers\QuickReservationsController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -255,6 +256,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\attractions\lake-thumbnail.jpg" />
     <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\noimage\no-image_detailsBigThumb.jpg" />
     <Content Include="Content\images\noimage\no-image_detailsSmallThumb.jpg" />
     <Content Include="Content\images\noimage\no-image_indexThumb.jpg" />
@@ -686,10 +688,14 @@
     <Content Include="Views\Pages\Index.cshtml" />
     <Content Include="Views\Rooms\Details.cshtml" />
     <Content Include="Views\Attractions\Details.cshtml" />
+    <Content Include="Views\Shared\_QuickReservation.cshtml" />
+    <Content Include="Views\Home\QuickReservation.cshtml" />
+    <Content Include="Views\Shared\_QuickReservationScripts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\QuickReservations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,0 +1,55 @@
+﻿<div class="quick-reservation-container">
+    <div class="quick-reservation clearfix">
+        <div class="title-quick pos-center margint30">
+            <h5>БЪРЗА РЕЗЕРВАЦИЯ</h5>
+            <div class="line"></div>
+        </div>
+        <div class="reserve-form-area">
+            <form action="#" method="post" id="ajax-reservation-form">
+                <label>ПРИСТИГАНЕ</label>
+                <input type="text" id="dpd1" name="dpd1" class="date-selector" placeholder="&#xf073;" />
+                <label>ОСВОБОЖДАМАНЕ</label>
+                <input type="text" id="dpd2" name="dpd2" class="date-selector" placeholder="&#xf073;" />
+                <div class="pull-left type clearfix">
+                    <label>ВЪЗРАСТНИ</label>
+                    <select name="adult" class="pretty-select">
+                        <option selected="selected" value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="pull-left rooms clearfix">
+                    <label>ДЕЦА</label>
+                    <select name="children" class="pretty-select">
+                        <option selected="selected" value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="pull-left clearfix dab-wide-select-box">
+                    <label>ВИД СТАЯ</label>
+                    <select name="Вид на стаята" class="pretty-select room-types-ddl">
+                        <option selected="selected" value="0">Loading ...</option>
+                    </select>
+                </div>
+                <div class="pull-left clearfix dab-wide-select-box">
+                    <label>СТАЯ</label>
+                    <img class="dab-rooms-loading" style="display:none;position:absolute;float:right;margin-top:11px;margin-left:100px;" src="~/Content/images/loading.gif" />
+                    <select name="Вид на стаята" class="pretty-select rooms-ddl">
+                        <option selected="selected" value="0">Loading ...</option>
+                    </select>
+                </div>
+                <div class="pull-left search-button clearfix">
+                    <div class="button-style-1">
+                        <a id="res-submit" href="#">ТЪРСИ</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

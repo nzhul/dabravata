@@ -61,3 +61,23 @@
 {
     text-transform:uppercase;
 }
+
+.dab-wide-select-box > .sod_select {
+    width: 223px;
+    padding: 0;
+    padding-left: 10px;
+    border: solid 1px rgba(228, 178, 72, 0.6);
+    height: 30px;
+    background: transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+    padding-top: 8px;
+    margin: 0 0 0 0px;
+}
+
+.dab-wide-select-box > .sod_select .sod_list_wrapper {
+    width:223px;
+}

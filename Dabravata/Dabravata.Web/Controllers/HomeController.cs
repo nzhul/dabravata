@@ -51,5 +51,10 @@ namespace Dabravata.Web.Controllers
             var model = new ContactFormInputModel();
             return View(model);
         }
+
+        public ActionResult QuickReservation()
+        {
+            return View();
+        }
     }
 }
