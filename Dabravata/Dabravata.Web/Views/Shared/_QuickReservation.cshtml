@@ -6,47 +6,82 @@
         </div>
         <div class="reserve-form-area">
             <form action="#" method="post" id="ajax-reservation-form">
-                <label>ПРИСТИГАНЕ</label>
-                <input type="text" id="dpd1" name="dpd1" class="date-selector" placeholder="&#xf073;" />
-                <label>ОСВОБОЖДАМАНЕ</label>
-                <input type="text" id="dpd2" name="dpd2" class="date-selector" placeholder="&#xf073;" />
-                <div class="pull-left type clearfix">
-                    <label>ВЪЗРАСТНИ</label>
-                    <select name="adult" class="pretty-select">
-                        <option selected="selected" value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                <div class="reservation-view-check" >
+                    <label>ПРИСТИГАНЕ</label>
+                    <input type="text" id="dpd1" name="ArrivalDate" class="date-selector" placeholder="&#xf073;" />
+                    <label>ОСВОБОЖДАМАНЕ</label>
+                    <input type="text" id="dpd2" name="DepartureDate" class="date-selector" placeholder="&#xf073;" />
+                    <div class="pull-left type clearfix">
+                        <label>ВЪЗРАСТНИ</label>
+                        <select name="Adults" class="pretty-select">
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="pull-left rooms clearfix">
+                        <label>ДЕЦА</label>
+                        <select name="Childrens" class="pretty-select">
+                            <option selected="selected" value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="pull-left clearfix dab-wide-select-box">
+                        <label>ВИД СТАЯ</label>
+                        <select name="RoomCategoryId" class="pretty-select room-types-ddl">
+                            <option selected="selected" value="0">Loading ...</option>
+                        </select>
+                    </div>
+                    <div class="pull-left clearfix dab-wide-select-box">
+                        <label>СТАЯ</label>
+                        <img class="dab-rooms-loading" style="display:none;position:absolute;float:right;margin-top:11px;margin-left:100px;" src="~/Content/images/loading.gif" />
+                        <select name="RoomId" class="pretty-select rooms-ddl">
+                            <option selected="selected" value="0">Loading ...</option>
+                        </select>
+                    </div>
+                    <div class="pull-left search-button clearfix">
+                        <div class="button-style-1">
+                            <a class="res-submit" href="#">РЕЗЕРВИРАЙ</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="pull-left rooms clearfix">
-                    <label>ДЕЦА</label>
-                    <select name="children" class="pretty-select">
-                        <option selected="selected" value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                <div class="reservation-view-confirm" style="display:none;">
+                    <span class="label label-success">Стаята е свободна за резервация!</span>
+                    <label>ИМЕ</label>
+                    <input type="text" name="FirstName" />
+                    <label>ФАМИЛИЯ</label>
+                    <input type="text" name="LastName" />
+                    <label>ТЕЛЕФОН</label>
+                    <input type="text" name="Phone" />
+                    <label>EMAIL</label>
+                    <input type="email" name="Email" />
+                    <div class="pull-left search-button clearfix">
+                        <div class="button-style-1">
+                            <a class="confirm-reservation-submit" href="#">ПОТВЪРДИ</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="pull-left clearfix dab-wide-select-box">
-                    <label>ВИД СТАЯ</label>
-                    <select name="Вид на стаята" class="pretty-select room-types-ddl">
-                        <option selected="selected" value="0">Loading ...</option>
-                    </select>
+                <div class="reservation-view-loading" style="height:262px; display:none;">
+                    <div style="margin: 28px 0 0 90px;">
+                        <img src="~/Content/images/big-loader.gif" />
+                    </div>
+                    
                 </div>
-                <div class="pull-left clearfix dab-wide-select-box">
-                    <label>СТАЯ</label>
-                    <img class="dab-rooms-loading" style="display:none;position:absolute;float:right;margin-top:11px;margin-left:100px;" src="~/Content/images/loading.gif" />
-                    <select name="Вид на стаята" class="pretty-select rooms-ddl">
-                        <option selected="selected" value="0">Loading ...</option>
-                    </select>
-                </div>
-                <div class="pull-left search-button clearfix">
+                <div class="reservation-view-notAvailableRoom" style="height:262px; display:none;">
+                    <div class="alert alert-dismissible alert-danger text-center" style="margin-top:10px;">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Стаята е заета за посочения период!</strong>
+                        <hr />
+                        Моля изберете друг период или се свържете с нас на телефон: 08887776585!
+                    </div>
                     <div class="button-style-1">
-                        <a id="res-submit" href="#">ТЪРСИ</a>
+                        <a class="reservation-back-btn" style="margin: 0px 0 0 27px;position:relative; top:-6px;" href="#">НАЗАД</a>
                     </div>
                 </div>
             </form>

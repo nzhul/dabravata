@@ -255,6 +255,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\attractions\lake-thumbnail.jpg" />
+    <Content Include="Content\images\big-loader.gif" />
     <Content Include="Content\images\delete.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\noimage\no-image_detailsBigThumb.jpg" />

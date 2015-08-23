@@ -1,4 +1,5 @@
 ﻿using Dabravata.Models.InputModels;
+using Dabravata.Models.InputModels.FrontEnd;
 using Dabravata.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace Dabravata.Data.Service
 
         bool IsRoomAvailable(CreateReservationInputModel inputModel);
 
+        bool IsRoomAvailable(QuickReservationInputModel input);
+
         void ToggleReservationConfirmation(int reservationId, bool isReservationConfirmed);
 
         bool ReservationExists(int id);
@@ -34,5 +37,7 @@ namespace Dabravata.Data.Service
         List<int> GetSelectedRoomIds(int id);
 
         bool UpdateReservation(int id, CreateReservationInputModel inputModel);
+
+        bool CreateReservationFromFrontEnd(QuickReservationInputModel input);
     }
 }

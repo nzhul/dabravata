@@ -1,6 +1,7 @@
 ﻿using Dabravata.Data.Service.Mappers;
 using Dabravata.Models;
 using Dabravata.Models.InputModels;
+using Dabravata.Models.InputModels.FrontEnd;
 using Dabravata.Models.ViewModels;
 using Itenso.TimePeriod;
 using System;
@@ -39,9 +40,10 @@ namespace Dabravata.Data.Service
             newReservation.Adults = inputModel.Adults;
             newReservation.Childs = inputModel.Childs;
             newReservation.IsConfirmed = inputModel.IsConfirmed;
-            newReservation.CustomerName = inputModel.CustomerName;
-            newReservation.CustomerPhone = inputModel.CustomerPhone;
-            newReservation.CustomerEmail = inputModel.CustomerEmail;
+            newReservation.FirstName = inputModel.FirstName;
+            newReservation.LastName = inputModel.LastName;
+            newReservation.Phone = inputModel.Phone;
+            newReservation.Email = inputModel.Email;
 
             if (inputModel.SelectedRoomIds != null && inputModel.SelectedRoomIds.Count > 0)
             {
@@ -179,12 +181,13 @@ namespace Dabravata.Data.Service
                 dbReservation.Adults = inputModel.Adults;
                 dbReservation.ArrivalDate = inputModel.ArrivalDate;
                 dbReservation.Childs = inputModel.Childs;
-                dbReservation.CustomerName= inputModel.CustomerName;
-                dbReservation.CustomerPhone= inputModel.CustomerPhone;
+                dbReservation.FirstName = inputModel.FirstName;
+                dbReservation.LastName = inputModel.LastName;
+                dbReservation.Phone = inputModel.Phone;
+                dbReservation.Email = inputModel.Email;
                 dbReservation.DepartureDate = inputModel.DepartureDate;
                 dbReservation.IsConfirmed = inputModel.IsConfirmed;
                 dbReservation.RoomsCount = inputModel.RoomsCount;
-                dbReservation.CustomerEmail = inputModel.CustomerEmail;
 
                 foreach (var room in dbReservation.OccupiedRooms.ToList())
                 {
@@ -209,6 +212,54 @@ namespace Dabravata.Data.Service
             {
                 return false;
             }
+        }
+
+
+        public bool IsRoomAvailable(QuickReservationInputModel inputModel)
+        {
+            Room currentSelectedRoom = this.Data.Rooms.Find(inputModel.RoomId);
+            IEnumerable<Reservation> approvedReservationsWithThatRoom = this.Data.Reservations.All().Where(r => r.OccupiedRooms.Select(or => or.Id).Contains(currentSelectedRoom.Id) && r.IsConfirmed == true);
+
+            if (approvedReservationsWithThatRoom.Count() > 0)
+            {
+                foreach (var reservation in approvedReservationsWithThatRoom)
+                {
+                    TimeRange inputTimeRange = new TimeRange(inputModel.ArrivalDate, inputModel.DepartureDate);
+                    TimeRange dbTimeRange = new TimeRange(reservation.ArrivalDate, reservation.DepartureDate);
+
+                    if (inputTimeRange.OverlapsWith(dbTimeRange))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+
+        public bool CreateReservationFromFrontEnd(QuickReservationInputModel inputModel)
+        {
+            Reservation newReservation = new Reservation();
+            newReservation.ArrivalDate = inputModel.ArrivalDate;
+            newReservation.DepartureDate = inputModel.DepartureDate;
+            newReservation.Adults = inputModel.Adults;
+            newReservation.Childs = inputModel.Childrens;
+            newReservation.IsConfirmed = false;
+            newReservation.FirstName = inputModel.FirstName;
+            newReservation.LastName = inputModel.LastName;
+            newReservation.Phone = inputModel.Phone;
+            newReservation.Email = inputModel.Email;
+
+
+            Room theRoom = this.Data.Rooms.Find(inputModel.RoomId);
+            newReservation.OccupiedRooms.Add(theRoom);
+            this.Data.SaveChanges();
+
+            this.Data.Reservations.Add(newReservation);
+            this.Data.SaveChanges();
+
+            return true;
         }
     }
 }

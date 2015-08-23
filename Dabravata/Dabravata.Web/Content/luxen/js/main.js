@@ -107,7 +107,7 @@ BreadcrumbFullScreen();
 Tabs();
 Parallax();
 luxenContactForm();
-AjaxReservation();
+//AjaxReservation();
 
 /* Mobile Menu */
 $('.navigate').slicknav();
@@ -196,6 +196,7 @@ if(jQuery('#dpd1').length){
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
      
     var checkin = $('#dpd1').datepicker({
+      format: 'dd/mm/yyyy',
       onRender: function(date) {
         return date.valueOf() < now.valueOf() ? 'disabled' : '';
       }
@@ -209,6 +210,7 @@ if(jQuery('#dpd1').length){
       $('#dpd2')[0].focus();
     }).data('datepicker');
     var checkout = $('#dpd2').datepicker({
+      format: 'dd/mm/yyyy',
       onRender: function(date) {
         return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
       }

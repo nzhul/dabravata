@@ -8,6 +8,20 @@
             $(".quick-reservation-container").on('change', '.room-types-ddl', function () {
                 LoadRoomsFromSelectedCategory(this.value);
             });
+
+            $(".quick-reservation-container").on('click', '.res-submit', function () {
+                CheckRoomAvailability();
+            });
+
+            $(".quick-reservation-container").on('click', '.reservation-back-btn', function () {
+                $(".reservation-view-loading").hide();
+                $(".reservation-view-notAvailableRoom").hide();
+                $(".reservation-view-check").show();
+            });
+
+            $(".quick-reservation-container").on('click', '.confirm-reservation-submit', function () {
+                ConfirmReservation();
+            });
         });
 
         function LoadInitialRoomCategories() {
@@ -18,7 +32,6 @@
                     // Initialize loading if needed
                 },
                 success: function (roomCategories) {
-                    console.log(roomCategories)
                     if (roomCategories.length > 0) {
                         var optionsToApped;
                         for (var i = 0; i < roomCategories.length; i++) {
@@ -31,7 +44,7 @@
                     }
                 },
                 error: function (ex) {
-                    alert('Неуспешно листване на категориите!.' + ex);
+                    alert('Неуспешно листване на категориите! Моля свържете се с администратор!' + ex);
                 }
             });
             return false;
@@ -45,7 +58,6 @@
                     // Initialize loading if needed
                 },
                 success: function (rooms) {
-                    console.log(rooms)
                     if (rooms.length > 0) {
                         var optionsToApped;
                         for (var i = 0; i < rooms.length; i++) {
@@ -58,7 +70,7 @@
                     }
                 },
                 error: function (ex) {
-                    alert('Неуспешно листване на стаите!.' + ex);
+                    alert('Неуспешно листване на стаите! Моля свържете се с администратор!' + ex);
                 }
             });
             return false;
@@ -74,6 +86,7 @@
                     $(".dab-rooms-loading").show();
                 },
                 success: function (rooms) {
+                    console.log("Loading rooms from category ...");
                     $(".dab-rooms-loading").hide();
                     if (rooms.length > 0) {
                         var optionsToApped;
@@ -87,17 +100,65 @@
                     }
                 },
                 error: function (ex) {
-                    alert('Неуспешно листване на стаите!.' + ex);
+                    alert('Неуспешно листване на стаите! Моля свържете се с администратор!' + ex);
                 }
             });
             return false;
         }
 
-        function InitAllRooms() {
+    function CheckRoomAvailability() {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("CheckRoomAvailability", "QuickReservations")',
+            dataType: 'json',
+            data: $('#ajax-reservation-form').serialize(),
+            beforeSend: function () {
+                $(".reservation-view-check").hide();
+                $(".reservation-view-loading").show();
 
-        }
+            },
+            success: function (isAvailable) {
+                console.log(isAvailable);
+                if (isAvailable) {
+                    $(".reservation-view-loading").hide();
+                    $(".reservation-view-confirm").show();
+                } else {
+                    $(".reservation-view-loading").hide();
+                    $(".reservation-view-notAvailableRoom").show();
+                }
+            },
+            error: function (ex) {
+                alert('Неуспешна проверка дали стаята е свободна! Моля свържете се с администратор!' + ex);
+            }
 
-        function UpdateRoomsDropdown() {
+        });
 
-        }
+        return false;
+    }
+
+    function ConfirmReservation() {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ConfirmReservation", "QuickReservations")',
+            dataType: 'json',
+            data: $('#ajax-reservation-form').serialize(),
+            beforeSend: function () {
+                $(".reservation-view-confirm").hide();
+                $(".reservation-view-check").hide();
+                $(".reservation-view-notAvailableRoom").hide();
+                $(".reservation-view-loading").show();
+
+            },
+            success: function (status) {
+                console.log(status);
+            },
+            error: function (ex) {
+                alert('Неуспешно потвърждаване на резервацията! Моля свържете се с администратор!' + ex);
+            }
+
+        });
+
+        return false;
+    }
+
 </script>

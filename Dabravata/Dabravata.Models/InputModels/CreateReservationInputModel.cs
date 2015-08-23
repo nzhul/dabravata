@@ -41,13 +41,16 @@ namespace Dabravata.Models.InputModels
         public bool IsConfirmed { get; set; }
 
         [Display(Name = "Име на наемателя:")]
-        public string CustomerName { get; set; }
+        public string FirstName { get; set; }
+
+        [Display(Name = "Фамилия на наемателя:")]
+        public string LastName { get; set; }
 
         [Display(Name = "Телефон на наемателя:")]
-        public string CustomerPhone { get; set; }
+        public string Phone { get; set; }
 
         [Display(Name = "Email на наемателя:")]
-        public string CustomerEmail { get; set; }
+        public string Email { get; set; }
 
         public IEnumerable<RoomViewModel> AvailableRooms { get; set; }
 

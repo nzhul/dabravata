@@ -30,11 +30,13 @@ namespace Dabravata.Models
 
         public bool IsConfirmed { get; set; }
 
-        public string CustomerName { get; set; }
+        public string FirstName { get; set; }
 
-        public string CustomerPhone { get; set; }
+        public string LastName { get; set; }
 
-        public string CustomerEmail { get; set; }
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
 
         public virtual ICollection<Room> OccupiedRooms
         {

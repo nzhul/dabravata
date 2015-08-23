@@ -13,14 +13,24 @@
     <div class="row">
         <div class="col-md-7">
             <div class="form-group">
-                @Html.LabelFor(model => model.CustomerName, new { @class = "dab-input-label" })
-                @Html.ValidationMessageFor(model => model.CustomerName)
-                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: Иван иванов" } })
+                @Html.LabelFor(model => model.FirstName, new { @class = "dab-input-label" })
+                @Html.ValidationMessageFor(model => model.FirstName)
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: Иван" } })
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.CustomerPhone, new { @class = "dab-input-label" })
-                @Html.ValidationMessageFor(model => model.CustomerPhone)
-                @Html.EditorFor(model => model.CustomerPhone, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: 0889123456" } })
+                @Html.LabelFor(model => model.LastName, new { @class = "dab-input-label" })
+                @Html.ValidationMessageFor(model => model.LastName)
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: Иванов" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phone, new { @class = "dab-input-label" })
+                @Html.ValidationMessageFor(model => model.Phone)
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: 0889123456" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "dab-input-label" })
+                @Html.ValidationMessageFor(model => model.Email)
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Пр: customer@domain.com" } })
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.ArrivalDate, new { @class = "dab-input-label" })

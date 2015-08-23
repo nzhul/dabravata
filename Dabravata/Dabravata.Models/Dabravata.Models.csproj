@@ -89,6 +89,7 @@
     <Compile Include="InputModels\CreateRoomCategoryInputModel.cs" />
     <Compile Include="InputModels\CreateRoomFeatureInputModel.cs" />
     <Compile Include="InputModels\CreateRoomInputModel.cs" />
+    <Compile Include="InputModels\FrontEnd\QuickReservationInputModel.cs" />
     <Compile Include="InputModels\UploadAttractionPhotoModel.cs" />
     <Compile Include="InputModels\UploadPhotoModel.cs" />
     <Compile Include="Pages\Page.cs" />

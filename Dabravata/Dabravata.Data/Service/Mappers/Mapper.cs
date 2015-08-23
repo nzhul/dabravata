@@ -36,8 +36,10 @@ namespace Dabravata.Data.Service.Mappers
             model.DepartureDate = reservation.DepartureDate;
             model.IsConfirmed = reservation.IsConfirmed;
             model.OccupiedRooms = reservation.OccupiedRooms;
-            model.CustomerName = reservation.CustomerName;
-            model.CustomerPhone = reservation.CustomerPhone;
+            model.FirstName = reservation.FirstName;
+            model.LastName = reservation.LastName;
+            model.Phone = reservation.Phone;
+            model.Email = reservation.Email;
 
             return model;
         }
@@ -49,8 +51,10 @@ namespace Dabravata.Data.Service.Mappers
             model.ArrivalDate = dbReservation.ArrivalDate;
             model.DepartureDate = dbReservation.DepartureDate;
             model.IsConfirmed = dbReservation.IsConfirmed;
-            model.CustomerName = dbReservation.CustomerName;
-            model.CustomerPhone = dbReservation.CustomerPhone;
+            model.FirstName = dbReservation.FirstName;
+            model.LastName = dbReservation.LastName;
+            model.Phone = dbReservation.Phone;
+            model.Email = dbReservation.Email;
             model.RoomsCount = dbReservation.RoomsCount;
             model.Adults = dbReservation.Adults;
             model.Childs = dbReservation.Childs;
