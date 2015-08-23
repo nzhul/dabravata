@@ -261,5 +261,20 @@ namespace Dabravata.Data.Service
 
             return true;
         }
+
+
+        public bool DeleteReservation(int id)
+        {
+            Reservation theReservation = this.Data.Reservations.Find(id);
+            if (theReservation == null)
+            {
+                return false;
+            }
+
+            this.Data.Reservations.Delete(id);
+            this.Data.SaveChanges();
+
+            return true;
+        }
     }
 }

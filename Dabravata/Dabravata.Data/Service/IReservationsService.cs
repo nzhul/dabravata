@@ -39,5 +39,7 @@ namespace Dabravata.Data.Service
         bool UpdateReservation(int id, CreateReservationInputModel inputModel);
 
         bool CreateReservationFromFrontEnd(QuickReservationInputModel input);
+
+        bool DeleteReservation(int id);
     }
 }

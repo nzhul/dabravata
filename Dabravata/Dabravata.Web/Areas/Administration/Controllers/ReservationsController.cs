@@ -128,6 +128,22 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             return View(inputModel);
         }
 
+        public ActionResult Delete(int id)
+        {
+
+            bool isSuccessfull = this.reservationsService.DeleteReservation(id);
+            if (isSuccessfull)
+            {
+                TempData["message"] = "Успешно изтрихте резервацията!";
+                TempData["messageType"] = "success";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
         [HttpGet]
         public ActionResult ToggleConfirmation(int reservationId, bool isConfirmed)
         {

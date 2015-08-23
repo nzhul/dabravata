@@ -20,7 +20,7 @@
         <td>
             <a href="#"><img src="~/Areas/Administration/Content/img/preview-icon.png" data-toggle="tooltip" title="Преглед" /></a>
             <a href="@Url.Action("Edit", new { id = Reservation.Id })"><img src="~/Areas/Administration/Content/img/edit-icon.png" data-toggle="tooltip" title="Редакция" /></a>
-            <a href="@Url.Action("Delete", new { id = Reservation.Id })"><img src="~/Areas/Administration/Content/img/delete-icon.png" data-toggle="tooltip" title="Изтриване" /></a>
+            <a onclick="return confirm('Сигурни ли сте, че искате да изтриете?');" href="@Url.Action("Delete", new { id = Reservation.Id })"><img src="~/Areas/Administration/Content/img/delete-icon.png" data-toggle="tooltip" title="Изтриване" /></a>
         </td>
     </tr>
 }
