@@ -151,6 +151,24 @@
             },
             success: function (status) {
                 console.log(status);
+                switch (status.status) {
+                    case "success":
+                        console.log(status.status);
+                        $(".reservation-view-loading").hide();
+                        $(".reservation-view-success").show();
+                        break;
+                    case "invalidModel":
+                        console.log(status.status);
+                        $(".reservation-view-loading").hide();
+                        $(".reservation-view-confirm").show();
+                        $(".confirm-validation-label").show();
+                        break;
+                    case "errorCreatingReservation":
+                        console.log(status.status);
+                        break;
+                    default:
+
+                }
             },
             error: function (ex) {
                 alert('Неуспешно потвърждаване на резервацията! Моля свържете се с администратор!' + ex);

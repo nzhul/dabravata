@@ -6,7 +6,7 @@
         </div>
         <div class="reserve-form-area">
             <form action="#" method="post" id="ajax-reservation-form">
-                <div class="reservation-view-check" >
+                <div class="reservation-view-check">
                     <label>ПРИСТИГАНЕ</label>
                     <input type="text" id="dpd1" name="ArrivalDate" class="date-selector" placeholder="&#xf073;" />
                     <label>ОСВОБОЖДАМАНЕ</label>
@@ -47,12 +47,13 @@
                     </div>
                     <div class="pull-left search-button clearfix">
                         <div class="button-style-1">
-                            <a class="res-submit" href="#">РЕЗЕРВИРАЙ</a>
+                            <a class="res-submit" >РЕЗЕРВИРАЙ</a>
                         </div>
                     </div>
                 </div>
                 <div class="reservation-view-confirm" style="display:none;">
                     <span class="label label-success">Стаята е свободна за резервация!</span>
+                    <span class="label label-danger confirm-validation-label" style="display:none;">Моля попълнете полетата!</span>
                     <label>ИМЕ</label>
                     <input type="text" name="FirstName" />
                     <label>ФАМИЛИЯ</label>
@@ -63,7 +64,7 @@
                     <input type="email" name="Email" />
                     <div class="pull-left search-button clearfix">
                         <div class="button-style-1">
-                            <a class="confirm-reservation-submit" href="#">ПОТВЪРДИ</a>
+                            <a class="confirm-reservation-submit">ПОТВЪРДИ</a>
                         </div>
                     </div>
                 </div>
@@ -73,15 +74,22 @@
                     </div>
                     
                 </div>
+                <div class="reservation-view-success" style="height:262px;display:none;">
+                    
+                    <div style="width:225px;height:280px;background-color: rgba(255, 255, 255, 0.7);padding-top:45px;margin-top:20px;">
+                        <h5 class="text-center" style="color:black;font-size:16px;line-height:20px;text-transform:uppercase;font-weight:bold;">Резервацията беше <br/>приета успешно!</h5>
+                        <i style="color:#238902;font-size:60px;margin: 23px 0 0 80px;" class="fa fa-check-square"></i>
+                        <h5 class="text-center" style="color:black;font-size:12px;line-height:20px;text-transform:uppercase;margin-top:25px;">Ще се свържем с вас<br/> въжможно най-скоро!</h5>
+                    </div>
+                </div>
                 <div class="reservation-view-notAvailableRoom" style="height:262px; display:none;">
-                    <div class="alert alert-dismissible alert-danger text-center" style="margin-top:10px;">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
+                    <div class="alert alert-danger text-center" style="margin-top:10px;">
                         <strong>Стаята е заета за посочения период!</strong>
                         <hr />
                         Моля изберете друг период или се свържете с нас на телефон: 08887776585!
                     </div>
                     <div class="button-style-1">
-                        <a class="reservation-back-btn" style="margin: 0px 0 0 27px;position:relative; top:-6px;" href="#">НАЗАД</a>
+                        <a class="reservation-back-btn" style="margin: 0px 0 0 27px;position:relative; top:-6px;">НАЗАД</a>
                     </div>
                 </div>
             </form>

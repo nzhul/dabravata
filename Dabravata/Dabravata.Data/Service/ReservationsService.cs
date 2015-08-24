@@ -7,6 +7,7 @@ using Itenso.TimePeriod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -258,6 +259,22 @@ namespace Dabravata.Data.Service
 
             this.Data.Reservations.Add(newReservation);
             this.Data.SaveChanges();
+
+            string sender = "system@dabravata.com";
+            string receiver = "manager@dabravata.com";
+
+            MailMessage mailMessage = new MailMessage(sender, receiver);
+            mailMessage.IsBodyHtml = true;
+            mailMessage.Subject = "Запитване за резервация: " + theRoom.RoomNumber + ": " + theRoom.Name;
+            mailMessage.Body = "Име: " + (newReservation.FirstName != null ? newReservation.FirstName : "--липсва--") + "<br/>" +
+                               "Фамилия: " + (newReservation.LastName != null ? newReservation.LastName : "--липсва--") + "<br/>" +
+                               "Email: " + (newReservation.Email != null ? newReservation.Email : "--липсва--") + "<br/>" +
+                               "Телефон: " + (newReservation.Phone != null ? newReservation.Phone : "--липсва--") + "<br/><br/>" +
+                               "Стая: " + theRoom.RoomNumber + ": " + theRoom.Name;
+
+            SmtpClient smtpClient = new SmtpClient();
+
+            smtpClient.Send(mailMessage);
 
             return true;
         }
