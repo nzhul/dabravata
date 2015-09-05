@@ -81,3 +81,35 @@
 .dab-wide-select-box > .sod_select .sod_list_wrapper {
     width:223px;
 }
+
+
+.contact-form-box input, .contact-form-box textarea  {
+    border: 1px solid light-gray;
+    border-radius: 0;
+    width:121%;
+}
+
+.contact-form-box textarea  {
+    min-height: 200px;
+}
+
+.long-ddl > .sod_select {
+    width: 100px;
+}
+
+.short-ddl > .sod_select {
+    width: 100px;
+}
+
+
+.short-ddl .sod_select {
+    margin-left: 0px;
+}
+
+.short-ddl > .sod_select .sod_list_wrapper, .long-ddl > .sod_select .sod_list_wrapper {
+    width: 100px;
+}
+
+.book-slider .quick-reservation-container {
+    background:none;
+}

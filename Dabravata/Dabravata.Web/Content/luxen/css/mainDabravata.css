@@ -678,7 +678,7 @@ h6 {
 
 .book-slider ul li {
     float: left;
-    margin-right: 55px;
+    margin-right: 25px;
 }
 
 .book-slider ul li.sec-input {
@@ -723,11 +723,11 @@ h6 {
 }
 
 .book-slider input, .book-slider ul li.li-input{
-    width: 200px;
+    width: 160px;
 }
 
 .book-slider select, .book-slider ul li.li-select{
-    width: 75px;
+    width: 100px;
 }
 
 label {

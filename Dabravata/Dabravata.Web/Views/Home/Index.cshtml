@@ -47,54 +47,106 @@
         <div class="book-slider">
             <div class="container">
                 <div class="row pos-center">
-                    <div class="reserve-form-area">
+                    <div class="reserve-form-area quick-reservation-container">
                         <form action="#" method="post" id="ajax-reservation-form">
-                            <ul class="clearfix">
-                                <li class="li-input">
-                                    <label>ПРИСТИГАНЕ</label>
-                                    <input type="text" id="dpd1" name="dpd1" class="date-selector" placeholder="&#xf073;" />
-                                </li>
-                                <li class="li-input">
-                                    <label>ОСВОБОЖДАВАНЕ</label>
-                                    <input type="text" id="dpd2" name="dpd2" class="date-selector" placeholder="&#xf073;" />
-                                </li>
-                                <li class="li-select">
-                                    <label>СТАИ</label>
-                                    <select name="rooms" class="pretty-select">
-                                        <option selected="selected" value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </li>
-                                <li class="li-select">
-                                    <label>ВЪЗРАСТНИ</label>
-                                    <select name="adult" class="pretty-select">
-                                        <option selected="selected" value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </li>
-                                <li class="li-select">
-                                    <label>ДЕЦА</label>
-                                    <select name="children" class="pretty-select">
-                                        <option selected="selected" value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <div class="button-style-1 margint40">
-                                        <a id="res-submit" href="#"><i class="fa fa-search"></i>ТЪРСИ</a>
+                            <div class="reservation-view-check">
+                                <ul class="clearfix">
+                                    <li class="li-input">
+                                        <label>ПРИСТИГАНЕ</label>
+                                        <input type="text" id="dpd1" name="ArrivalDate" class="date-selector" placeholder="&#xf073;" />
+                                    </li>
+                                    <li class="li-input">
+                                        <label>ОСВОБОЖДАМАНЕ</label>
+                                        <input type="text" id="dpd2" name="DepartureDate" class="date-selector" placeholder="&#xf073;" />
+                                    </li>
+                                    <li class="li-select short-ddl">
+                                        <label>ВЪЗРАСТНИ</label>
+                                        <select name="Adults" class="pretty-select">
+                                            <option selected="selected" value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </li>
+                                    <li class="li-select short-ddl">
+                                        <label>ДЕЦА</label>
+                                        <select name="Childrens" class="pretty-select">
+                                            <option selected="selected" value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </li>
+                                    <li class="li-select long-ddl">
+                                        <label>ВИД СТАЯ</label>
+                                        <select name="RoomCategoryId" class="pretty-select room-types-ddl long-ddl">
+                                            <option selected="selected" value="0">- - -</option>
+                                        </select>
+                                    </li>
+                                    <li class="li-select long-ddl">
+                                        <label>СТАЯ</label>
+                                        <img class="dab-rooms-loading" style="display:none;position:absolute;float:right;margin-top:11px;margin-left:100px;" src="~/Content/images/loading.gif" />
+                                        <select name="RoomId" class="pretty-select rooms-ddl">
+                                            <option selected="selected" value="0">- - -</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <div class="button-style-1 margint40">
+                                            <a class="res-submit" style="cursor:pointer;"><i class="fa fa-search"></i>ПРОВЕРИ</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="reservation-view-confirm" style="display:none;">
+                                <span class="label label-danger confirm-validation-label" style="display:none;">Моля попълнете полетата!</span>
+                                <ul class="clearfix">
+                                    <li class="li-input">
+                                        <label>ИМЕ</label>
+                                        <input type="text" name="FirstName" />
+                                    </li>
+                                    <li class="li-input">
+                                        <label>ФАМИЛИЯ</label>
+                                        <input type="text" name="LastName" />
+                                    </li>
+                                    <li class="li-input">
+                                        <label>ТЕЛЕФОН</label>
+                                        <input type="text" name="Phone" />
+                                    </li>
+                                    <li class="li-input">
+                                        <label>EMAIL</label>
+                                        <input type="email" name="Email" />
+                                    </li>
+                                    <li>
+                                        <div class="button-style-1" style="margin-top:38px;">
+                                            <a class="confirm-reservation-submit" style="cursor: pointer;">ПОТВЪРДИ</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="reservation-view-loading" style="display:none;">
+                                <div style="margin: 12px 0 0 0px;">
+                                    <img src="~/Content/images/big-loader.gif" />
+                                </div>
+                            </div>
+                            <div class="reservation-view-success" style="display:none;">
+                                <div style="width:825px;background-color: rgba(255, 255, 255, 0.7);margin: 0 auto;margin-top:-12px;padding-bottom:15px;">
+                                    <h5 class="text-center" style="color:black;font-size:16px;line-height:20px;text-transform:uppercase;font-weight:bold;"> <i style="color:#238902;font-size:20px;margin: 23px 0 0 80px;" class="fa fa-check-square"></i>&nbsp; Резервацията беше приета успешно!</h5>
+                                    <h5 style="color:black;font-size:10px;line-height:20px;text-transform:uppercase;font-weight:bold;position:relative;left:45px;">Ще се свържем с вас въжможно най-скоро!</h5>
+                                </div>
+                            </div>
+                            <div class="reservation-view-notAvailableRoom" style="display:none;">
+                                <div class="alert alert-danger text-center" style="margin-top:10px;border-radius: 0px;">
+                                    <strong>Стаята е заета за посочения период!</strong>
+                                    Моля изберете друг период или се свържете с нас на телефон: 08887776585!
+                                    <div class="button-style-1 pull-right" style="margin-top:5px;">
+                                        <a class="reservation-back-btn" style="margin: 0px 0 0 27px;position:relative; top:-6px;left:-50px;cursor:pointer;">НАЗАД</a>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -219,3 +271,7 @@
             </div>
         </div>
     </div>
+
+@section scripts {
+@Html.Partial("~/Views/Shared/_QuickReservationScripts.cshtml")
+}

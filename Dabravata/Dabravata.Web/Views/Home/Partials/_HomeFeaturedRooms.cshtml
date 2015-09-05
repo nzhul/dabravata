@@ -40,10 +40,10 @@
                 <p>@Room.Summary <a href="@Url.Action("Details", "Rooms", new { id = @Room.Id })">[...]</a></p>
             </div>
             <div class="room-bottom">
-                <div class="pull-left"><h4>@Room.Price $<span class="room-bottom-time">/ Ден</span></h4></div>
+                <div class="pull-left"><h4>@Room.Price лв<span class="room-bottom-time">/ Ден</span></h4></div>
                 <div class="pull-right">
                     <div class="button-style-1">
-                        <a href="#">РЕЗЕРВИРАЙ</a>
+                        <a href="@Url.Action("Details", "Rooms", new { id = @Room.Id })">РЕЗЕРВИРАЙ</a>
                     </div>
                 </div>
             </div>

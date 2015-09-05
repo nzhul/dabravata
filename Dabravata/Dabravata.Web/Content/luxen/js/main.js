@@ -106,7 +106,7 @@ $(document).ready(function() {
 BreadcrumbFullScreen();
 Tabs();
 Parallax();
-luxenContactForm();
+//luxenContactForm();
 //AjaxReservation();
 
 /* Mobile Menu */

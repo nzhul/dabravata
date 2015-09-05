@@ -270,6 +270,8 @@ namespace Dabravata.Data.Service
                                "Фамилия: " + (newReservation.LastName != null ? newReservation.LastName : "--липсва--") + "<br/>" +
                                "Email: " + (newReservation.Email != null ? newReservation.Email : "--липсва--") + "<br/>" +
                                "Телефон: " + (newReservation.Phone != null ? newReservation.Phone : "--липсва--") + "<br/><br/>" +
+                               "Настаняване: " + (newReservation.Phone != null ? newReservation.ArrivalDate.ToShortDateString() : "--липсва--") + "<br/><br/>" +
+                               "Освобождаване: " + (newReservation.Phone != null ? newReservation.DepartureDate.ToShortDateString() : "--липсва--") + "<br/><br/>" +
                                "Стая: " + theRoom.RoomNumber + ": " + theRoom.Name;
 
             SmtpClient smtpClient = new SmtpClient();

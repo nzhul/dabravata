@@ -119,15 +119,15 @@
                                             }
                                         }
                                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")"><a href="@Url.Action("Contact", "Home")">КОНТАКТИ</a></li>
-                                        <li class="parent-menu">
+                                        @*<li class="parent-menu">
                                             <a href="@Url.Action("QuickReservation", "Home")">РЕЗЕРВАЦИИ</a>
-                                        </li>
+                                        </li>*@
                                     </ul>
                                 </nav>
                             </div>
                             <div class="pull-right">
                                 <div class="button-style-1 margint45">
-                                    <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-calendar"></i>РЕЗЕРВИРАЙ</a>
+                                    <a href="@Url.Action("Index", "Rooms")" @*data-toggle="modal"*@ data-target="#myModal"><i class="fa fa-calendar"></i>РЕЗЕРВИРАЙ</a>
                                 </div>
                             </div>
                         </div>
