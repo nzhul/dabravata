@@ -258,6 +258,7 @@
     <Content Include="Content\images\big-loader.gif" />
     <Content Include="Content\images\delete.png" />
     <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\noimage\no-image_detailsBigThumb.jpg" />
     <Content Include="Content\images\noimage\no-image_detailsSmallThumb.jpg" />
     <Content Include="Content\images\noimage\no-image_indexThumb.jpg" />
