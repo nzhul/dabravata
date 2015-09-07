@@ -60,9 +60,20 @@
                 success: function (rooms) {
                     if (rooms.length > 0) {
                         var optionsToApped;
+                        var isSelected;
+                        var currentUrl = window.location.href;
+                        var roomId;
+                        if (currentUrl.indexOf('Rooms')) {
+                            var urlArray = currentUrl.split('/');
+                            roomId = urlArray[urlArray.length - 1];
+                        }
                         for (var i = 0; i < rooms.length; i++) {
-                            var currentOption = '<option value="' + rooms[i].Value + '">' + rooms[i].Text + '</option>';
+                            if (rooms[i].Value == roomId) {
+                                isSelected = "selected=\"selected\"";
+                            }
+                            var currentOption = '<option '+ isSelected +' value="' + rooms[i].Value + '">' + rooms[i].Text + '</option>';
                             optionsToApped += currentOption;
+                            isSelected = "";
                         }
                         $(".rooms-ddl").empty().append(optionsToApped).selectOrDie("update");
                     } else {
@@ -90,9 +101,20 @@
                     $(".dab-rooms-loading").hide();
                     if (rooms.length > 0) {
                         var optionsToApped;
+                        var isSelected;
+                        var currentUrl = window.location.href;
+                        var roomId;
+                        if (currentUrl.indexOf('Rooms')) {
+                            var urlArray = currentUrl.split('/');
+                            roomId = urlArray[urlArray.length - 1];
+                        }
                         for (var i = 0; i < rooms.length; i++) {
+                            if (rooms[i].Value == roomId) {
+                                isSelected = "selected=\"selected\"";
+                            }
                             var currentOption = '<option value="' + rooms[i].Value + '">' + rooms[i].Text + '</option>';
                             optionsToApped += currentOption;
+                            isSelected = "";
                         }
                         $(".rooms-ddl").empty().append(optionsToApped).selectOrDie("update");
                     } else {
