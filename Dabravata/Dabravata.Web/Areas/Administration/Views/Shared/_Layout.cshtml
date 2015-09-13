@@ -9,6 +9,8 @@
     @*<link rel="stylesheet" media="all" type="text/css" href="jquery-ui-timepicker-addon.css" />*@
     <link href="~/Areas/Administration/Content/datetimepicker/jquery-ui-timepicker-addon.css" rel="stylesheet" />
 
+    @RenderSection("styles", false)
+
 </head>
 <body style="background-color: lightgray;">
     <div class="container body-content" style="background-color: #f3f3f3;">
@@ -39,6 +41,7 @@
                     <a href="@Url.Action("Index", "RoomFeatures")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "RoomFeatures" ? "active" : "")">Удобства</a>
                     <a href="@Url.Action("Index", "Attractions")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "Attractions" ? "active" : "")">Атракции</a>
                     <a href="@Url.Action("Index", "Pages")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "Pages" ? "active" : "")">Страници</a>
+                    <a href="@Url.Action("Index", "Gallery")" class="btn btn-default @(ViewContext.RouteData.Values["Controller"].ToString() == "Gallery" ? "active" : "")">Галерия</a>
                 </div>
                 <hr />
                 <div class="container">

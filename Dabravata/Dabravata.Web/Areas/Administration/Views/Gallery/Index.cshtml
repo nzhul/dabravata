@@ -1,0 +1,446 @@
+﻿@{
+    ViewBag.Title = "Галерия";
+}
+
+
+@section styles {
+    @Styles.Render("~/bundles/unitegallery-styles")
+    @Styles.Render("~/bundles/dropzone-styles")
+}
+
+<h1>@ViewBag.Title</h1>
+
+@*<div class="row">
+    <div class="col-md-12">
+        <div class="well text-center">
+            Drag and drop new images here!
+        </div>
+    </div>
+</div>*@
+
+<div class="row">
+@using (Html.BeginForm("SaveUploadedFile", "Gallery", FormMethod.Post,
+                            new { enctype = "multipart/form-data", @class="dropzone" }))
+{
+    
+}
+</div>
+
+<div id="gallery" style="display:none;">
+
+    <a href="http://unitegallery.net">
+        <img alt="Lemon Slice"
+             src="/Uploads/images/thumbs/tile1.jpg"
+             data-image="/Uploads/images/big/tile1.jpg"
+             data-description="This is a Lemon Slice"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Peppers"
+             src="/Uploads/images/thumbs/tile2.jpg"
+             data-image="/Uploads/images/big/tile2.jpg"
+             data-description="Those are peppers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Keys"
+             src="/Uploads/images/thumbs/tile3.jpg"
+             data-image="/Uploads/images/big/tile3.jpg"
+             data-description="Those are keys"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Friuts in cup"
+             src="/Uploads/images/thumbs/tile4.jpg"
+             data-image="/Uploads/images/big/tile4.jpg"
+             data-description="Those are friuts in a cup"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Yellow Flowers"
+             src="/Uploads/images/thumbs/tile5.jpg"
+             data-image="/Uploads/images/big/tile5.jpg"
+             data-description="Those are yellow flowers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Butterfly"
+             src="/Uploads/images/thumbs/tile6.jpg"
+             data-image="/Uploads/images/big/tile6.jpg"
+             data-description="This is butterfly"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Boat"
+             src="/Uploads/images/thumbs/tile7.jpg"
+             data-image="/Uploads/images/big/tile7.jpg"
+             data-description="This is a boat"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Woman"
+             src="/Uploads/images/thumbs/tile8.jpg"
+             data-image="/Uploads/images/big/tile8.jpg"
+             data-description="This is a woman"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Cup Of Coffee"
+             src="/Uploads/images/thumbs/tile9.jpg"
+             data-image="/Uploads/images/big/tile9.jpg"
+             data-description="This is cup of coffee"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Iphone Back"
+             src="/Uploads/images/thumbs/tile10.jpg"
+             data-image="/Uploads/images/big/tile10.jpg"
+             data-description="This is iphone back"
+             style="display:none">
+    </a>
+    <a href="http://unitegallery.net">
+        <img alt="Lemon Slice"
+             src="/Uploads/images/thumbs/tile1.jpg"
+             data-image="/Uploads/images/big/tile1.jpg"
+             data-description="This is a Lemon Slice"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Peppers"
+             src="/Uploads/images/thumbs/tile2.jpg"
+             data-image="/Uploads/images/big/tile2.jpg"
+             data-description="Those are peppers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Keys"
+             src="/Uploads/images/thumbs/tile3.jpg"
+             data-image="/Uploads/images/big/tile3.jpg"
+             data-description="Those are keys"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Friuts in cup"
+             src="/Uploads/images/thumbs/tile4.jpg"
+             data-image="/Uploads/images/big/tile4.jpg"
+             data-description="Those are friuts in a cup"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Yellow Flowers"
+             src="/Uploads/images/thumbs/tile5.jpg"
+             data-image="/Uploads/images/big/tile5.jpg"
+             data-description="Those are yellow flowers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Butterfly"
+             src="/Uploads/images/thumbs/tile6.jpg"
+             data-image="/Uploads/images/big/tile6.jpg"
+             data-description="This is butterfly"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Boat"
+             src="/Uploads/images/thumbs/tile7.jpg"
+             data-image="/Uploads/images/big/tile7.jpg"
+             data-description="This is a boat"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Woman"
+             src="/Uploads/images/thumbs/tile8.jpg"
+             data-image="/Uploads/images/big/tile8.jpg"
+             data-description="This is a woman"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Cup Of Coffee"
+             src="/Uploads/images/thumbs/tile9.jpg"
+             data-image="/Uploads/images/big/tile9.jpg"
+             data-description="This is cup of coffee"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Iphone Back"
+             src="/Uploads/images/thumbs/tile10.jpg"
+             data-image="/Uploads/images/big/tile10.jpg"
+             data-description="This is iphone back"
+             style="display:none">
+    </a>
+    <a href="http://unitegallery.net">
+        <img alt="Lemon Slice"
+             src="/Uploads/images/thumbs/tile1.jpg"
+             data-image="/Uploads/images/big/tile1.jpg"
+             data-description="This is a Lemon Slice"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Peppers"
+             src="/Uploads/images/thumbs/tile2.jpg"
+             data-image="/Uploads/images/big/tile2.jpg"
+             data-description="Those are peppers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Keys"
+             src="/Uploads/images/thumbs/tile3.jpg"
+             data-image="/Uploads/images/big/tile3.jpg"
+             data-description="Those are keys"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Friuts in cup"
+             src="/Uploads/images/thumbs/tile4.jpg"
+             data-image="/Uploads/images/big/tile4.jpg"
+             data-description="Those are friuts in a cup"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Yellow Flowers"
+             src="/Uploads/images/thumbs/tile5.jpg"
+             data-image="/Uploads/images/big/tile5.jpg"
+             data-description="Those are yellow flowers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Butterfly"
+             src="/Uploads/images/thumbs/tile6.jpg"
+             data-image="/Uploads/images/big/tile6.jpg"
+             data-description="This is butterfly"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Boat"
+             src="/Uploads/images/thumbs/tile7.jpg"
+             data-image="/Uploads/images/big/tile7.jpg"
+             data-description="This is a boat"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Woman"
+             src="/Uploads/images/thumbs/tile8.jpg"
+             data-image="/Uploads/images/big/tile8.jpg"
+             data-description="This is a woman"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Cup Of Coffee"
+             src="/Uploads/images/thumbs/tile9.jpg"
+             data-image="/Uploads/images/big/tile9.jpg"
+             data-description="This is cup of coffee"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Iphone Back"
+             src="/Uploads/images/thumbs/tile10.jpg"
+             data-image="/Uploads/images/big/tile10.jpg"
+             data-description="This is iphone back"
+             style="display:none">
+    </a>
+    <a href="http://unitegallery.net">
+        <img alt="Lemon Slice"
+             src="/Uploads/images/thumbs/tile1.jpg"
+             data-image="/Uploads/images/big/tile1.jpg"
+             data-description="This is a Lemon Slice"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Peppers"
+             src="/Uploads/images/thumbs/tile2.jpg"
+             data-image="/Uploads/images/big/tile2.jpg"
+             data-description="Those are peppers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Keys"
+             src="/Uploads/images/thumbs/tile3.jpg"
+             data-image="/Uploads/images/big/tile3.jpg"
+             data-description="Those are keys"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Friuts in cup"
+             src="/Uploads/images/thumbs/tile4.jpg"
+             data-image="/Uploads/images/big/tile4.jpg"
+             data-description="Those are friuts in a cup"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Yellow Flowers"
+             src="/Uploads/images/thumbs/tile5.jpg"
+             data-image="/Uploads/images/big/tile5.jpg"
+             data-description="Those are yellow flowers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Butterfly"
+             src="/Uploads/images/thumbs/tile6.jpg"
+             data-image="/Uploads/images/big/tile6.jpg"
+             data-description="This is butterfly"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Boat"
+             src="/Uploads/images/thumbs/tile7.jpg"
+             data-image="/Uploads/images/big/tile7.jpg"
+             data-description="This is a boat"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Woman"
+             src="/Uploads/images/thumbs/tile8.jpg"
+             data-image="/Uploads/images/big/tile8.jpg"
+             data-description="This is a woman"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Cup Of Coffee"
+             src="/Uploads/images/thumbs/tile9.jpg"
+             data-image="/Uploads/images/big/tile9.jpg"
+             data-description="This is cup of coffee"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Iphone Back"
+             src="/Uploads/images/thumbs/tile10.jpg"
+             data-image="/Uploads/images/big/tile10.jpg"
+             data-description="This is iphone back"
+             style="display:none">
+    </a>
+    <a href="http://unitegallery.net">
+        <img alt="Lemon Slice"
+             src="/Uploads/images/thumbs/tile1.jpg"
+             data-image="/Uploads/images/big/tile1.jpg"
+             data-description="This is a Lemon Slice"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Peppers"
+             src="/Uploads/images/thumbs/tile2.jpg"
+             data-image="/Uploads/images/big/tile2.jpg"
+             data-description="Those are peppers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Keys"
+             src="/Uploads/images/thumbs/tile3.jpg"
+             data-image="/Uploads/images/big/tile3.jpg"
+             data-description="Those are keys"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Friuts in cup"
+             src="/Uploads/images/thumbs/tile4.jpg"
+             data-image="/Uploads/images/big/tile4.jpg"
+             data-description="Those are friuts in a cup"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Yellow Flowers"
+             src="/Uploads/images/thumbs/tile5.jpg"
+             data-image="/Uploads/images/big/tile5.jpg"
+             data-description="Those are yellow flowers"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Butterfly"
+             src="/Uploads/images/thumbs/tile6.jpg"
+             data-image="/Uploads/images/big/tile6.jpg"
+             data-description="This is butterfly"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Boat"
+             src="/Uploads/images/thumbs/tile7.jpg"
+             data-image="/Uploads/images/big/tile7.jpg"
+             data-description="This is a boat"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Woman"
+             src="/Uploads/images/thumbs/tile8.jpg"
+             data-image="/Uploads/images/big/tile8.jpg"
+             data-description="This is a woman"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Cup Of Coffee"
+             src="/Uploads/images/thumbs/tile9.jpg"
+             data-image="/Uploads/images/big/tile9.jpg"
+             data-description="This is cup of coffee"
+             style="display:none">
+    </a>
+
+    <a href="http://unitegallery.net">
+        <img alt="Iphone Back"
+             src="/Uploads/images/thumbs/tile10.jpg"
+             data-image="/Uploads/images/big/tile10.jpg"
+             data-description="This is iphone back"
+             style="display:none">
+    </a>
+
+
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/unitegallery-scripts")
+    @Scripts.Render("~/bundles/dropzone-scripts")
+    
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+
+        jQuery("#gallery").unitegallery({
+            tile_enable_textpanel: true,
+        });
+
+    });
+
+</script>
+}
