@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Dabravata.Data.Service
 {
@@ -148,6 +149,53 @@ namespace Dabravata.Data.Service
             Room randomRoom = this.Data.Rooms.All().OrderBy(r => Guid.NewGuid()).FirstOrDefault();
 
             return randomRoom.Images.Where(i => !i.ImagePath.EndsWith("no-image"));
+        }
+
+
+        public bool UploadGalleryImage(HttpPostedFileBase file)
+        {
+            Dictionary<string, string> versions = new Dictionary<string, string>();
+            //Define the versions to generate
+            versions.Add("_thumb", "width=280&height=200&crop=auto&format=jpg");
+            versions.Add("_large", "width=827&crop=auto&format=jpg");
+
+            if (file != null)
+            {
+                var originalFileName = file.FileName.Split('.')[0].Replace(' ', '_');
+                var originalFileExtension = file.FileName.Split('.')[1];
+
+                originalFileName += Guid.NewGuid().ToString();
+
+                string uploadFolder = System.Web.HttpContext.Current.Server.MapPath("~/Uploads/Gallery");
+                if (!Directory.Exists(uploadFolder)) Directory.CreateDirectory(uploadFolder);
+
+                foreach (string suffix in versions.Keys)
+                {
+                    string fileName = Path.Combine(uploadFolder, originalFileName + suffix);
+
+                    fileName = ImageBuilder.Current.Build(file, fileName, new ResizeSettings(versions[suffix]), false, true);
+                }
+
+                var newImage = new Image
+                {
+                    ImagePath = "Uploads\\Gallery\\" + originalFileName,
+                    ImageExtension = originalFileExtension,
+                    IsPrimary = true,
+                    DateAdded = DateTime.Now,
+                    IsGalleryImage = true
+                };
+
+                this.Data.Images.Add(newImage);
+                this.Data.SaveChanges();
+            }
+
+            return true;
+        }
+
+
+        public IEnumerable<Image> GetGalleryImage()
+        {
+            return this.Data.Images.All().Where(i => i.IsGalleryImage == true);
         }
     }
 }

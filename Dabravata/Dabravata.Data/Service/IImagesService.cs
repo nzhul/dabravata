@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Dabravata.Data.Service
 {
@@ -17,5 +18,9 @@ namespace Dabravata.Data.Service
         bool MakePrimary(int imageId, int productId);
 
         IEnumerable<Image> GetRandomRoomImages();
+
+        bool UploadGalleryImage(HttpPostedFileBase file);
+
+        IEnumerable<Image> GetGalleryImage();
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Dabravata.Models.Image>
+@{
     ViewBag.Title = "Галерия";
 }
 
@@ -28,7 +29,20 @@
 
 <div id="gallery" style="display:none;">
 
-    <a href="http://unitegallery.net">
+    @foreach (var image in Model)
+    {
+        var imgPathThumb = image.ImagePath + "_thumb.jpg";
+        var imgPathLarge = image.ImagePath + "_large.jpg";
+        <a href="http://unitegallery.net">
+            <img alt="Lemon Slice"
+                 src="../@imgPathThumb"
+                 data-image="../@imgPathLarge"
+                 data-description="This is a Lemon Slice"
+                 style="display:none">
+        </a>
+    }
+
+    @*<a href="http://unitegallery.net">
         <img alt="Lemon Slice"
              src="/Uploads/images/thumbs/tile1.jpg"
              data-image="/Uploads/images/big/tile1.jpg"
@@ -422,7 +436,7 @@
              data-image="/Uploads/images/big/tile10.jpg"
              data-description="This is iphone back"
              style="display:none">
-    </a>
+    </a>*@
 
 
 </div>

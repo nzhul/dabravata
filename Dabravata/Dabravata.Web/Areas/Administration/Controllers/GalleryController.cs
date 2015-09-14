@@ -1,4 +1,7 @@
-﻿using Dabravata.Models.InputModels;
+﻿using Dabravata.Data;
+using Dabravata.Data.Service;
+using Dabravata.Models;
+using Dabravata.Models.InputModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,32 +12,27 @@ namespace Dabravata.Web.Areas.Administration.Controllers
 {
     public class GalleryController : Controller
     {
+        private readonly IImagesService imagesService;
+        private readonly IUoWData data;
+
+        public GalleryController()
+        {
+            this.data = new UoWData();
+            this.imagesService = new ImagesService(data);
+        }
+
         // GET: Administration/Gallery
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Image> images = this.imagesService.GetGalleryImage();
+            return View(images);
         }
 
-        public ActionResult SaveUploadedFile()
+        public ActionResult SaveUploadedFile(HttpPostedFileBase file)
         {
-            //IMPORTANT - The action is executed for every image upload!!!!
+            this.imagesService.UploadGalleryImage(file);
 
-            bool isSavedSuccessfully = true;
-            string fName = "";
-
-            foreach (string fileName in Request.Files)
-            {
-                HttpPostedFileBase file = Request.Files[fileName];
-                //Save file content goes here
-                fName = file.FileName;
-                if (file != null && file.ContentLength > 0)
-                {
-                    var asd = 1;
-                }
-
-            }
-
-            return Json(new { Message = "Succ: " + fName });
+            return Json(new { Message = "Succ: " + "fNameVariable" });
         }
     }
 }

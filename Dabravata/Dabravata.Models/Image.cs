@@ -17,5 +17,7 @@ namespace Dabravata.Models
         public bool IsPrimary { get; set; }
 
         public DateTime DateAdded { get; set; }
+
+        public bool IsGalleryImage { get; set; }
     }
 }
