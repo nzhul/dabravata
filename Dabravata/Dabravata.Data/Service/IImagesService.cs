@@ -22,5 +22,7 @@ namespace Dabravata.Data.Service
         bool UploadGalleryImage(HttpPostedFileBase file);
 
         IEnumerable<Image> GetGalleryImage();
+
+        bool DeleteGalleryImage(int imageId);
     }
 }

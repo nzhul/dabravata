@@ -15,8 +15,6 @@ namespace Dabravata.Data.Service
     {
         private readonly IUoWData Data;
 
-        private static Random rand;
-
         public ImagesService(IUoWData data)
         {
             this.Data = data;
@@ -156,8 +154,17 @@ namespace Dabravata.Data.Service
         {
             Dictionary<string, string> versions = new Dictionary<string, string>();
             //Define the versions to generate
-            versions.Add("_thumb", "width=280&height=200&crop=auto&format=jpg");
-            versions.Add("_large", "width=827&crop=auto&format=jpg");
+
+            if (file.FileName.Length % 2 == 0)
+            {
+                versions.Add("_thumb", "width=280&height=340&crop=auto&format=jpg");
+            }
+            else
+            {
+                versions.Add("_thumb", "width=300&height=240&crop=auto&format=jpg");
+            }
+
+            versions.Add("_large", "maxwidth=1200&maxheight=1200&format=jpg");
 
             if (file != null)
             {
@@ -196,6 +203,35 @@ namespace Dabravata.Data.Service
         public IEnumerable<Image> GetGalleryImage()
         {
             return this.Data.Images.All().Where(i => i.IsGalleryImage == true);
+        }
+
+
+        public bool DeleteGalleryImage(int imageId)
+        {
+            var theImage = this.Data.Images.Find(imageId);
+            string file1 = System.Web.HttpContext.Current.Server.MapPath("~/" + theImage.ImagePath + "_thumb.jpg");
+            string file2 = System.Web.HttpContext.Current.Server.MapPath("~/" + theImage.ImagePath + "_large.jpg");
+
+            TryToDelete(file1);
+            TryToDelete(file2);
+
+            this.Data.Images.Delete(imageId);
+            this.Data.SaveChanges();
+
+            return true;
+        }
+
+        private bool TryToDelete(string filePath)
+        {
+            try
+            {
+                System.IO.File.Delete(filePath);
+                return true;
+            }
+            catch (IOException)
+            {
+                return false;
+            }
         }
     }
 }

@@ -672,7 +672,7 @@ img.ug-sepia-effect{
 }
 
 .ug-thumb-wrapper.ug-tile .ug-tile-icon.ug-icon-link{
-	background-image:url('../images/icon-link32.png');	
+	background-image:url('../images/lightbox-icon-close.png');	/* nzhul replace for delete icon*/
 }
 
 .ug-thumb-wrapper.ug-tile .ug-tile-icon.ug-icon-zoom{

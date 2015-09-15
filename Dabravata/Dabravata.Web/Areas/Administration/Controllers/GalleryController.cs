@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Dabravata.Web.Areas.Administration.Controllers
 {
-    public class GalleryController : Controller
+    public class GalleryController : BaseController
     {
         private readonly IImagesService imagesService;
         private readonly IUoWData data;
@@ -33,6 +33,24 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             this.imagesService.UploadGalleryImage(file);
 
             return Json(new { Message = "Succ: " + "fNameVariable" });
+        }
+
+        [HttpGet]
+        public ActionResult DeleteGalleryImage(int id)
+        {
+            bool isSuccessfull = this.imagesService.DeleteGalleryImage(id);
+            if (isSuccessfull)
+            {
+                TempData["message"] = "Снимката беше изтрита успешно!";
+                TempData["messageType"] = "success";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["message"] = "Проблем с изтриването на картинката!<br/> Моля свържете се с администратор!";
+                TempData["messageType"] = "danger";
+                return RedirectToAction("Index");
+            }
         }
     }
 }

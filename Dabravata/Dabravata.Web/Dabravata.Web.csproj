@@ -177,6 +177,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttractionsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
@@ -806,6 +807,7 @@
     <Content Include="Views\Shared\_QuickReservation.cshtml" />
     <Content Include="Views\Home\QuickReservation.cshtml" />
     <Content Include="Views\Shared\_QuickReservationScripts.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
