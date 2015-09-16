@@ -61,6 +61,12 @@ table th, table td {text-align:center;}
     margin-top:65px;
     text-align:center;
     font-size:12px;
+    padding:3px 0 0 0px;
+}
+
+.thumbnail-hover.is-primary{
+    
+    color:white;
 }
 
 .product-image-thumbnail-admin {
@@ -80,4 +86,15 @@ table th, table td {text-align:center;}
     border: 1px solid black;
     box-shadow: rgba(0,0,0,0.7) 3px 3px 3px;
     visibility:hidden;
+}
+
+.upload-img-remove-icon {
+    float:right;
+    position:relative;
+    top:-20px;
+    left:-100px;
+}
+
+.upload-container .upload {
+    margin-top:10px;
 }

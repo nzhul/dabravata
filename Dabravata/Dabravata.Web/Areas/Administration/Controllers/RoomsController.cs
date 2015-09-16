@@ -149,5 +149,21 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         {
             throw new NotImplementedException();
         }
+
+        [HttpPost]
+        public ActionResult DeleteImage(int imageId)
+        {
+            bool result = this.roomsService.DeleteImage(imageId);
+
+            if (result)
+            {
+                return Content(@"<span class='label label-success'>Изтрито успешно!</span>");
+            }
+            else
+            {
+                return Content(@"<span class='label label-danger'>НЕУСПЕШНО!</span>");
+            }
+            
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 using Dabravata.Data.Service.Mappers;
+using System.IO;
 
 namespace Dabravata.Data.Service
 {
@@ -347,6 +348,38 @@ namespace Dabravata.Data.Service
             }
 
             return selectedRoomFeatureIds;
+        }
+
+        public bool DeleteImage(int imageId)
+        {
+            var theImage = this.Data.Images.Find(imageId);
+            string file1 = System.Web.HttpContext.Current.Server.MapPath("~/" + theImage.ImagePath + "_detailsBigThumb.jpg");
+            string file2 = System.Web.HttpContext.Current.Server.MapPath("~/" + theImage.ImagePath + "_detailsSmallThumb.jpg");
+            string file3 = System.Web.HttpContext.Current.Server.MapPath("~/" + theImage.ImagePath + "_indexThumb.jpg");
+            string file4 = System.Web.HttpContext.Current.Server.MapPath("~/" + theImage.ImagePath + "_large.jpg");
+
+            TryToDelete(file1);
+            TryToDelete(file2);
+            TryToDelete(file3);
+            TryToDelete(file4);
+
+            this.Data.Images.Delete(imageId);
+            this.Data.SaveChanges();
+
+            return true;
+        }
+
+        private bool TryToDelete(string filePath)
+        {
+            try
+            {
+                System.IO.File.Delete(filePath);
+                return true;
+            }
+            catch (IOException)
+            {
+                return false;
+            }
         }
     }
 }
