@@ -381,5 +381,24 @@ namespace Dabravata.Data.Service
                 return false;
             }
         }
+
+
+        public bool DeleteRoom(int id)
+        {
+            Room dbRoom = this.Data.Rooms.Find(id);
+
+            var dbRoomImagesClone = dbRoom.Images.Where(i => !i.ImagePath.Contains("noimage")).ToList();
+
+            foreach (var roomImage in dbRoomImagesClone)
+            {
+                this.DeleteImage(roomImage.Id);
+            }
+            this.Data.SaveChanges();
+
+            this.Data.Rooms.Delete(dbRoom);
+            this.Data.SaveChanges();
+
+            return true;
+        }
     }
 }

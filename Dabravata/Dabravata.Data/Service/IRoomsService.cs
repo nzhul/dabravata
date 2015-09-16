@@ -57,5 +57,7 @@ namespace Dabravata.Data.Service
         List<int> GetSelectedRoomFeatureIds(int id);
 
         bool DeleteImage(int imageId);
+
+        bool DeleteRoom(int id);
     }
 }

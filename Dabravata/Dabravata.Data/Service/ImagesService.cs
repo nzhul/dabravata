@@ -146,7 +146,14 @@ namespace Dabravata.Data.Service
         {
             Room randomRoom = this.Data.Rooms.All().OrderBy(r => Guid.NewGuid()).FirstOrDefault();
 
-            return randomRoom.Images.Where(i => !i.ImagePath.EndsWith("no-image"));
+            if (randomRoom != null)
+            {
+                return randomRoom.Images.Where(i => !i.ImagePath.EndsWith("no-image"));
+            }
+            else
+            {
+                return new List<Image>();
+            }
         }
 
 

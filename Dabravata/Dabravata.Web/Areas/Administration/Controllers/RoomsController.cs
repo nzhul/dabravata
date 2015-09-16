@@ -145,9 +145,32 @@ namespace Dabravata.Web.Areas.Administration.Controllers
             
         }
 
-        private IEnumerable<SelectListItem> GetCategories()
+        [HttpGet]
+        public ActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            bool roomExists = this.roomsService.RoomExists(id);
+            if (roomExists)
+            {
+                bool result = this.roomsService.DeleteRoom(id);
+                if (result)
+                {
+                    TempData["message"] = "Стаята беше <strong>изтрита</strong> успешно!";
+                    TempData["messageType"] = "warning";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["message"] = "Неуспешно изтриване!<br/> Моля свържете се с администратор!";
+                    TempData["messageType"] = "danger";
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                TempData["message"] = "Несъществуваща стая!";
+                TempData["messageType"] = "danger";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -164,6 +187,11 @@ namespace Dabravata.Web.Areas.Administration.Controllers
                 return Content(@"<span class='label label-danger'>НЕУСПЕШНО!</span>");
             }
             
+        }
+
+        private IEnumerable<SelectListItem> GetCategories()
+        {
+            throw new NotImplementedException();
         }
     }
 }
