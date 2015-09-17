@@ -295,5 +295,26 @@ namespace Dabravata.Data.Service
 
             return true;
         }
-    }
+
+
+		public void SendConfirmationEmail(int reservationId)
+		{
+			Reservation dbReservation = this.Data.Reservations.Find(reservationId);
+
+			if (!string.IsNullOrWhiteSpace(dbReservation.Email))
+			{
+				string sender = "manager@dabravata.com";
+				string receiver = dbReservation.Email;
+
+				MailMessage mailMessage = new MailMessage(sender, receiver);
+				mailMessage.IsBodyHtml = true;
+				mailMessage.Subject = "Къща за гости Дъбравата - Потвърдена резервация";
+				mailMessage.Body = "Здравейте,<br/>Вашата резервация беше успешно потвърдена от наш администратор!<br/>Желаем ви приятна почивка!<br/><br/> Телефон за контакт: +35988 999 9887";
+
+				SmtpClient smtpClient = new SmtpClient();
+
+				smtpClient.Send(mailMessage);
+			}
+		}
+	}
 }

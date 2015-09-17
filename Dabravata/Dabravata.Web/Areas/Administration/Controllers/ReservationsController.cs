@@ -149,6 +149,11 @@ namespace Dabravata.Web.Areas.Administration.Controllers
         {
             this.reservationsService.ToggleReservationConfirmation(reservationId, isConfirmed);
 
+			if (!isConfirmed)
+			{
+				this.reservationsService.SendConfirmationEmail(reservationId);
+			}
+
             return RedirectToAction("Index");
         }
     }
