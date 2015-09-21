@@ -49,10 +49,12 @@
                 </div>
                 <div class="col-lg-12 clearfix">
                     <h4>ДРУГИ ПОДОБНИ СТАЙ</h4>
-                    @if (Model.SimilarRooms != null)
-                    {
-                        @Html.Partial("~/Views/Home/Partials/_HomeFeaturedRooms.cshtml", Model.SimilarRooms)
-                    }
+                    <div style="margin: 0 0 0 -16px;">
+                        @if (Model.SimilarRooms != null)
+                        {
+                            @Html.Partial("~/Views/Home/Partials/_HomeFeaturedRooms.cshtml", Model.SimilarRooms)
+                        }
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 clearfix">

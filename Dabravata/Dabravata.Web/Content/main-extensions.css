@@ -1,21 +1,23 @@
 ﻿.home-attractions-img {
-    border: 1px solid gray;
     float:right;
 }
 
 .home-attractions-title {
     display:block;
-    border: 1px solid gray;
     float:right;
     padding:3px 7px 0px 7px;
     text-transform:uppercase;
     font-size:12px;
     position: relative;
-    top:-27px;
+    top:-22px;
     left:10px;
-    background-color: #b3b3b3;
-    color:black;
+    background-color: #e4b248;
+    color:white;
     text-align:right;
+}
+
+.home-attractions-title:hover{
+    color:black;
 }
 
 .home-attractions-description {

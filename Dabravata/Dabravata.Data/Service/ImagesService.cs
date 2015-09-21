@@ -144,16 +144,12 @@ namespace Dabravata.Data.Service
 
         public IEnumerable<Image> GetRandomRoomImages()
         {
-            Room randomRoom = this.Data.Rooms.All().OrderBy(r => Guid.NewGuid()).FirstOrDefault();
-
-            if (randomRoom != null)
-            {
-                return randomRoom.Images.Where(i => !i.ImagePath.EndsWith("no-image"));
-            }
-            else
-            {
-                return new List<Image>();
-            }
+            return this.Data.Images
+                .All()
+                .OrderBy(x => Guid.NewGuid())
+                .Where(i => !i.ImagePath.EndsWith("no-image"))
+                .Where(i => i.IsGalleryImage == true)
+                .Take(10);
         }
 
 
@@ -170,6 +166,8 @@ namespace Dabravata.Data.Service
             {
                 versions.Add("_thumb", "width=300&height=240&crop=auto&format=jpg");
             }
+
+            versions.Add("_indexThumb", "width=361&height=223&crop=auto&format=jpg");
 
             versions.Add("_large", "maxwidth=1200&maxheight=1200&format=jpg");
 
