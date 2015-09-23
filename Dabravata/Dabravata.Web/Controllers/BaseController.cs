@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Dabravata.Web.Controllers
 {
+    [OutputCache(CacheProfile = "OneDayCache")]
     public class BaseController : Controller
     {
         private readonly IUoWData data;
