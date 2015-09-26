@@ -1,6 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/0iubrvsmte7yi43s?svg=true)](https://ci.appveyor.com/project/nzhul/dabravata)
 
-www.dabravata.com - ASP.MVC Application
+www.dabravata.com
 ===========
 > This project is for one newly constructed and very beautiful guest house near my hometown.
 >
