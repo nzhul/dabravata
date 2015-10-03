@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -262,6 +263,12 @@
     <Content Include="Content\images\attractions\lake-thumbnail.jpg" />
     <Content Include="Content\images\big-loader.gif" />
     <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\history-1.jpg" />
+    <Content Include="Content\images\history-2.jpg" />
+    <Content Include="Content\images\history-3.jpg" />
+    <Content Include="Content\images\history-4.jpg" />
+    <Content Include="Content\images\history-5.jpg" />
+    <Content Include="Content\images\history-6.jpg" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\noimage\no-image_detailsBigThumb.jpg" />

@@ -115,3 +115,5 @@
 .book-slider .quick-reservation-container {
     background:none;
 }
+
+.room-single-tab p, blockquote  {font-style:italic;}

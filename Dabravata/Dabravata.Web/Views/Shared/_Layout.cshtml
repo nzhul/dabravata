@@ -77,8 +77,24 @@
                                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                                             <a href="@Url.Action("Index","Home")">НАЧАЛО</a>
                                         </li>
+										@if (ViewBag.LayoutModel != null)
+										{
+											foreach (var page in ViewBag.LayoutModel.Pages)
+											{
+												var pageId = page.Id.ToString();
+												string active = "";
+												if (ViewContext.RouteData.Values["id"] != null && ViewContext.RouteData.Values["Controller"] == "Pages")
+												{
+													if (ViewContext.RouteData.Values["id"].ToString() == pageId)
+													{
+														active = "active";
+													}
+												}
+												<li class="@active">@Html.ActionLink((string)page.Title, (string)pageId, "Pages", new { area = string.Empty }, new { @class = "title-uppercase" })</li>
+											}
+										}
                                         <li class="parent-menu @(ViewContext.RouteData.Values["Controller"].ToString() == "Rooms" ? "active" : "")">
-                                            <a href="@Url.Action("Index", "Rooms")">СТАИ</a>
+                                            <a href="@Url.Action("Index", "Rooms")">СТАИ/ЦЕНИ</a>
                                             <ul>
                                                 @if (ViewBag.LayoutModel != null)
                                                 {
@@ -104,22 +120,6 @@
                                             </ul>
                                         </li>
                                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Gallery" ? "active" : "")"><a href="@Url.Action("Index", "Gallery")">ГАЛЕРИЯ</a></li>
-                                        @if (ViewBag.LayoutModel != null)
-                                        {
-                                            foreach (var page in ViewBag.LayoutModel.Pages)
-                                            {
-                                                var pageId = page.Id.ToString();
-                                                string active = "";
-                                                if (ViewContext.RouteData.Values["id"] != null && ViewContext.RouteData.Values["Controller"] == "Pages")
-                                                {
-                                                    if (ViewContext.RouteData.Values["id"].ToString() == pageId)
-                                                    {
-                                                        active = "active";
-                                                    }
-                                                }
-                                                <li class="@active">@Html.ActionLink((string)page.Title, (string)pageId, "Pages", new { area = string.Empty }, new { @class = "title-uppercase" })</li>
-                                            }
-                                        }
                                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")"><a href="@Url.Action("Contact", "Home")">КОНТАКТИ</a></li>
                                         @*<li class="parent-menu">
                                             <a href="@Url.Action("QuickReservation", "Home")">РЕЗЕРВАЦИИ</a>
