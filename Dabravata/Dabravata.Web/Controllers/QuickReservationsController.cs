@@ -4,6 +4,7 @@ using Dabravata.Models.InputModels.FrontEnd;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -90,7 +91,9 @@ namespace Dabravata.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool IsCreationSuccessfull = this.reservationsService.CreateReservationFromFrontEnd(input);
+                string sender = ConfigurationManager.AppSettings["emailSender"];
+
+                bool IsCreationSuccessfull = this.reservationsService.CreateReservationFromFrontEnd(input, sender);
 
                 if (IsCreationSuccessfull)
                 {

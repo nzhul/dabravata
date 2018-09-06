@@ -239,7 +239,7 @@ namespace Dabravata.Data.Service
         }
 
 
-        public bool CreateReservationFromFrontEnd(QuickReservationInputModel inputModel)
+        public bool CreateReservationFromFrontEnd(QuickReservationInputModel inputModel, string email)
         {
             Reservation newReservation = new Reservation();
             newReservation.ArrivalDate = inputModel.ArrivalDate;
@@ -260,10 +260,7 @@ namespace Dabravata.Data.Service
             this.Data.Reservations.Add(newReservation);
             this.Data.SaveChanges();
 
-            string sender = "system@dabravata.com";
-            string receiver = "manager@dabravata.com";
-
-            MailMessage mailMessage = new MailMessage(sender, receiver);
+            MailMessage mailMessage = new MailMessage(email, email);
             mailMessage.IsBodyHtml = true;
             mailMessage.Subject = "Запитване за резервация: " + theRoom.RoomNumber + ": " + theRoom.Name;
             mailMessage.Body = "Име: " + (newReservation.FirstName != null ? newReservation.FirstName : "--липсва--") + "<br/>" +
