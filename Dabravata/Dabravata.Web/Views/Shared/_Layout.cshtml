@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
- <!--<![endif]-->
+<!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -41,20 +41,20 @@
                                 <ul class="pre-link-box">
                                     @*<li><a href="@Url.Action("Index", "Rooms", new { area = "Administration" })"><i class="fa fa-cogs"></i>Администрация</a></li>*@
                                     @*<li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="#">Add Your Link</a></li>*@
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="#">Add Your Link</a></li>*@
                                 </ul>
                             </div>
                             @*<div class="pull-right">
-                                <div class="language-box">
-                                    <ul>
-                                        <li><a href="#"><img alt="language" src="~/Content/luxen/temp/english.png"><span class="language-text">ENGLISH</span></a></li>
-                                        <li><a href="#"><img alt="language" src="~/Content/luxen/temp/germany.png"><span class="language-text">DEUTSCH</span></a></li>
-                                        <li><a href="#"><img alt="language" src="~/Content/luxen/temp/france.png"><span class="language-text">FRANÇAIS</span></a></li>
-                                        <li><a href="#"><img alt="language" src="~/Content/luxen/temp/poland.png"><span class="language-text">POLSKI</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>*@
+                                    <div class="language-box">
+                                        <ul>
+                                            <li><a href="#"><img alt="language" src="~/Content/luxen/temp/english.png"><span class="language-text">ENGLISH</span></a></li>
+                                            <li><a href="#"><img alt="language" src="~/Content/luxen/temp/germany.png"><span class="language-text">DEUTSCH</span></a></li>
+                                            <li><a href="#"><img alt="language" src="~/Content/luxen/temp/france.png"><span class="language-text">FRANÇAIS</span></a></li>
+                                            <li><a href="#"><img alt="language" src="~/Content/luxen/temp/poland.png"><span class="language-text">POLSKI</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>*@
                             <div class="pull-right" style="margin: 12px 0 0 0px;"><i class="fa fa-phone"></i>Телефон за резервация: +359 889 999 887</div>
                         </div>
                     </div>
@@ -76,22 +76,6 @@
                                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                                             <a href="@Url.Action("Index","Home")">НАЧАЛО</a>
                                         </li>
-										@if (ViewBag.LayoutModel != null)
-										{
-											foreach (var page in ViewBag.LayoutModel.Pages)
-											{
-												var pageId = page.Id.ToString();
-												string active = "";
-												if (ViewContext.RouteData.Values["id"] != null && ViewContext.RouteData.Values["Controller"] == "Pages")
-												{
-													if (ViewContext.RouteData.Values["id"].ToString() == pageId)
-													{
-														active = "active";
-													}
-												}
-												<li class="@active">@Html.ActionLink((string)page.Title, (string)pageId, "Pages", new { area = string.Empty }, new { @class = "title-uppercase" })</li>
-											}
-										}
                                         <li class="parent-menu @(ViewContext.RouteData.Values["Controller"].ToString() == "Rooms" ? "active" : "")">
                                             <a href="@Url.Action("Index", "Rooms")">СТАИ/ЦЕНИ</a>
                                             <ul>
@@ -118,11 +102,25 @@
                                                 }
                                             </ul>
                                         </li>
+                                        <li class="parent-menu @(ViewContext.RouteData.Values["Controller"].ToString() == "Pages" ? "active" : "")">
+                                            <a href="/Pages/3">ДОПЪЛНИТЕЛНИ УСЛУГИ</a>
+                                            <ul>
+                                                @if (ViewBag.LayoutModel != null)
+                                                {
+                                                    foreach (var page in ViewBag.LayoutModel.Pages)
+                                                    {
+                                                        var pageId = page.Id.ToString();
+
+                                                        <li>@Html.ActionLink((string)page.Title, (string)pageId, "Pages", new { area = string.Empty }, new { @class = "title-uppercase" })</li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
                                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Gallery" ? "active" : "")"><a href="@Url.Action("Index", "Gallery")">ГАЛЕРИЯ</a></li>
                                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")"><a href="@Url.Action("Contact", "Home")">КОНТАКТИ</a></li>
                                         @*<li class="parent-menu">
-                                            <a href="@Url.Action("QuickReservation", "Home")">РЕЗЕРВАЦИИ</a>
-                                        </li>*@
+                                                <a href="@Url.Action("QuickReservation", "Home")">РЕЗЕРВАЦИИ</a>
+                                            </li>*@
                                     </ul>
                                 </nav>
                             </div>
@@ -202,9 +200,32 @@
     @Scripts.Render("~/bundles/mainScripts")
     @RenderSection("scripts", required: false)
     <script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip().css('cursor', 'pointer');
-    });
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip().css('cursor', 'pointer');
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#0c242e"
+                    },
+                    "button": {
+                        "background": "#e4b248"
+                    }
+                },
+                "position": "bottom-right",
+                "content": {
+                    "message": "Този сайт използва бисквитки за да Ви предостави пълноценно използване на функционалността си.",
+                    "dismiss": "Съгласен",
+                    "link": "Научете повече",
+                    "href": "http://dabravata.com/Pages/5"
+                }
+            })
+        });
     </script>
 </body>
 </html>
