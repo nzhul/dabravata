@@ -1,44 +1,43 @@
 ﻿@model IEnumerable<Dabravata.Models.ViewModels.RoomViewModel>
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
 <div class="breadcrumb breadcrumb-1 pos-center">
-    <h1>НАШИТЕ СТАИ</h1>
+	<h1>НАШИТЕ СТАИ</h1>
 </div>
 <div class="content">
-    <!-- Content Section -->
-    <div class="container margint60">
+	<!-- Content Section -->
+	<div class="container margint60">
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 dab-room-box">
-                <div class="alert alert-dismissible alert-success text-center" style="border-radius: 0px;">
-                    <h4 class="text-center">Цени и настаняване</h4>
-                    <h4 class="text-center">от 01.01.2021г</h4>
-                    <p>
-                        <h4 class="text-center"></h4>През уикенда  къщата се отдава само за две нощувки.</h4><br /><br />
-                        Цялата къща -480лв на вечер при:<br />
-                        минимално настаняване:              16 легла<br />
-                        цена на всяко следващо легло :    30лв на нощувка<br />
-                        максимално настаняване:             23 легла<br />
-                        допълнителни сгъваеми  легла :  4 броя <br />
-                        цената за възрастен :                    15лв.на нощувка;<br />
-                        За деца до 3 навършени години :   безплатно настаняване.<br />
-                        За домашни любимци:                5 лв на нощувка<br /><br />
+				<div class="alert alert-dismissible alert-success text-center" style="border-radius: 0px;">
+					<h4 class="text-center">Цени и настаняване</h4>
+					<h4 class="text-center">от 01.01.2023г</h4>
+					<p>
+						<h4 class="text-center"></h4>През уикенда  къщата се отдава само за две нощувки.</h4><br /><br />
+						Цялата къща -560лв на вечер при:<br />
+						минимално настаняване:              16 легла<br />
+						цена на всяко следващо легло :    35лв на нощувка<br />
+						максимално настаняване:             24 легла<br /><br />
 
-                        <h4 class="text-center"></h4>От понеделник до петък – до 15 април само групово настаняване</h4><br /><br />
+						Помощ при приготвяне на храна: виж допълнителни услуги<br />
+						Всички резервации се правят през системата на сайта www.dabravata.com<br />
+						За допълнителни въпроси: телефон <br/>
+						0889 999 887 Даниела Петкова<br />
+						0888781169 Сергей ПЕТКОВ<br/><br />
 
-                        Цена на едично настаняване :     30лв.<br />
-                        За по-дълъг престой цените подлежат на  договаряне;<br />
-                        Помощ при приготвяне на храна: виж допълнителни услуги<br />
-                        Всички резервации се правят през системата на сайта www.dabravata.com<br />
-                        За допълнителни въпроси : телефон 0889 999 887 Даниела Петкова<br />
-                    </p>
-                </div>
+						Предлагаме безплатно два броя детски сгъваеми легла /тип кошара/.<br />
+През седмицата е възможно индивидуално настаняване.<br />
+За повече от три нощувки от понеделник до петък - индивидуално договаряне.<br />
+Настаняване с куче се заплаща 5лв на ден за почистване.<br />
+					</p>
+				</div>
 			</div>
 		</div>
-        <div class="row">
-            @Html.Partial("~/Views/Home/Partials/_HomeFeaturedRooms.cshtml", Model)
-        </div>
+		<div class="row">
+			@Html.Partial("~/Views/Home/Partials/_HomeFeaturedRooms.cshtml", Model)
+		</div>
 		<div class="row">
 			<div class="col-lg-6 col-sm-6 dab-room-box">
 				<div class="alert alert-dismissible alert-warning text-center" style="border-radius: 0px;">
@@ -70,5 +69,5 @@
 				</div>
 			</div>
 		</div>
-    </div>
+	</div>
 </div>
